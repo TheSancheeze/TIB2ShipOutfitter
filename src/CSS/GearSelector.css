@@ -1,0 +1,101 @@
+.Row1 {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 200px 200px 200px 200px 250px 220px;
+    border: solid;
+    border-radius: 25px;
+}
+
+.ItemRows {
+    display: grid;
+    grid-template-rows: 150px 220px;
+    /* border: dashed; */
+}
+
+.TopRow {
+    /* border: dashed; */
+    padding-top: 0;
+}
+
+.TopRow h2 {
+    line-height: 0;
+}
+
+.BottomRow {
+    display: grid;
+    grid-template-rows: 50px 180px;
+    /* border: solid; */
+}
+
+.BottomRow h4 {
+    /* border: dotted; */
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.BottomRow h5 {
+    /* border: dotted; */
+    margin-top: 0;
+    margin-bottom: auto;
+    /* text-align: left; */
+}
+
+.Row2 {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 230px 1030px;
+    /* border: solid;
+    border-radius: 25px; */
+}
+
+.Main_Battery {
+    border: solid;
+    border-radius: 25px;
+}
+
+.Aux_Batteries {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    border: solid;
+    border-radius: 25px;
+}
+
+.Row3 {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 230px 1030px;
+    /* border: solid;
+    border-radius: 25px; */
+}
+
+.Main_Weapon {
+    border: solid;
+    border-radius: 25px;
+}
+
+.Aux_Weapons {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    border: solid;
+    border-radius: 25px;
+}
+
+.Row4 {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 230px 1030px;
+    /* border: solid;
+    border-radius: 25px; */
+}
+
+.Main_Drone {
+    border: solid;
+    border-radius: 25px;
+}
+
+.Aux_Drones {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    border: solid;
+    border-radius: 25px;
+}
