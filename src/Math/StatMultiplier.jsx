@@ -225,7 +225,7 @@ export function cpuStatMultiplier(item, rarity, quality, trigger){
             else if ( stats[i][1] == -10 ) { stats[i][1] = ( stats[i][1] + (rarityNum-1) ) + ( qual * rarityNum ) }
             else if ( stats[i][1] == -25 ) { stats[i][1] = ( stats[i][1] + ( 3 * (rarityNum-1)) ) + ( qual * rarityNum * 3 ) }
             else if ( stats[i][1] == 1 ) { stats[i][1] = ( stats[i][1] * rarityNum ) * ( 1 + qual ) }
-        } else if ( stats[i][0] === "_XP_Gains" ){
+        } else if ( stats[i][0] === "%_XP_Gains" ){
             if ( stats[i][1] == -10 ) { stats[i][1] = ( stats[i][1] + (rarityNum - 1) ) + (qual * rarityNum) }
             else if ( stats[i][1] == -45 ) { stats[i][1] = ( stats[i][1] + ( 5 * (rarityNum-1)) ) + ( qual * rarityNum * 5 ) }
             else if ( stats[i][1] == 7 ) { stats[i][1] = ( stats[i][1] + (rarityNum-1) ) * (1 + qual) }
@@ -613,7 +613,8 @@ export function droneStatMultiplier(item, rarity, quality, trigger){
                     newItem[i][1] == 5 ||
                     newItem[i][1] == 6 || 
                     newItem[i][1] == 7 || 
-                    newItem[i][1] == 9 ){ newItem[i][1] = ( newItem[i][1] + (rarityNum-1) ) * ( 1+qual ) }
+                    newItem[i][1] == 9 ||
+                    newItem[i][1] == 12 ){ newItem[i][1] = ( newItem[i][1] + (rarityNum-1) ) * ( 1+qual ) }
             else if ( ( newItem[i][1] == 6.5 && newItem[0][0] !== "Max_Hull" ) || 
                     newItem[i][1] == 7.5 ||
                     newItem[i][1] == 12.5 ){ newItem[i][1] = ( newItem[i][1] + ( 1.5 * (rarityNum-1) ) ) * ( 1+qual ) }

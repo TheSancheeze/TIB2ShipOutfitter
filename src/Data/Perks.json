@@ -591,6 +591,13 @@
         "Name": "Mechanic III",
         "Bonus": "Repair 15% Hull When Enemy NPC Killed"
     },
+    "Nanobot_Charge": {
+        "Name": "Nanobot Charge",
+        "Bonus": "+10% XP Gain, +10% Outgoing Damage, +10% Move Speed Bonus",
+        "%_XP_Gains": 10,
+        "%_Outgoing_Damage": 10,
+        "%_Move_Cooldown": -10
+    },
     "Nova_Death_1": {
         "Name": "Nova Death",
         "Bonus": "Damage Enemies When You Die! (100% Strength)"
