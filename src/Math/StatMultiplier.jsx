@@ -221,6 +221,7 @@ export function cpuStatMultiplier(item, rarity, quality, trigger){
             if ( stats[i][1] == 7 ) { stats[i][1] = ( stats[i][1] + (rarityNum - 1) ) * (1 + qual) }
             else if ( stats[i][1] == 7.25 ) { stats[i][1] = ( stats[i][1] + ( 1.25 * (rarityNum - 1)) ) * (1 + qual) }
             else if ( stats[i][1] == 10 ) { stats[i][1] = ( stats[i][1] + ( 2 * (rarityNum - 1)) ) * (1 + qual) }
+            else if ( stats[i][1] == 12.75 ) { stats[i][1] = ( stats[i][1] + ( 2.25 * (rarityNum - 1)) ) * (1 + qual) }
             else if ( stats[i][1] == -13 ) { stats[i][1] = ( stats[i][1] + (rarityNum-1) ) + ( qual * rarityNum ) }
             else if ( stats[i][1] == -10 ) { stats[i][1] = ( stats[i][1] + (rarityNum-1) ) + ( qual * rarityNum ) }
             else if ( stats[i][1] == -25 ) { stats[i][1] = ( stats[i][1] + ( 3 * (rarityNum-1)) ) + ( qual * rarityNum * 3 ) }
