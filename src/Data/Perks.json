@@ -57,6 +57,21 @@
         "Name": "Advanced Stealth Technology",
         "Bonus": "Movement Direction Hidden & Immune to Passive Scan"
     },
+    "Analysis": {
+        "Name": "Analysis",
+        "Bonus": "10% XP Bonus",
+        "%_XP_Gains": 10
+    },
+    "Analysis_II": {
+        "Name": "Analysis II",
+        "Bonus": "15% XP Bonus",
+        "%_XP_Gains": 15
+    },
+    "Analysis_III": {
+        "Name": "Analysis III",
+        "Bonus": "20% XP Bonus",
+        "%_XP_Gains": 20
+    },
     "Attack_Drones_Technology": {
         "Name": "Attack Drones Technology",
         "Bonus": "+3% Attack Drone Damage",
@@ -339,11 +354,6 @@
         "Name": "Guardian II",
         "Bonus": "+6% Damage vs Defense Unit Attackers"
     },
-    "Hyperdrive": {
-        "Name": "Hyperdrive",
-        "Bonus": "10% Ship Movement SPeed Bonus",
-        "%_Move_Cooldown": -10
-    },
     "Hack_Ram_Rank_1": {
         "Name": "Hack Ram Rank 1",
         "Bonus": "5% Chance to Hack Hostiles on Move"
@@ -414,6 +424,16 @@
     "Harvesting_Rank_7": {
         "Name": "Harvesting Rank 7",
         "Bonus": "Gain XP from Asteroids and 35% Resource Harvest Bonus Chance"
+    },
+    "Hyperdrive": {
+        "Name": "Hyperdrive",
+        "Bonus": "10% Ship Movement SPeed Bonus",
+        "%_Move_Cooldown": -10
+    },
+    "Hyperdrive_II": {
+        "Name": "Hyperdrive II",
+        "Bonus": "15% Ship Movement SPeed Bonus",
+        "%_Move_Cooldown": -15
     },
     "Improved_Hulls_Rank_1": {
         "Name": "Improved Hulls Rank 1",
@@ -634,7 +654,13 @@
     "Nova_Inversion": {
         "Name": "Nova Inversion",
         "Bonus": "Very High Chance Nova Repairs Hull Instead of Damage"
-    }, 
+    },
+    "Overpower": {
+        "Name": "Overpower",
+        "Bonus": "10% Damage Bonus and 15% Damage Vulnerability",
+        "%_Outgoing_Damage": 10,
+        "%_Incoming_Damage": 15
+    },
     "Player_Kill_Bonus_XP": {
         "Name": "Player Kill Bonus XP",
         "Bonus": "+10% Bonus XP For Killing Players"
