@@ -9,7 +9,7 @@ function ShipSelector1( props ) {
     const [ship, setShip] = useState([])
     const [shipid, setShipid] = useState('0')
     const [eliteid, setEliteid] = useState(0)
-    const [shipmod, setShipmod] = useState(Mods[8].Perks[0])
+    const [shipmod, setShipmod] = useState(Mods[8])
     // console.log("Test Ship Selector")
 
     const handleFaction = (e) => {
