@@ -11,6 +11,7 @@ export default function SpecialHandler(item, rarity) {
         case "Advanced Electronics":
             if (rarity >= 5) {perkArr[0] = item.Ultimate_Bonus_1 + (rarity - 4).toString()}
             break
+        case "Deflector":
         case "Advanced Shields":
         case "Tank":
             perkArr[0] = item.Ultimate_Bonus_1 + rarity.toString()

@@ -248,6 +248,34 @@
         "Bonus": "7% Damage Bonus VS Players",
         "%_Alien_Bonus_Damage": 7
     },
+    "Deflector_Rank_1": {
+        "Name": "Deflector Rank 1",
+        "Bonus": "3% Chance Damage Deflected Back at Attackers"
+    },
+    "Deflector_Rank_2": {
+        "Name": "Deflector Rank 2",
+        "Bonus": "5% Chance Damage Deflected Back at Attackers"
+    },
+    "Deflector_Rank_3": {
+        "Name": "Deflector Rank 3",
+        "Bonus": "7% Chance Damage Deflected Back at Attackers"
+    },
+    "Deflector_Rank_4": {
+        "Name": "Deflector Rank 4",
+        "Bonus": "9% Chance Damage Deflected Back at Attackers"
+    },
+    "Deflector_Rank_5": {
+        "Name": "Deflector Rank 5",
+        "Bonus": "11% Chance Damage Deflected Back at Attackers"
+    },
+    "Deflector_Rank_6": {
+        "Name": "Deflector Rank 6",
+        "Bonus": "13% Chance Damage Deflected Back at Attackers"
+    },
+    "Deflector_Rank_7": {
+        "Name": "Deflector Rank 7",
+        "Bonus": "15% Chance Damage Deflected Back at Attackers"
+    },
     "Drain_Battery_Speed": {
         "Name": "Drain Battery Speed",
         "Bonus": "-4.0 Second Drain Battery Cooldown",

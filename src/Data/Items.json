@@ -2286,6 +2286,19 @@
             }
         },{
             "Special_ID": "9", 
+            "Special_Name": "Deflector",
+            "Ultimate_Bonus_1": "Deflector_Rank_",
+            "Ultimate_Bonus_2": "Shield_Capacitors",
+            "Stats": {
+                "Hack_Resist": 1,
+                "Grapple_Resist": 1,
+                "Critical_Resist": 1,
+                "Splash_Resist": 1,
+                "Battery_Drain_Resist": 1,
+                "Add_EP": 0
+            }
+        },{
+            "Special_ID": "9", 
             "Special_Name": "Drone Master",
             "Ultimate_Bonus_1": "Attack_Drones_Technology",
             "Ultimate_Bonus_2": "Repair_Drones_Technology",
