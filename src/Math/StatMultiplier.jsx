@@ -367,7 +367,7 @@ export function specialStatMultiplier(item, rarity, quality, trigger) {
         if( newItem[i][0] === "Add_EP" ) {
             if ( newItem[0][0] == "% Stun or Throw Chance on Ram" ){
                 if (rarityNum >= 5) {newItem[i][1] = rarityNum-4}
-            } else if ( newItem[i][1] == 2 || newItem.length == 1 || newItem[0][0] == "%_Hull_Damage" || newItem[2][1] == 5.11) {
+            } else if ( newItem[i][1] == 2 || newItem.length == 1 || newItem[0][0] === "%_Hull_Damage" || newItem[2][1] == 5.11 || newItem[0][0] === "Hack_Resist") {
                 if (rarityNum >= 6) {newItem[i][1] = newItem[i][1] + (rarityNum-5) }
             } else if ( newItem[0][0] === "%_Move_Cooldown" || newItem.length == 8 ){
                 if (rarityNum == 4 || rarityNum == 5 || rarityNum == 6) {newItem[i][1] = 1}
