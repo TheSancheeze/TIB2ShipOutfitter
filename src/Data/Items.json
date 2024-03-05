@@ -2298,7 +2298,7 @@
                 "Add_EP": 0
             }
         },{
-            "Special_ID": "9", 
+            "Special_ID": "10", 
             "Special_Name": "Drone Master",
             "Ultimate_Bonus_1": "Attack_Drones_Technology",
             "Ultimate_Bonus_2": "Repair_Drones_Technology",
@@ -2308,7 +2308,7 @@
                 "Add_Drone_Slot": 0
             }
         },{
-            "Special_ID": "10", 
+            "Special_ID": "11", 
             "Special_Name": "Grappling Hook",
             "Ultimate_Bonus_1": "Grapple_Speed",
             "Ultimate_Bonus_2": "Advanced_Grappling",
@@ -2316,7 +2316,7 @@
                 "Grapple_Attack_Power": 5
             }
         },{
-            "Special_ID": "11", 
+            "Special_ID": "12", 
             "Special_Name": "Hacker",
             "Ultimate_Bonus_1": "Hack_Speed",
             "Ultimate_Bonus_2": "Advanced_Hacking",
@@ -2326,7 +2326,7 @@
                 "%_Hull_Damage": 0.8
             }
         },{
-            "Special_ID": "12", 
+            "Special_ID": "13", 
             "Special_Name": "Nova Device",
             "Ultimate_Bonus_1": "Nova_Death",
             "Ultimate_Bonus_2": "Nova_Inversion",
@@ -2334,7 +2334,7 @@
                 "%_Outgoing_Damage": 2
             }
         },{
-            "Special_ID": "13", 
+            "Special_ID": "14", 
             "Special_Name": "Prospector",
             "Ultimate_Bonus_1": "Harvesting_Rank_",
             "Ultimate_Bonus_2": " ",
@@ -2343,7 +2343,7 @@
                 "Evasion_Chance": 1
             }
         },{
-            "Special_ID": "14", 
+            "Special_ID": "15", 
             "Special_Name": "Scout",
             "Ultimate_Bonus_1": "Scanning_Rank_",
             "Ultimate_Bonus_2": "Scan_Speed",
@@ -2354,7 +2354,7 @@
                 "Hack_Resist": 2
             }
         },{
-            "Special_ID": "15", 
+            "Special_ID": "16", 
             "Special_Name": "Stalker",
             "Ultimate_Bonus_1": "Cloaking_Rank_",
             "Ultimate_Bonus_2": "Cloak_Duration",
@@ -2362,7 +2362,7 @@
                 "%_Hull_Damage": 1.6
             }
         },{
-            "Special_ID": "16", 
+            "Special_ID": "17", 
             "Special_Name": "Tank",
             "Ultimate_Bonus_1": "Improved_Hulls_Rank_",
             "Ultimate_Bonus_2": "Advanced_Alloys",
@@ -2373,7 +2373,7 @@
                 "Add_EP": 0
             }
         },{
-            "Special_ID": "17", 
+            "Special_ID": "18", 
             "Special_Name": "Technician",
             "Ultimate_Bonus_1": "Technician",
             "Ultimate_Bonus_2": "Repair_Speed",
@@ -2382,7 +2382,7 @@
                 "%_Hull_Repairs": 80
             }
         },{
-            "Special_ID": "18", 
+            "Special_ID": "19", 
             "Special_Name": "Vampire",
             "Ultimate_Bonus_1": "Drain_Battery_Speed",
             "Ultimate_Bonus_2": "Advanced_Draining",
@@ -2394,7 +2394,7 @@
                 "Add_EP": 0
             }
         },{
-            "Special_ID": "19", 
+            "Special_ID": "20", 
             "Special_Name": "Weird Alien Artifact",
             "Ultimate_Bonus_1": " ",
             "Ultimate_Bonus_2": " ",
@@ -2404,7 +2404,7 @@
                 "Evasion_Chance": 0.5
             }
         },{
-            "Special_ID": "20", 
+            "Special_ID": "21", 
             "Special_Name": " ",
             "Ultimate_Bonus": " ",
             "Stats": {

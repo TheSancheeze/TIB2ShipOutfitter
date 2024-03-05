@@ -5,7 +5,7 @@ import SpecialHandler from "../Math/SpecialHandler"
 import { specialStatMultiplier, rarityToInt } from "../Math/StatMultiplier"
 
 function SpecialSelector( props ) {
-    const [special, setSpecial] = useState(Items[5].Items[20])
+    const [special, setSpecial] = useState(Items[5].Items[21])
     const [specialrarity, setSpecialrarity] = useState('Common')
     const [specialperks, setSpecialperks] = useState([''])
     const [specialquality, setSpecialquality] = useState(129)

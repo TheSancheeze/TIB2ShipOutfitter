@@ -5,12 +5,15 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: #000000;
+  background-image: url(./assets/escheresque-dark.png);
 }
 
 a {
@@ -28,8 +31,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: #000000;
-  background-image: url(./assets/escheresque-dark.png);
+  /* background: #000000; */
+  /* background-image: url(./assets/escheresque-dark.png); */
 }
 
 h1 {
