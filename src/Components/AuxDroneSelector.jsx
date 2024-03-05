@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react"
 import Items from '../Data/Items.json'
-import { auxDroneStatMultiplier, droneDamageMultiplier } from '../Math/StatMultiplier'
+import Popup from "./Popup"
+import DronePopup from "./DronePopup"
+import HarvestorPopup from "./HarvestorButtonPopup"
+import { auxDroneStatMultiplier, droneDamageMultiplier, enhancedDroneStatsHandler } from '../Math/StatMultiplier'
 
 function AuxDroneSelector( props ) {
     const [dronelist, setDronelist] = useState([])
@@ -12,11 +15,22 @@ function AuxDroneSelector( props ) {
     const [trigger, setTrigger] = useState(false)
     const [multipliedstats, setMultipliedstats] = useState(drone.Stats)
     const [damagestats, setDamagestats] = useState(Object.keys(drone).map(key => {return [key, drone[key]]}))
+    const [buttonPopup, setButtonPopup] = useState(false)
+    const [droneButtonPopup, setDroneButtonPopup] = useState(false)
+    const [harvButtonPopup, setHarvButtonPopup] = useState(false)
+    const [enhancedarr, setEnhancedarr] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
     // console.log("Test Drone Selector")
 
     const handleQual = (qual) => {
         setDronequality(qual)
         setDamagestats(droneDamageMultiplier(drone, dronerarity, qual, trigger))
+    }
+
+    const handlePopup = () => {
+        if (dronetype === '0'){ setButtonPopup(true) }
+        else if (dronetype === '1'){ setDroneButtonPopup(true) }
+        else (setHarvButtonPopup(true))
+        console.log(enhancedarr)
     }
 
     useEffect(() => {
@@ -26,6 +40,10 @@ function AuxDroneSelector( props ) {
     useEffect(()=> {
         props.changeDroneStats(multipliedstats)
     }, [multipliedstats])
+
+    useEffect(() => {
+        setEnhancedarr(enhancedDroneStatsHandler(props.enhancedStats, damagestats))
+    }, [props.enhancedStats, damagestats])
 
     return (
         <>
@@ -88,6 +106,7 @@ function AuxDroneSelector( props ) {
                         </select>
                     </div>
                     <small>
+                        <button onClick={() => handlePopup()}>INFO</button>
                         Q: <input type="number" id='itemQuality' placeholder="129" min='1' max='256' step='1' onChange={e => handleQual(e.target.value)}/>
                         <button onClick={() => {
                             setTrigger(!trigger)
@@ -108,6 +127,22 @@ function AuxDroneSelector( props ) {
                     </h5>
                 </div>
             </div>
+            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <h3>NPC Damage</h3>
+                <h4>Hull: {enhancedarr[0]} - {enhancedarr[2]} {"—>"} {enhancedarr[4]} - {enhancedarr[6]}</h4>
+                <h4>Shield: {enhancedarr[1]} - {enhancedarr[3]} {"—>"} {enhancedarr[5]} - {enhancedarr[7]}</h4>
+                <h3>Player Damage</h3>
+                <h4>Hull: {enhancedarr[8]} - {enhancedarr[10]} {"—>"} {enhancedarr[12]} - {enhancedarr[14]}</h4>
+                <h4>Shield: {enhancedarr[9]} - {enhancedarr[11]} {"—>"} {enhancedarr[13]} - {enhancedarr[15]}</h4>
+            </Popup>
+            <DronePopup trigger={droneButtonPopup} setTrigger={setDroneButtonPopup}>
+                <h3>Medic Drone</h3>
+                <h4>Repairs {enhancedarr[0]} - {enhancedarr[1]} Every {damagestats[1][1]} Seconds</h4>
+            </DronePopup>
+            <HarvestorPopup trigger={harvButtonPopup} setTrigger={setHarvButtonPopup}>
+                <h3>Harvesting</h3>
+                <h4>Harvest {enhancedarr[0]} Resources Every {damagestats[1][1]} Seconds</h4>
+            </HarvestorPopup>
         </div>
     </>
     )

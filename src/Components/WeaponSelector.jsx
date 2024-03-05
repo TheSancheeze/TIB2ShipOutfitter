@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
 import Items from '../Data/Items.json'
 import RankSelector from "./RankSelector"
-import { weaponStatMultiplier, weaponDamageMultiplier, rarityToInt } from '../Math/StatMultiplier'
+import Popup from "./Popup"
+import { weaponStatMultiplier, weaponDamageMultiplier, rarityToInt, enhancedStatsHandler } from '../Math/StatMultiplier'
 
 function MainWeaponSelector( props ) {
     const [weaponlist, setWeaponlist] = useState([])
@@ -14,6 +15,8 @@ function MainWeaponSelector( props ) {
     const [trigger, setTrigger] = useState(false)
     const [damagestats, setDamagestats] = useState(Object.keys(weapon).map(key => {return [key, weapon[key]]}))
     const [weaponperk, setWeaponperk] = useState([''])
+    const [buttonPopup, setButtonPopup] = useState(false)
+    const [enhancedarr, setEnhancedarr] = useState([0, 0, 0, 0, 0, 0, 0, 0])
     // console.log("Test Weapon Selector")
 
     const handleWeaponPerk = (item, rarity) => {
@@ -36,9 +39,13 @@ function MainWeaponSelector( props ) {
         // console.log(damagestats)
     }, [weaponrank, weaponrarity, weaponquality, trigger])
 
-    useEffect(()=> {
+    useEffect(() => {
         props.changeWeaponStats(multipliedstats)
     }, [multipliedstats])
+
+    useEffect(() => {
+        setEnhancedarr(enhancedStatsHandler(props.enhancedStats, damagestats))
+    }, [props.enhancedStats, damagestats])
 
     return (
         <>
@@ -79,6 +86,7 @@ function MainWeaponSelector( props ) {
                         changeRarity={weaponrarity => setWeaponrarity(weaponrarity)}
                     />
                     <small>
+                        <button onClick={() => setButtonPopup(true)}>DMG</button>
                         Q: <input type="number" id='itemQuality' placeholder="129" min='1' max='256' step='1' onChange={e => setWeaponquality(e.target.value)}/>
                         <button onClick={() => setTrigger(!trigger)}>VOID</button>
                     </small>
@@ -99,6 +107,14 @@ function MainWeaponSelector( props ) {
                     </h5>
                 </div>
             </div>
+            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <h3>NPC Damage</h3>
+                <h4>Hull: {enhancedarr[0]} - {enhancedarr[2]} {"—>"} {enhancedarr[4]} - {enhancedarr[6]}</h4>
+                <h4>Shield: {enhancedarr[1]} - {enhancedarr[3]} {"—>"} {enhancedarr[5]} - {enhancedarr[7]}</h4>
+                <h3>Player Damage</h3>
+                <h4>Hull: {enhancedarr[8]} - {enhancedarr[10]} {"—>"} {enhancedarr[12]} - {enhancedarr[14]}</h4>
+                <h4>Shield: {enhancedarr[9]} - {enhancedarr[11]} {"—>"} {enhancedarr[13]} - {enhancedarr[15]}</h4>
+            </Popup>
         </div>
         </>
     )

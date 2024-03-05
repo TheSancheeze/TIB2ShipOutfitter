@@ -26,6 +26,7 @@ function App() {
   const [ modperks, setModperks ] = useState([[''], ['']])
   const [ activeperks, setActiveperks] = useState([newItem1[6], newItem1[9]])
   const [ extraperks, setExtraperks ] = useState([[''], ['']])
+  const [ extraitemstats, setExtraitemstats ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [ corpskills, setCorpskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [ playerskills, setPlayerskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [ shipskills, setShipskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -56,6 +57,7 @@ function App() {
               <GearSelector 
                 finalStats={newstats => setNewstats(newstats)}
                 finalPerks={gearperks => setGearperks(gearperks)}
+                enhancedStats={extraitemstats}
               />
           </div>
           <div className='Ship_Stats'>
@@ -67,6 +69,7 @@ function App() {
                 pSkills={playerskills}
                 sSkills={shipskills}
                 changeExtraPerks={extraperks => setExtraperks(extraperks)}
+                changeExtraItemStats={extraitemstats => setExtraitemstats(extraitemstats)}
               />
           </div>
           <div className='Perks_List'>

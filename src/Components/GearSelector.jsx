@@ -108,41 +108,47 @@ function GearSelector( props ) {
                     <MainWeaponSelector 
                         changeWeaponStats={mainweaponstats => setMainweaponstats(mainweaponstats)}
                         changeWeaponPerks={weaponperk1 => setWeaponperk1(weaponperk1)}
+                        enhancedStats={props.enhancedStats}
                     />
                 </div>
                 <div className="Aux_Weapons">
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats1 => setAuxweaponstats1(auxweaponstats1)}
                         changeWeaponPerks={weaponperk2 => setWeaponperk2(weaponperk2)}
+                        enhancedStats={props.enhancedStats}
                     />
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats2 => setAuxweaponstats2(auxweaponstats2)}
                         changeWeaponPerks={weaponperk3 => setWeaponperk3(weaponperk3)}
+                        enhancedStats={props.enhancedStats}
                     />
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats3 => setAuxweaponstats3(auxweaponstats3)}
                         changeWeaponPerks={weaponperk4 => setWeaponperk4(weaponperk4)}
+                        enhancedStats={props.enhancedStats}
                     />
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats4 => setAuxweaponstats4(auxweaponstats4)}
                         changeWeaponPerks={weaponperk5 => setWeaponperk5(weaponperk5)}
+                        enhancedStats={props.enhancedStats}
                     />
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats5 => setAuxweaponstats5(auxweaponstats5)}
                         changeWeaponPerks={weaponperk6 => setWeaponperk6(weaponperk6)}
+                        enhancedStats={props.enhancedStats}
                     />
                 </div>
             </div>
             <div className="Row4">
                 <div className="Main_Drone">
-                    <MainDroneSelector changeDroneStats={maindronestats => setMaindronestats(maindronestats)}/>
+                    <MainDroneSelector changeDroneStats={maindronestats => setMaindronestats(maindronestats)} enhancedStats={props.enhancedStats}/>
                 </div>
                 <div className="Aux_Drones">
-                    <AuxDroneSelector changeDroneStats={auxdronestats1 => setAuxdronestats1(auxdronestats1)}/>
-                    <AuxDroneSelector changeDroneStats={auxdronestats2 => setAuxdronestats2(auxdronestats2)}/>
-                    <AuxDroneSelector changeDroneStats={auxdronestats3 => setAuxdronestats3(auxdronestats3)}/>
-                    <AuxDroneSelector changeDroneStats={auxdronestats4 => setAuxdronestats4(auxdronestats4)}/>
-                    <AuxDroneSelector changeDroneStats={auxdronestats5 => setAuxdronestats5(auxdronestats5)}/>
+                    <AuxDroneSelector changeDroneStats={auxdronestats1 => setAuxdronestats1(auxdronestats1)} enhancedStats={props.enhancedStats}/>
+                    <AuxDroneSelector changeDroneStats={auxdronestats2 => setAuxdronestats2(auxdronestats2)} enhancedStats={props.enhancedStats}/>
+                    <AuxDroneSelector changeDroneStats={auxdronestats3 => setAuxdronestats3(auxdronestats3)} enhancedStats={props.enhancedStats}/>
+                    <AuxDroneSelector changeDroneStats={auxdronestats4 => setAuxdronestats4(auxdronestats4)} enhancedStats={props.enhancedStats}/>
+                    <AuxDroneSelector changeDroneStats={auxdronestats5 => setAuxdronestats5(auxdronestats5)} enhancedStats={props.enhancedStats}/>
                 </div>
             </div>
         </>

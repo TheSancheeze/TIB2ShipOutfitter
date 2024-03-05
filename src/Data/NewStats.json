@@ -62,5 +62,6 @@
     "Wyrd_Battery": 0,
     "Precursor_Battery": 0,
     "%_Resource_Capacity": 0,
-    "%_Harvesting": 0
+    "%_Harvesting": 0,
+    "%_Player_Bonus_Damage": 0
 }

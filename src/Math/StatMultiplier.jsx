@@ -936,3 +936,99 @@ export function GetTibDR(value, startScalingAt, isPercentAsDecimal)
         return value
     return startScalingAt + (value - startScalingAt)/(value - startScalingAt + nMod)
 } 
+
+export function enhancedStatsHandler(enhancedStats, damagestats){
+    let alienMinHull = damagestats[2][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[4]/100))
+    let alienMinShield = damagestats[2][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[4]/100))
+    let alienMaxHull = damagestats[3][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[4]/100))
+    let alienMaxShield = damagestats[3][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[4]/100))
+    let alienCritMinHull = damagestats[2][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[4]/100))
+    let alienCritMinShield = damagestats[2][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[4]/100))
+    let alienCritMaxHull = damagestats[3][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[4]/100))
+    let alienCritMaxShield = damagestats[3][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[4]/100))
+    let playerMinHull = damagestats[2][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[5]/100))
+    let playerMinShield = damagestats[2][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[5]/100))
+    let playerMaxHull = damagestats[3][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[5]/100))
+    let playerMaxShield = damagestats[3][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[5]/100))
+    let playerCritMinHull = damagestats[2][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[5]/100))
+    let playerCritMinShield = damagestats[2][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[5]/100))
+    let playerCritMaxHull = damagestats[3][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[5]/100))
+    let playerCritMaxShield = damagestats[3][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[5]/100))
+
+    return [Math.round(alienMinHull), 
+            Math.round(alienMinShield), 
+            Math.round(alienMaxHull), 
+            Math.round(alienMaxShield), 
+            Math.round(alienCritMinHull), 
+            Math.round(alienCritMinShield), 
+            Math.round(alienCritMaxHull), 
+            Math.round(alienCritMaxShield), 
+            Math.round(playerMinHull), 
+            Math.round(playerMinShield), 
+            Math.round(playerMaxHull), 
+            Math.round(playerMaxShield), 
+            Math.round(playerCritMinHull), 
+            Math.round(playerCritMinShield), 
+            Math.round(playerCritMaxHull), 
+            Math.round(playerCritMaxShield)]
+}
+
+export function enhancedDroneStatsHandler(enhancedStats, damagestats){
+    let alienMinHull = 0
+    let alienMinShield = 0
+    let alienMaxHull = 0
+    let alienMaxShield = 0
+    let alienCritMinHull = 0
+    let alienCritMinShield = 0
+    let alienCritMaxHull = 0
+    let alienCritMaxShield = 0
+    let playerMinHull = 0
+    let playerMinShield = 0
+    let playerMaxHull = 0
+    let playerMaxShield = 0
+    let playerCritMinHull = 0
+    let playerCritMinShield = 0
+    let playerCritMaxHull = 0
+    let playerCritMaxShield = 0
+
+    if (damagestats[7][1] === '0'){
+        alienMinHull = damagestats[2][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[4]/100)) * (1 + (enhancedStats[6]/100))
+        alienMinShield = damagestats[2][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[4]/100)) * (1 + (enhancedStats[6]/100))
+        alienMaxHull = damagestats[3][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[4]/100)) * (1 + (enhancedStats[6]/100))
+        alienMaxShield = damagestats[3][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[4]/100)) * (1 + (enhancedStats[6]/100))
+        alienCritMinHull = damagestats[2][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[4]/100)) * (1 + (enhancedStats[6]/100))
+        alienCritMinShield = damagestats[2][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[4]/100)) * (1 + (enhancedStats[6]/100))
+        alienCritMaxHull = damagestats[3][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[4]/100)) * (1 + (enhancedStats[6]/100))
+        alienCritMaxShield = damagestats[3][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[4]/100)) * (1 + (enhancedStats[6]/100))
+        playerMinHull = damagestats[2][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[5]/100)) * (1 + (enhancedStats[6]/100))
+        playerMinShield = damagestats[2][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[5]/100)) * (1 + (enhancedStats[6]/100))
+        playerMaxHull = damagestats[3][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[5]/100)) * (1 + (enhancedStats[6]/100))
+        playerMaxShield = damagestats[3][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (1 + (enhancedStats[5]/100)) * (1 + (enhancedStats[6]/100))
+        playerCritMinHull = damagestats[2][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[5]/100)) * (1 + (enhancedStats[6]/100))
+        playerCritMinShield = damagestats[2][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[5]/100)) * (1 + (enhancedStats[6]/100))
+        playerCritMaxHull = damagestats[3][1] * (enhancedStats[0]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[5]/100)) * (1 + (enhancedStats[6]/100))
+        playerCritMaxShield = damagestats[3][1] * (enhancedStats[1]/100) * (enhancedStats[2]/100) * (enhancedStats[3]/100) * (1 + (enhancedStats[5]/100)) * (1 + (enhancedStats[6]/100))
+    } else if (damagestats[7][1] === '1'){
+        alienMinHull = damagestats[2][1] * (1 + (enhancedStats[7]/100))
+        alienMinShield = damagestats[3][1] * (1 + (enhancedStats[7]/100))
+    } else {
+        alienMinHull = damagestats[2][1] * (1 + (enhancedStats[8]/100))
+    }
+
+    return [Math.round(alienMinHull), 
+            Math.round(alienMinShield), 
+            Math.round(alienMaxHull), 
+            Math.round(alienMaxShield),
+            Math.round(alienCritMinHull), 
+            Math.round(alienCritMinShield), 
+            Math.round(alienCritMaxHull), 
+            Math.round(alienCritMaxShield), 
+            Math.round(playerMinHull), 
+            Math.round(playerMinShield), 
+            Math.round(playerMaxHull), 
+            Math.round(playerMaxShield), 
+            Math.round(playerCritMinHull), 
+            Math.round(playerCritMinShield), 
+            Math.round(playerCritMaxHull), 
+            Math.round(playerCritMaxShield)]
+}

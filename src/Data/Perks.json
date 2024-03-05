@@ -216,37 +216,37 @@
     "Damage_VS_Players_Rank_1": {
         "Name": "Damage VS Players Rank 1",
         "Bonus": "1% Damage Bonus VS Players",
-        "%_Alien_Bonus_Damage": 1
+        "%_Player_Bonus_Damage": 1
     },
     "Damage_VS_Players_Rank_2": {
         "Name": "Damage VS Players Rank 2",
         "Bonus": "2% Damage Bonus VS Players",
-        "%_Alien_Bonus_Damage": 2
+        "%_Player_Bonus_Damage": 2
     },
     "Damage_VS_Players_Rank_3": {
         "Name": "Damage VS Players Rank 3",
         "Bonus": "3% Damage Bonus VS Players",
-        "%_Alien_Bonus_Damage": 3
+        "%_Player_Bonus_Damage": 3
     },
     "Damage_VS_Players_Rank_4": {
         "Name": "Damage VS Players Rank 4",
         "Bonus": "4% Damage Bonus VS Players",
-        "%_Alien_Bonus_Damage": 4
+        "%_Player_Bonus_Damage": 4
     },
     "Damage_VS_Players_Rank_5": {
         "Name": "Damage VS Players Rank 5",
         "Bonus": "5% Damage Bonus VS Players",
-        "%_Alien_Bonus_Damage": 5
+        "%_Player_Bonus_Damage": 5
     },
     "Damage_VS_Players_Rank_6": {
         "Name": "Damage VS Players Rank 6",
         "Bonus": "6% Damage Bonus VS Players",
-        "%_Alien_Bonus_Damage": 6
+        "%_Player_Bonus_Damage": 6
     },
     "Damage_VS_Players_Rank_7": {
         "Name": "Damage VS Players Rank 7",
         "Bonus": "7% Damage Bonus VS Players",
-        "%_Alien_Bonus_Damage": 7
+        "%_Player_Bonus_Damage": 7
     },
     "Deflector_Rank_1": {
         "Name": "Deflector Rank 1",
@@ -789,7 +789,7 @@
         "Bonus": "Very High Chance of Grapple Deflected Back at Attacker"
     },  
     "Reverse_Hacking": {
-        "Name": "Reverse Grappling",
+        "Name": "Reverse Hacking",
         "Bonus": "Very High Chance of Hack Deflected Back at Attacker"
     },  
     "Savior_Rank_1": {

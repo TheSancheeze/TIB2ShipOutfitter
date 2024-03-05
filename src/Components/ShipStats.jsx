@@ -74,6 +74,22 @@ function ShipStats(props) {
     let droneRepairs = FinalStats[54][1]
     let batteryStolen = FinalStats[55][1] * (1+(drainPower*0.01))
     let percentHullMax = FinalStats[56][1]
+    let playerBonusDMG = FinalStats[64][1]
+    let bonusHarvesting = FinalStats[63][1]
+
+    useEffect(() => {
+        props.changeExtraItemStats([
+            ( GetTibDR((hullDamage-100), 5, false)+100 ), 
+            ( GetTibDR((shieldDamage-100), 5, false)+100 ), 
+            ( GetTibDR((outgoingDmg-100), 5, false)+100 ), 
+            ( GetTibDR((critDmg-200), 14, false)+200 ),
+            alienBonusDMG,
+            playerBonusDMG,
+            attackDroneDMG,
+            droneRepairs,
+            bonusHarvesting
+        ])
+    }, [hullDamage, shieldDamage, outgoingDmg, critDmg, alienBonusDMG, playerBonusDMG, attackDroneDMG, droneRepairs, bonusHarvesting])
 
     // console.log("Test Ship Stats")
     return (
@@ -91,7 +107,7 @@ function ShipStats(props) {
                     <h3>{Math.round(powerRecharge * 10) / 10} Power Recharge</h3>
                     <h3>{Math.round(resourceStorage * 10) / 10} Resource Storage</h3>
                     <h3>{Math.round(xpGains * 10) / 10}% XP Gains</h3>
-                    <h3>{Math.round(hullRepairs * 10) / 10}% Hull Repairs</h3>
+                    <h3>{Math.round(hullRepairs * 10) / 10}% Hull Repairs ({Math.round((4 * hullRepairs/1) * 10) / 10})</h3>
                     <h3>{Math.round(targetingSpeed * 10) / 10}% Targeting Speed</h3>
                     <h3>{Math.round(moveSpeed * 10) / 10} Move Speed + {preMoveSpeed} Pre-Jump</h3>
                     <h3>(-65% Max, {Math.round(FinalStats[8][1] * 10) / 10}% Total)</h3>
