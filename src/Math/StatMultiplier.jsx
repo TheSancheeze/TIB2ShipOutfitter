@@ -72,6 +72,7 @@ export function shieldStatMultiplier(item, rank, rarity, quality, trigger) {
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) / 1000 ) + 1
+    if(trigger == true){ qual = ( (quality - 29) / 1000 ) + 1 }
 
     for (let i = 0; i < newItem.length; i++) {
         if ( (newItem[i][0] === "Shield_Capacity") || 
@@ -91,8 +92,6 @@ export function shieldStatMultiplier(item, rank, rarity, quality, trigger) {
         { 
             newItem[i][1] = ( newItem[i][1] * rarityNum ) * qual
         }    
-
-        if (newItem[i][0] !== "EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
     return newItem
 }
@@ -106,6 +105,7 @@ export function armorStatMultiplier(item, rank, rarity, quality, trigger) {
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) / 1000 ) + 1
+    if(trigger == true){ qual = ( (quality - 29) / 1000 ) + 1 }
 
     let newItem = newItem1
     // console.log(newItem)
@@ -153,8 +153,6 @@ export function armorStatMultiplier(item, rank, rarity, quality, trigger) {
         } else{
             newItem[i][1] = ( newItem[i][1] * 0.5 ) * (EP + rarityNum) * qual
         }
-
-        if (newItem[i][0] !== "EP" && newItem[i][0] !== "%_Move_Cooldown" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
     // console.log("final newItem")
     // console.log(newItem)
@@ -171,6 +169,10 @@ export function storageStatMultiplier(item, rank, rarity, quality, trigger){
     if (quality > 256){quality = 256}
     let rssQual = ( (quality - 129) * 0.0009 ) + 1
     let qual = ( (quality - 129) * 0.001 ) + 1
+    if(trigger == true){
+        rssQual = ( (quality - 29) * 0.0009 ) + 1
+        qual = ( (quality - 29) * 0.001 ) + 1
+    }
 
     if (newItem.length > 1 ){
         let EP = newItem[3][1] + rankNum - rarityNum
@@ -191,11 +193,6 @@ export function storageStatMultiplier(item, rank, rarity, quality, trigger){
         if (rarityNum >= 5){
             newItem[4][1] = rarityNum - 4
         }
-
-        if (trigger == true){
-            newItem[0][1] = newItem[0][1] * 1.1
-            newItem[1][1] = newItem[1][1] * 1.1
-        }
     }
     
     return newItem
@@ -210,6 +207,7 @@ export function cpuStatMultiplier(item, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     for (let i = 0; i < stats.length; i++) {
         if ( stats[i][0] === "Resource_Storage" ){
@@ -291,27 +289,6 @@ export function cpuStatMultiplier(item, rarity, quality, trigger){
         } else if ( stats[i][0] === "%_Shield_Pierce" ){
             if ( stats[i][1] == 1 ) { stats[i][1] = ( stats[i][1] *rarityNum ) * (1 + qual) }
         }
-
-
-        if (stats[i][0] !== "Add_EP" && trigger == true){ 
-            if( (stats[i][0] === "Resource_Storage" ||
-                stats[i][0] === "Evasion_Chance" ||
-                stats[i][0] === "%_XP_Gains" ||
-                stats[i][0] === "Hit_Chance" ||
-                stats[i][0] === "Critical_Chance" ||
-                stats[i][0] === "Splash_Chance" ||
-                stats[i][0] === "%_Hull_Repairs" ||
-                stats[i][0] === "Splash_Chance" 
-                ) && stats[i][1] < 0 ){
-                stats[i][1] = stats[i][1] * 0.9 
-            } 
-            else if ( (stats[i][0] === "%_Move_Cooldown" ||
-                stats[i][0] === "%_Incoming_Damage"
-                ) && stats[i][1] > 0 ){
-                stats[i][1] = stats[i][1] * 0.9 
-            }
-            else { stats[i][1] = stats[i][1] * 1.1 }
-        }
     }
     
     return stats
@@ -326,6 +303,7 @@ export function engineStatMultiplier(item, rarity, quality, trigger) {
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     if ( newItem.length == 2 ) {
         newItem[0][1] = ( newItem[0][1] * rarityNum ) * (1 + qual)
@@ -344,8 +322,6 @@ export function engineStatMultiplier(item, rarity, quality, trigger) {
             } else {
                 newItem[i][1] = ( newItem[i][1] * rarityNum ) * (1 + qual )
             }
-
-            if (newItem[i][0] !== "Add_EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
         }
     }
     return newItem
@@ -360,6 +336,7 @@ export function specialStatMultiplier(item, rarity, quality, trigger) {
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     let droneArr = [-8.33, -9.09, -10, -11.11, -12.5, -14.29, -16.67]
 
@@ -401,8 +378,6 @@ export function specialStatMultiplier(item, rarity, quality, trigger) {
         } else {
             newItem[i][1] = ( newItem[i][1] * rarityNum ) * (1 + qual)
         }
-
-        if (newItem[i][0] !== "Add_EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
     
     return newItem
@@ -417,6 +392,7 @@ export function batteryStatMultiplier(item, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     for (let i = 0; i < newItem.length; i++) {
         if( newItem[i][0] === "Add_EP" ){ 
@@ -439,8 +415,6 @@ export function batteryStatMultiplier(item, rarity, quality, trigger){
         }
         else if( newItem[i][0] === "Battery_Drain_Resist" ){ newItem[i][1] = ( newItem[i][1] + ( 1.5 * (rarityNum-1))) * ( 1+qual ) }
         else{ newItem[i][1] = ( newItem[i][1] + ( (newItem[i][1]/2) * (rarityNum-1)) ) * ( 1+qual )  }
-
-        if (newItem[i][0] !== "Add_EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
 
     return newItem
@@ -455,6 +429,7 @@ export function auxBatteryStatMultiplier(item, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     for (let i = 0; i < newItem.length; i++) {
         if( newItem[i][0] === "Add_EP" ){ 
@@ -479,8 +454,6 @@ export function auxBatteryStatMultiplier(item, rarity, quality, trigger){
         else{ newItem[i][1] = ( newItem[i][1] + ( (newItem[i][1]/2) * (rarityNum-1)) ) * ( 1+qual )  }
 
         if ( newItem[i][0] !== "Add_EP" ){ newItem[i][1] = newItem[i][1] * 0.1 }
-
-        if (newItem[i][0] !== "Add_EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
 
     return newItem
@@ -496,6 +469,7 @@ export function weaponStatMultiplier(item, rank, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     for (let i = 0; i < newItem.length; i++) {
         if ( newItem[i][0] === "Add_EP" ){ continue }
@@ -506,8 +480,6 @@ export function weaponStatMultiplier(item, rank, rarity, quality, trigger){
             if ( newItem[i][1] < 0 ) { newItem[i][1] = 0 } 
         }
         else { newItem[i][1] = ( newItem[i][1] * rarityNum ) * ( 1+qual ) }
-
-        if (newItem[i][0] !== "EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
 
     return newItem
@@ -522,17 +494,13 @@ export function weaponDamageMultiplier(item, rank, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     let minStep = newItem[2][1] * (1+qual) * 0.125
     let maxStep = newItem[3][1] * (1+qual) * 0.125
 
     newItem[2][1] = ( newItem[2][1] * (1+qual) ) + ( minStep * ( (rankNum + rarityNum) - 2 ) )
     newItem[3][1] = ( newItem[3][1] * (1+qual) ) + ( maxStep * ( (rankNum + rarityNum) - 2 ) )
-
-    if(trigger == true){
-        newItem[2][1] = newItem[2][1] * 1.1
-        newItem[3][1] = newItem[3][1] * 1.1
-    }
 
     return newItem
 }
@@ -547,6 +515,7 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     for (let i = 0; i < newItem.length; i++) {
         if ( newItem[i][0] === "Add_EP" ){ continue }
@@ -557,8 +526,6 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger){
             if ( newItem[i][1] < 0 ) { newItem[i][1] = 0 } 
         }
         else { newItem[i][1] = (( newItem[i][1] * rarityNum ) * ( 1+qual )) * 0.1 }
-
-        if (newItem[i][0] !== "EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
 
     return newItem
@@ -573,6 +540,7 @@ export function droneStatMultiplier(item, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     for (let i = 0; i < newItem.length; i++) {
         if( newItem[i][0] === "EP" ){
@@ -624,8 +592,6 @@ export function droneStatMultiplier(item, rarity, quality, trigger){
         } else if ( newItem[i][0] === "%_XP_Gains" ){
             newItem[i][1] = ( newItem[i][1] + (rarityNum-1) ) * ( 1+qual )
         }
-
-        if (newItem[i][0] !== "EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
 
     return newItem
@@ -640,6 +606,7 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     for (let i = 0; i < newItem.length; i++) {
         if( newItem[i][0] === "EP" ){
@@ -691,8 +658,6 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger){
         }
 
         if ( newItem[i][0] !== "EP" ){ newItem[i][1] = newItem[i][1] * 0.1 }
-
-        if (newItem[i][0] !== "EP" && trigger == true){ newItem[i][1] = newItem[i][1] * 1.1 }
     }
 
     return newItem
@@ -707,6 +672,7 @@ export function droneDamageMultiplier(item, rarity, quality, trigger){
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
+    if(trigger == true){ qual = ( (quality - 29) * 0.001 ) }
 
     if( newItem[7][1] === "0" ){
         let minStep = 9.33333
@@ -715,12 +681,7 @@ export function droneDamageMultiplier(item, rarity, quality, trigger){
         newItem[1][1] = newItem[1][1] - (0.5 * (rarityNum-1))
         newItem[2][1] = ( newItem[2][1] + (minStep * (rarityNum-1)) ) * (1+qual)
         newItem[3][1] = ( newItem[3][1] + (maxStep * (rarityNum-1)) ) * (1+qual)
-
-        if(trigger == true){
-            newItem[2][1] = newItem[2][1] * 1.1
-            newItem[3][1] = newItem[3][1] * 1.1
-        }
-
+        
     } else if( newItem[7][1] === "1" ){
         let minStep = 13
         let maxStep = minStep * 2
@@ -728,11 +689,6 @@ export function droneDamageMultiplier(item, rarity, quality, trigger){
         newItem[1][1] = newItem[1][1] - (rarityNum-1)
         newItem[2][1] = ( newItem[2][1] + (minStep * (rarityNum-1)) ) * (1+qual)
         newItem[3][1] = ( newItem[3][1] + (maxStep * (rarityNum-1)) ) * (1+qual)
-
-        if(trigger == true){
-            newItem[2][1] = newItem[2][1] * 1.1
-            newItem[3][1] = newItem[3][1] * 1.1
-        }
 
     } else if( newItem[7][1] === "2" ){
         if(newItem[6][1] === "0"){
