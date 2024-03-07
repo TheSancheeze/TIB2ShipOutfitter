@@ -5,6 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
+  /* color: rgba(8, 8, 8, 0.87); */
   /* background-color: #242424; */
 
   font-synthesis: none;
@@ -43,10 +44,10 @@ h1 {
 button {
   border-radius: 20px;
   border: 1px solid transparent;
-  line-height: 5px;
-  padding: 0.6em 1em;
+  /* line-height: 5px; */
+  /* padding: 0.6em 1em; */
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 250;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
@@ -60,6 +61,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* select {
+  background-color: rgba(30, 0, 30, 0.243);
+  color: rgba(255, 255, 255, 0.87);
+} */
+
 @media (prefers-color-scheme: light) {
   /* :root {
     color: #213547;
@@ -68,7 +74,7 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  /* button {
     background-color: #f9f9f9;
-  }
+  } */
 }
