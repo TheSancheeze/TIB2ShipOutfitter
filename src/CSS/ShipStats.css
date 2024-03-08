@@ -82,3 +82,8 @@
     font-size: 12px;
     font-weight: 600;
 }
+
+.extraBonus .xtraprks button {
+    padding: 0.5em 0.7em;
+    margin-top: 2px;
+}

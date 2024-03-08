@@ -53,8 +53,8 @@
         "Bonus": "+3.0 Second Hack Duration & Targets Lose Special Abilities",
         "Hack_Duration": 3
     },
-    "Advanced_Stealth_Technology": {
-        "Name": "Advanced Stealth Technology",
+    "Advanced_Stealth": {
+        "Name": "Advanced Stealth",
         "Bonus": "Movement Direction Hidden & Immune to Passive Scan"
     },
     "Analysis": {
@@ -72,28 +72,28 @@
         "Bonus": "20% XP Bonus",
         "%_XP_Gains": 20
     },
-    "Attack_Drones_Technology": {
-        "Name": "Attack Drones Technology",
+    "Attack_Drones": {
+        "Name": "Attack Drones",
         "Bonus": "+3% Attack Drone Damage",
         "%_Attack_Drone_Damage": 3
     },
-    "Attack_Drones_Technology_II": {
-        "Name": "Attack Drones Technology II",
+    "Attack_Drones_II": {
+        "Name": "Attack Drones II",
         "Bonus": "+5% Attack Drone Damage",
         "%_Attack_Drone_Damage": 5
     },
-    "Attack_Drones_Technology_III": {
-        "Name": "Attack Drones Technology III",
+    "Attack_Drones_III": {
+        "Name": "Attack Drones III",
         "Bonus": "+7% Attack Drone Damage",
         "%_Attack_Drone_Damage": 7
     },
-    "Attack_Drones_Technology_ADV": {
-        "Name": "Attack Drones Technology ADV",
+    "Attack_Drones_ADV": {
+        "Name": "Attack Drones ADV",
         "Bonus": "+9% Attack Drone Damage",
         "%_Attack_Drone_Damage": 9
     },
-    "Basic_Stealth_Technology": {
-        "Name": "Basic Stealth Technology",
+    "Basic_Stealth": {
+        "Name": "Basic Stealth",
         "Bonus": "Movement Direction Hidden & Time Hidden"
     },
     "Battle_Ram_Rank_1": {
@@ -745,23 +745,23 @@
         "Name": "Regeneration Rank 7",
         "Bonus": "Units Repair 250 Hull Every 30 Seconds"
     },
-    "Repair_Drones_Technology": {
-        "Name": "Repair Drones Technology",
+    "Repair_Drones": {
+        "Name": "Repair Drones",
         "Bonus": "+5% Drone Hull Repairs",
         "%_Drone_Hull_Repairs": 5
     },  
-    "Repair_Drones_Technology_II": {
-        "Name": "Repair Drones Technology II",
+    "Repair_Drones_II": {
+        "Name": "Repair Drones II",
         "Bonus": "+7% Drone Hull Repairs",
         "%_Drone_Hull_Repairs": 7
     },   
-    "Repair_Drones_Technology_III": {
-        "Name": "Repair Drones Technology III",
+    "Repair_Drones_III": {
+        "Name": "Repair Drones III",
         "Bonus": "+9% Drone Hull Repairs",
         "%_Drone_Hull_Repairs": 9
     },   
-    "Repair_Drones_Technology_ADV": {
-        "Name": "Repair Drones Technology ADV",
+    "Repair_Drones_ADV": {
+        "Name": "Repair Drones ADV",
         "Bonus": "+11% Drone Hull Repairs",
         "%_Drone_Hull_Repairs": 11
     }, 
@@ -918,22 +918,22 @@
         "Name": "Shield Capacitors III",
         "Bonus": "+15% Chance to Resist Shield Damage and convert to Battery"
     }, 
-    "Skip_Jump_Technology": {
-        "Name": "Skip Jump Technology",
+    "Skip_Jump": {
+        "Name": "Skip Jump",
         "Bonus": "Very Fast Lane Movement Speed"
     },  
-    "Space_Lane_Effect_Technology": {
-        "Name": "Space Lane Effect Technology",
+    "Space_Lane_Effect": {
+        "Name": "Space Lane Effect",
         "Bonus": "+10% Ship Movement Speed Speed Bonus (Blue Sector Lines)",
         "%_Move_Cooldown": -10
     }, 
-    "Space_Lane_Effect_Technology_II": {
-        "Name": "Space Lane Effect Technology II",
+    "Space_Lane_Effect_II": {
+        "Name": "Space Lane Effect II",
         "Bonus": "+15% Ship Movement Speed Speed Bonus (Blue Sector Lines)",
         "%_Move_Cooldown": -15
     }, 
-    "Space_Lane_Effect_Technology_III": {
-        "Name": "Space Lane Effect Technology III",
+    "Space_Lane_Effect_III": {
+        "Name": "Space Lane Effect III",
         "Bonus": "+20% Ship Movement Speed Speed Bonus (Blue Sector Lines)",
         "%_Move_Cooldown": -20
     },

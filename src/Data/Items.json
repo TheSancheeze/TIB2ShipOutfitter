@@ -2132,7 +2132,7 @@
         },{
             "Engine_ID": "3", 
             "Engine_Name": "Gravity Drive",
-            "Ultimate_Bonus": "Space_Lane_Effect_Technology",
+            "Ultimate_Bonus": "Space_Lane_Effect",
             "Stats": {
                 "Evasion_Chance": 0.5,
                 "Add_EP": 0
@@ -2160,7 +2160,7 @@
         },{
             "Engine_ID": "6", 
             "Engine_Name": "Skip Drive",
-            "Ultimate_Bonus": "Skip_Jump_Technology",
+            "Ultimate_Bonus": "Skip_Jump",
             "Stats": {
                 "% Chance of Durability Loss on Move": 25.0,
                 "Evasion_Chance": 0.5,
@@ -2169,7 +2169,7 @@
         },{
             "Engine_ID": "7", 
             "Engine_Name": "Stealth Drive",
-            "Ultimate_Bonus": "Basic_Stealth_Technology",
+            "Ultimate_Bonus": "Basic_Stealth",
             "Stats": {
                 "% Chance to Break Attacker Target Lock on Move": 6,
                 "Evasion_Chance": 0.5,
@@ -2300,8 +2300,8 @@
         },{
             "Special_ID": "10", 
             "Special_Name": "Drone Master",
-            "Ultimate_Bonus_1": "Attack_Drones_Technology",
-            "Ultimate_Bonus_2": "Repair_Drones_Technology",
+            "Ultimate_Bonus_1": "Attack_Drones",
+            "Ultimate_Bonus_2": "Repair_Drones",
             "Stats": {
                 "% Repair & Harvest Drone Speed": -8.33,
                 "%_Targeting_Speed": 2,
