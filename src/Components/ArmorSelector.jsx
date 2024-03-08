@@ -45,7 +45,7 @@ function ArmorSelector(props) {
                             setArmorid(e.target.value)
                             setMultipliedstats(armorStatMultiplier(armorlist[e.target.value].Stats, armorrank, armorrarity, armorquality, trigger))
                             }}>
-                            <option value="0">--Select Shield--</option>
+                            <option value="0">--Select Armor--</option>
                             {
                                 armorlist.map((getArmor, index) => (
                                     <option value={getArmor.Item_ID} key={index}>{getArmor.Item_Name}</option>
