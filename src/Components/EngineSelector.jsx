@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Items from '../Data/Items.json'
 import Perks from "./Perks"
+import Mutate from '../Data/NewStats.json'
+import voidItems from '../Data/BaseVoidStats.json'
 import { engineStatMultiplier, rarityToInt } from "../Math/StatMultiplier"
 
 function EngineSelector( props ) {
@@ -9,6 +11,8 @@ function EngineSelector( props ) {
     const [engineperks, setEngineperks] = useState([''])
     const [enginequality, setEnginequality] = useState(129)
     const [trigger, setTrigger] = useState(false)
+    const [mutate, setMutate] = useState(['', 0])
+    const [voidBuff, setVoidBuff] = useState(['', 0])
     const [multipliedstats, setMultipliedstats] = useState(engine.Stats)
     // console.log("Test Engine Selector")
 
@@ -31,7 +35,7 @@ function EngineSelector( props ) {
 
     const handleEngineQuality = (qual) => {
         setEnginequality(qual)
-        setMultipliedstats(engineStatMultiplier(engine.Stats, enginerarity, qual, trigger))
+        setMultipliedstats(engineStatMultiplier(engine.Stats, enginerarity, qual, trigger, mutate, voidBuff))
     }
 
     useEffect(()=> {
@@ -47,7 +51,7 @@ function EngineSelector( props ) {
                         <select id="SelectType" onChange={(e) => {
                             setEngine(Items[4].Items[e.target.value])
                             handleEnginePerk(Items[4].Items[e.target.value], enginerarity)
-                            setMultipliedstats(engineStatMultiplier(Items[4].Items[e.target.value].Stats, enginerarity, enginequality, trigger))
+                            setMultipliedstats(engineStatMultiplier(Items[4].Items[e.target.value].Stats, enginerarity, enginequality, trigger, mutate, voidBuff))
                             }}>
                             <option value="8">--Select Engine--</option>
                             {
@@ -60,7 +64,7 @@ function EngineSelector( props ) {
                             <select name="Rarity" onChange={(e) => {
                                 setEnginerarity(e.target.value)
                                 handleEnginePerk(engine, e.target.value)
-                                setMultipliedstats(engineStatMultiplier(engine.Stats, e.target.value, enginequality, trigger))
+                                setMultipliedstats(engineStatMultiplier(engine.Stats, e.target.value, enginequality, trigger, mutate, voidBuff))
                                 }}>
                                 <option value='0'>--Select Rarity--</option>
                                 <option value='Common'>Common</option>
@@ -76,7 +80,7 @@ function EngineSelector( props ) {
                             Q: <input type="number" id='itemQuality' placeholder="129" min='1' max='256' step='1' onChange={e => handleEngineQuality(e.target.value)}/>
                             <button onClick={() => {
                                 setTrigger(!trigger)
-                                setMultipliedstats(engineStatMultiplier(engine.Stats, enginerarity, enginequality, !trigger))
+                                setMultipliedstats(engineStatMultiplier(engine.Stats, enginerarity, enginequality, !trigger, mutate, voidBuff))
                             }}>VOID</button>
                         </small>
                     </div>
@@ -94,6 +98,33 @@ function EngineSelector( props ) {
                                 </div>
                             ))}
                         </h5>
+                        <small>
+                            M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => {
+                                setMutate([mutate[0], Number(e.target.value)])
+                                setMultipliedstats(engineStatMultiplier(engine.Stats, enginerarity, enginequality, trigger, [mutate[0], Number(e.target.value)], voidBuff))
+                                }}/>
+                            <select id="SelectMutate" onChange={(e) => {
+                                setMutate([e.target.value, mutate[1]])
+                                setMultipliedstats(engineStatMultiplier(engine.Stats, enginerarity, enginequality, trigger, [e.target.value, mutate[1]], voidBuff))
+                                }}>
+                                <option value="0">--Select Stat--</option>
+                                {Object.entries(Mutate).map( ([key, value]) => (
+                                    <option value={key} key={key}>{key}</option>
+                                ))}
+                            </select>
+                        </small>
+                        <small>
+                            Void Buff: 
+                            <select id="SelectVoidBuff" onChange={(e) => {
+                                setVoidBuff([e.target.value, voidItems[e.target.value]])
+                                setMultipliedstats(engineStatMultiplier(engine.Stats, enginerarity, enginequality, trigger, mutate, [e.target.value, voidItems[e.target.value]]))
+                                }}>
+                                <option value="0">--Select Stat--</option>
+                                {Object.entries(voidItems).map( ([key, value]) => (
+                                    <option value={key} key={key}>{key}</option>
+                                ))}
+                            </select>
+                        </small>
                     </div>
                 </div>
             </div>

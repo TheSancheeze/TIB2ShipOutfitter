@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Items from '../Data/Items.json'
+import Mutate from '../Data/NewStats.json'
+import voidItems from '../Data/BaseVoidStats.json'
 import RankSelector from "./RankSelector"
 import { auxBatteryStatMultiplier } from '../Math/StatMultiplier'
 
@@ -12,11 +14,13 @@ function AuxBatterySelector( props ) {
     const [batteryquality, setBatteryquality] = useState(129)
     const [trigger, setTrigger] = useState(false)
     const [multipliedstats, setMultipliedstats] = useState(battery.Stats)
+    const [mutate, setMutate] = useState(['', 0])
+    const [voidBuff, setVoidBuff] = useState(['', 0])
     // console.log("Test Battery Selector")
 
     useEffect(() => {
-        setMultipliedstats(auxBatteryStatMultiplier(battery.Stats, batteryrarity, batteryquality, trigger))
-    }, [batteryrarity, batteryquality, trigger])
+        setMultipliedstats(auxBatteryStatMultiplier(battery.Stats, batteryrarity, batteryquality, trigger, mutate, voidBuff))
+    }, [batteryrarity, batteryquality, trigger, mutate, voidBuff])
 
     useEffect(()=> {
         props.changeBatteryStats(multipliedstats)
@@ -31,7 +35,7 @@ function AuxBatterySelector( props ) {
                     <select id="SelectFaction" onChange={(e) => {
                         setBatterylist(Items[6].Item_Factions[e.target.value].Items)
                         setBattery(Items[6].Item_Factions[e.target.value].Items[batteryid])
-                        setMultipliedstats(auxBatteryStatMultiplier(Items[6].Item_Factions[e.target.value].Items[batteryid].Stats, batteryrarity, batteryquality, trigger))
+                        setMultipliedstats(auxBatteryStatMultiplier(Items[6].Item_Factions[e.target.value].Items[batteryid].Stats, batteryrarity, batteryquality, trigger, mutate, voidBuff))
                     }}>
                         <option value="5">--Select Faction--</option>
                         {
@@ -43,7 +47,7 @@ function AuxBatterySelector( props ) {
                     <select id="SelectType" onChange={(e) => {
                         setBattery(batterylist[e.target.value])
                         setBatteryid(e.target.value)
-                        setMultipliedstats(auxBatteryStatMultiplier(batterylist[e.target.value].Stats, batteryrarity, batteryquality, trigger))
+                        setMultipliedstats(auxBatteryStatMultiplier(batterylist[e.target.value].Stats, batteryrarity, batteryquality, trigger, mutate, voidBuff))
                         }}>
                         <option value="0">--Select Battery--</option>
                         {
@@ -55,7 +59,7 @@ function AuxBatterySelector( props ) {
                     <div className="Rarity_Selector">
                         <select name="Rarity" onChange={(e) => {
                             setBatteryrarity(e.target.value)
-                            setMultipliedstats(auxBatteryStatMultiplier(battery.Stats, e.target.value, batteryquality, trigger))
+                            setMultipliedstats(auxBatteryStatMultiplier(battery.Stats, e.target.value, batteryquality, trigger, mutate, voidBuff))
                             }}>
                             <option value='0'>--Select Rarity--</option>
                             <option value='Common'>Common</option>
@@ -81,6 +85,24 @@ function AuxBatterySelector( props ) {
                             </div>
                         ))}
                     </h5>
+                    <small>
+                        M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => setMutate([mutate[0], Number(e.target.value)])}/>
+                        <select id="SelectMutate" onChange={(e) => setMutate([e.target.value, mutate[1]])}>
+                            <option value="0">--Select Stat--</option>
+                            {Object.entries(Mutate).map( ([key, value]) => (
+                                <option value={key} key={key}>{key}</option>
+                            ))}
+                        </select>
+                    </small>
+                    <small>
+                        Void Buff: 
+                        <select id="SelectVoidBuff" onChange={(e) => setVoidBuff([e.target.value, voidItems[e.target.value]])}>
+                            <option value="0">--Select Stat--</option>
+                            {Object.entries(voidItems).map( ([key, value]) => (
+                                <option value={key} key={key}>{key}</option>
+                            ))}
+                        </select>
+                    </small>
                 </div>
             </div>
         </div>

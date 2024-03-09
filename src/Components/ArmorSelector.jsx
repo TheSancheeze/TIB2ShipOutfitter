@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Items from '../Data/Items.json'
 import RankSelector from './RankSelector'
+import Mutate from '../Data/NewStats.json'
+import voidItems from '../Data/BaseVoidStats.json'
 import { armorStatMultiplier } from '../Math/StatMultiplier'
 
 function ArmorSelector(props) {
@@ -11,12 +13,14 @@ function ArmorSelector(props) {
     const [armorrarity, setArmorrarity] = useState('Common')
     const [armorquality, setArmorquality] = useState(129)
     const [trigger, setTrigger] = useState(false)
+    const [mutate, setMutate] = useState(['', 0])
+    const [voidBuff, setVoidBuff] = useState(['', 0])
     const [multipliedstats, setMultipliedstats] = useState(armor.Stats)
     // console.log("Test Armor Selector")
 
     useEffect(() => {
-        setMultipliedstats(armorStatMultiplier(armor.Stats, armorrank, armorrarity, armorquality, trigger))
-    }, [armorrank, armorrarity, armorquality, trigger])
+        setMultipliedstats(armorStatMultiplier(armor.Stats, armorrank, armorrarity, armorquality, trigger, mutate, voidBuff))
+    }, [armorrank, armorrarity, armorquality, trigger, mutate, voidBuff])
 
     useEffect(()=> {
         props.changeArmorStats(multipliedstats)
@@ -31,7 +35,7 @@ function ArmorSelector(props) {
                         <select id="SelectFaction" onChange={(e) => {
                             setArmorlist(Items[1].Item_Factions[e.target.value].Items)
                             setArmor(Items[1].Item_Factions[e.target.value].Items[armorid])
-                            setMultipliedstats(armorStatMultiplier(Items[1].Item_Factions[e.target.value].Items[armorid].Stats, armorrank, armorrarity, armorquality, trigger))
+                            setMultipliedstats(armorStatMultiplier(Items[1].Item_Factions[e.target.value].Items[armorid].Stats, armorrank, armorrarity, armorquality, trigger, mutate, voidBuff))
                         }}>
                             <option value="5">--Select Faction--</option>
                             {
@@ -43,7 +47,7 @@ function ArmorSelector(props) {
                         <select id="SelectType" onChange={(e) => {
                             setArmor(armorlist[e.target.value])
                             setArmorid(e.target.value)
-                            setMultipliedstats(armorStatMultiplier(armorlist[e.target.value].Stats, armorrank, armorrarity, armorquality, trigger))
+                            setMultipliedstats(armorStatMultiplier(armorlist[e.target.value].Stats, armorrank, armorrarity, armorquality, trigger, mutate, voidBuff))
                             }}>
                             <option value="0">--Select Armor--</option>
                             {
@@ -70,6 +74,24 @@ function ArmorSelector(props) {
                                 </div>
                             ))}
                         </h5>
+                        <small>
+                            M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => setMutate([mutate[0], Number(e.target.value)])}/>
+                            <select id="SelectMutate" onChange={(e) => setMutate([e.target.value, mutate[1]])}>
+                                <option value="0">--Select Stat--</option>
+                                {Object.entries(Mutate).map( ([key, value]) => (
+                                    <option value={key} key={key}>{key}</option>
+                                ))}
+                            </select>
+                        </small>
+                        <small>
+                            Void Buff: 
+                            <select id="SelectVoidBuff" onChange={(e) => setVoidBuff([e.target.value, voidItems[e.target.value]])}>
+                                <option value="0">--Select Stat--</option>
+                                {Object.entries(voidItems).map( ([key, value]) => (
+                                    <option value={key} key={key}>{key}</option>
+                                ))}
+                            </select>
+                        </small>
                     </div>
                 </div>
             </div>

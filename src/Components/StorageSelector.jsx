@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Items from '../Data/Items.json'
 import RankSelector from './RankSelector'
+import Mutate from '../Data/NewStats.json'
+import voidItems from '../Data/BaseVoidStats.json'
 import { storageStatMultiplier } from '../Math/StatMultiplier'
 
 function StorageSelector ( props ) {
@@ -11,12 +13,14 @@ function StorageSelector ( props ) {
     const [storagerarity, setStoragerarity] = useState('Common')
     const [storagequality, setStoragequality] = useState(129)
     const [trigger, setTrigger] = useState(false)
+    const [mutate, setMutate] = useState(['', 0])
+    const [voidBuff, setVoidBuff] = useState(['', 0])
     const [multipliedstats, setMultipliedstats] = useState(storage.Stats)
     // console.log("Test Armor Selector")
 
     useEffect(() => {
-        setMultipliedstats(storageStatMultiplier(storage.Stats, storagerank, storagerarity, storagequality, trigger))
-    }, [storagerank, storagerarity, storagequality, trigger])
+        setMultipliedstats(storageStatMultiplier(storage.Stats, storagerank, storagerarity, storagequality, trigger, mutate, voidBuff))
+    }, [storagerank, storagerarity, storagequality, trigger, mutate, voidBuff])
 
     useEffect(()=> {
         props.changeStorageStats(multipliedstats)
@@ -31,7 +35,7 @@ function StorageSelector ( props ) {
                         <select id="SelectFaction" onChange={(e) => {
                             setStoragelist(Items[2].Item_Factions[e.target.value].Items)
                             setStorage(Items[2].Item_Factions[e.target.value].Items[storageid])
-                            setMultipliedstats(storageStatMultiplier(Items[2].Item_Factions[e.target.value].Items[storageid].Stats, storagerank, storagerarity, storagequality, trigger))
+                            setMultipliedstats(storageStatMultiplier(Items[2].Item_Factions[e.target.value].Items[storageid].Stats, storagerank, storagerarity, storagequality, trigger, mutate, voidBuff))
                         }}>
                             <option value="5">--Select Faction--</option>
                             {
@@ -43,7 +47,7 @@ function StorageSelector ( props ) {
                         <select id="SelectType" onChange={(e) => {
                             setStorage(storagelist[e.target.value])
                             setStorageid(e.target.value)
-                            setMultipliedstats(storageStatMultiplier(storagelist[e.target.value].Stats, storagerank, storagerarity, storagequality, trigger))
+                            setMultipliedstats(storageStatMultiplier(storagelist[e.target.value].Stats, storagerank, storagerarity, storagequality, trigger, mutate, voidBuff))
                             }}>
                             <option value="0">--Select Storage--</option>
                             {
@@ -70,6 +74,24 @@ function StorageSelector ( props ) {
                                 </div>
                             ))}
                         </h5>
+                        <small>
+                            M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => setMutate([mutate[0], Number(e.target.value)])}/>
+                            <select id="SelectMutate" onChange={(e) => setMutate([e.target.value, mutate[1]])}>
+                                <option value="0">--Select Stat--</option>
+                                {Object.entries(Mutate).map( ([key, value]) => (
+                                    <option value={key} key={key}>{key}</option>
+                                ))}
+                            </select>
+                        </small>
+                        <small>
+                            Void Buff: 
+                            <select id="SelectVoidBuff" onChange={(e) => setVoidBuff([e.target.value, voidItems[e.target.value]])}>
+                                <option value="0">--Select Stat--</option>
+                                {Object.entries(voidItems).map( ([key, value]) => (
+                                    <option value={key} key={key}>{key}</option>
+                                ))}
+                            </select>
+                        </small>
                     </div>
                 </div>
             </div>

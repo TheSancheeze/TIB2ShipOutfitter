@@ -3,12 +3,13 @@
     grid-template-rows: 1fr;
     grid-template-columns: 200px 200px 200px 200px 250px 220px;
     border: solid;
+    /* outline: solid; */
     border-radius: 25px;
 }
 
 .ItemRows {
     display: grid;
-    grid-template-rows: 150px 220px;
+    grid-template-rows: 150px 255px;
     /* border: dashed; */
 }
 
@@ -23,8 +24,9 @@
 
 .BottomRow {
     display: grid;
-    grid-template-rows: 50px 180px;
+    grid-template-rows: 35px 175px;
     /* border: solid; */
+    /* outline: solid; */
 }
 
 .BottomRow h4 {
@@ -37,7 +39,25 @@
     /* border: dotted; */
     margin-top: 0;
     margin-bottom: auto;
-    /* text-align: left; */
+    font-size: 0.75rem;
+    /* text-align: left;
+    text-indent: 20px; */
+}
+
+.BottomRow small input {
+    /* width: 40px; */
+    width: 20%;
+}
+
+.BottomRow small select {
+    width: 120px;
+    font-size: 0.7rem;
+}
+
+small input::-webkit-outer-spin-button,
+small input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .Row2 {
@@ -71,6 +91,11 @@
 .Main_Weapon {
     border: solid;
     border-radius: 25px;
+}
+
+.Weapon_Selector h5 small {
+    font-size: 0.9em;
+    font-weight: 900;
 }
 
 .Aux_Weapons {

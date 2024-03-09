@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import Items from '../Data/Items.json'
 import RankSelector from "./RankSelector"
 import Popup from "./Popup"
+import Mutate from '../Data/NewStats.json'
+import voidItems from '../Data/BaseVoidStats.json'
 import { auxWeaponStatMultiplier, weaponDamageMultiplier, rarityToInt, enhancedStatsHandler } from '../Math/StatMultiplier'
 
 function AuxWeaponSelector( props ) {
@@ -17,6 +19,8 @@ function AuxWeaponSelector( props ) {
     const [weaponperk, setWeaponperk] = useState([''])
     const [buttonPopup, setButtonPopup] = useState(false)
     const [enhancedarr, setEnhancedarr] = useState([0, 0, 0, 0, 0, 0, 0, 0])
+    const [mutate, setMutate] = useState(['', 0])
+    const [voidBuff, setVoidBuff] = useState(['', 0])
     // console.log("Test Weapon Selector")
 
     const handleWeaponPerk = (item, rarity) => {
@@ -33,10 +37,10 @@ function AuxWeaponSelector( props ) {
     }
 
     useEffect(() => {
-        setMultipliedstats(auxWeaponStatMultiplier(weapon.Stats, weaponrank, weaponrarity, weaponquality, trigger))
+        setMultipliedstats(auxWeaponStatMultiplier(weapon.Stats, weaponrank, weaponrarity, weaponquality, trigger, mutate, voidBuff))
         setDamagestats(weaponDamageMultiplier(weapon, weaponrank, weaponrarity, weaponquality, trigger))
         handleWeaponPerk(weapon, weaponrarity)
-    }, [weaponrank, weaponrarity, weaponquality, trigger])
+    }, [weaponrank, weaponrarity, weaponquality, trigger, mutate, voidBuff])
 
     useEffect(()=> {
         props.changeWeaponStats(multipliedstats)
@@ -55,7 +59,7 @@ function AuxWeaponSelector( props ) {
                     <select id="SelectFaction" onChange={(e) => {
                         setWeaponlist(Items[7].Item_Factions[e.target.value].Items)
                         setWeapon(Items[7].Item_Factions[e.target.value].Items[weaponid])
-                        setMultipliedstats(auxWeaponStatMultiplier(Items[7].Item_Factions[e.target.value].Items[weaponid].Stats, weaponrank, weaponrarity, weaponquality, trigger))
+                        setMultipliedstats(auxWeaponStatMultiplier(Items[7].Item_Factions[e.target.value].Items[weaponid].Stats, weaponrank, weaponrarity, weaponquality, trigger, mutate, voidBuff))
                         setDamagestats(weaponDamageMultiplier(Items[7].Item_Factions[e.target.value].Items[weaponid], weaponrank, weaponrarity, weaponquality, trigger))
                         handleWeaponPerk(Items[7].Item_Factions[e.target.value].Items[weaponid], weaponrarity)
                     }}>
@@ -69,7 +73,7 @@ function AuxWeaponSelector( props ) {
                     <select id="SelectType" onChange={(e) => {
                         setWeapon(weaponlist[e.target.value])
                         setWeaponid(e.target.value)
-                        setMultipliedstats(auxWeaponStatMultiplier(weaponlist[e.target.value].Stats, weaponrank, weaponrarity, weaponquality, trigger))
+                        setMultipliedstats(auxWeaponStatMultiplier(weaponlist[e.target.value].Stats, weaponrank, weaponrarity, weaponquality, trigger, mutate, voidBuff))
                         setDamagestats(weaponDamageMultiplier(weaponlist[e.target.value], weaponrank, weaponrarity, weaponquality, trigger))
                         handleWeaponPerk(weaponlist[e.target.value], weaponrarity)
                         }}>
@@ -104,6 +108,24 @@ function AuxWeaponSelector( props ) {
                         ))}
                         </small>
                     </h5>
+                    <small>
+                        M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => setMutate([mutate[0], Number(e.target.value)])}/>
+                        <select id="SelectMutate" onChange={(e) => setMutate([e.target.value, mutate[1]])}>
+                            <option value="0">--Select Stat--</option>
+                            {Object.entries(Mutate).map( ([key, value]) => (
+                                <option value={key} key={key}>{key}</option>
+                            ))}
+                        </select>
+                    </small>
+                    <small>
+                        Void Buff: 
+                        <select id="SelectVoidBuff" onChange={(e) => setVoidBuff([e.target.value, voidItems[e.target.value]])}>
+                            <option value="0">--Select Stat--</option>
+                            {Object.entries(voidItems).map( ([key, value]) => (
+                                <option value={key} key={key}>{key}</option>
+                            ))}
+                        </select>
+                    </small>
                 </div>
             </div>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
