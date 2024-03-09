@@ -774,14 +774,13 @@ export function weaponStatMultiplier(item, rank, rarity, quality, trigger, mutat
     let containsMutate = false
 
     for (let i = 0; i < newItem.length; i++) {
-        if ( newItem[i][0] === "Add_EP" ){ continue }
-        else if ( newItem[i][0] === "%_Outgoing_Damage" && newItem[i][1] == 0 && rarityNum >= 4 ){ newItem[i][1] = ( 2 * (rarityNum-3) ) * ( 1+qual )  }
+        if ( newItem[i][0] === "%_Outgoing_Damage" && newItem[i][1] == 0 && rarityNum >= 4 ){ newItem[i][1] = ( 2 * (rarityNum-3) ) * ( 1+qual )  }
         else if ( newItem[i][0] === "Max_Hull" && newItem[i][1] == 0 && rarityNum >= 3 ){ newItem[i][1] = ( 100 * (rarityNum-2) ) * ( 1+qual ) }
         else if ( newItem[i][0] === "EP" ){ 
             newItem[i][1] = newItem[i][1] + rankNum - rarityNum
             if ( newItem[i][1] < 0 ) { newItem[i][1] = 0 } 
         }
-        else { newItem[i][1] = ( newItem[i][1] * rarityNum ) * ( 1+qual ) }
+        else if ( (newItem[i][0] !== "Add_EP" ) ){ newItem[i][1] = ( newItem[i][1] * rarityNum ) * ( 1+qual ) }
 
         if (newItem[i][0] === mutate[0]){ 
             newItem[i][1] = newItem[i][1] + mutate[1]
@@ -855,12 +854,13 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
     let containsMutate = false
 
     for (let i = 0; i < newItem.length; i++) {
-        if ( newItem[i][0] === "Add_EP" ){ continue }
-        else if ( newItem[i][0] === "%_Outgoing_Damage" && newItem[i][1] == 0 && rarityNum >= 4 ){ newItem[i][1] = (( 2 * (rarityNum-3) ) * ( 1+qual )) * 0.1 }
+        if ( newItem[i][0] === "%_Outgoing_Damage" && newItem[i][1] == 0 && rarityNum >= 4 ){ newItem[i][1] = (( 2 * (rarityNum-3) ) * ( 1+qual )) * 0.1 }
         else if ( newItem[i][0] === "Max_Hull" && newItem[i][1] == 0 && rarityNum >= 3 ){ newItem[i][1] = (( 100 * (rarityNum-2) ) * ( 1+qual )) * 0.1 }
         else if ( newItem[i][0] === "EP" ){ 
             newItem[i][1] = newItem[i][1] + rankNum - rarityNum
             if ( newItem[i][1] < 0 ) { newItem[i][1] = 0 } 
+        }else if ( newItem[i][0] !== "Add_EP" ){ 
+            newItem[i][1] = (( newItem[i][1] * rarityNum ) * ( 1+qual )) 
         }
 
         if (newItem[i][0] === mutate[0]){ 
@@ -871,14 +871,24 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
             newItem[i][1] = newItem[i][1] + voidstat
             containsVoid = true
         }
-        else { newItem[i][1] = (( newItem[i][1] * rarityNum ) * ( 1+qual )) * 0.1 }
+
+        if ( newItem[i][0] !== "Add_EP" && newItem[i][0] !== "EP" ) { newItem[i][1] = newItem[i][1] * 0.1}
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
-    if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
+    if (mutate[0] === "Add_EP" || voidbuff[0] === "Add_EP"){
+        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]] }
+        if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
-        } else { newItem[newItem.length] = [voidbuff[0], voidstat * 0.1] }
+            newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat)]
+        } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
+        }
+    }else {
+        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
+        if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
+            if (voidbuff[0] === mutate[0] && mutate[1] != 0){
+                newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
+            } else { newItem[newItem.length] = [voidbuff[0], voidstat * 0.1] }
+        }
     }
 
     return newItem
@@ -1076,11 +1086,20 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, v
         if ( newItem[i][0] !== "EP" ){ newItem[i][1] = newItem[i][1] * 0.1 }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
-    if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
+    if (mutate[0] === "Add_EP" || voidbuff[0] === "Add_EP"){
+        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]] }
+        if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
-        } else { newItem[newItem.length] = [voidbuff[0], voidstat * 0.1] }
+            newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat)]
+        } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
+        }
+    }else {
+        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
+        if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
+            if (voidbuff[0] === mutate[0] && mutate[1] != 0){
+                newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
+            } else { newItem[newItem.length] = [voidbuff[0], voidstat * 0.1] }
+        }
     }
 
     return newItem
