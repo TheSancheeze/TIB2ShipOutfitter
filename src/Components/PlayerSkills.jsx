@@ -63,10 +63,25 @@ function PlayerSkills( props ) {
         props.changeSkills(updateFinal)
     }
 
+    const handleSave = () => {
+        localStorage.setItem("pSkillsInitial", JSON.stringify(initialvalue))
+        localStorage.setItem("pSkillsFinal", JSON.stringify(finalvalue))
+    }
+
+    const handleLoad = () => {
+        setInitialvalue(JSON.parse(localStorage.getItem("pSkillsInitial")))
+        setFinalvalue(JSON.parse(localStorage.getItem("pSkillsFinal")))
+        props.changeSkills(JSON.parse(localStorage.getItem("pSkillsFinal")))
+    }
+
     return (
         <>
         <div className="Title">
-            <h3>Player Skills</h3>
+            <h3>
+            <button onClick={() => handleSave()}>Save Skills</button>
+            Player Skills
+            <button onClick={() => handleLoad()}>Load Skills</button>
+            </h3>
         </div>
         <div className="ButtonsList">
             <button onClick={() => handleButton(0)}>Set All 0</button>

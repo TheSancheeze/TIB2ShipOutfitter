@@ -63,10 +63,25 @@ function ShipSkills( props ) {
         props.changeSkills(updateFinal)
     }
 
+    const handleSave = () => {
+        localStorage.setItem("sSkillsInitial", JSON.stringify(initialvalue))
+        localStorage.setItem("sSkillsFinal", JSON.stringify(finalvalue))
+    }
+
+    const handleLoad = () => {
+        setInitialvalue(JSON.parse(localStorage.getItem("sSkillsInitial")))
+        setFinalvalue(JSON.parse(localStorage.getItem("sSkillsFinal")))
+        props.changeSkills(JSON.parse(localStorage.getItem("sSkillsFinal")))
+    }
+
     return (
         <>
         <div className="Title">
-            <h3>Ship Skills</h3>
+            <h3>
+            <button onClick={() => handleSave()}>Save Skills</button>
+            Ship Skills 
+            <button onClick={() => handleLoad()}>Load Skills</button>
+            </h3>
         </div>
         <div className="ButtonsList">
             <button onClick={() => handleButton(0)}>Set All 0</button>
