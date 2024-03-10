@@ -20,6 +20,12 @@
 
 .TopRow h2 {
     line-height: 0;
+    margin-bottom: auto;
+}
+
+.TopRow button {
+    font-size: small;
+    margin-bottom: 0;
 }
 
 .BottomRow {

@@ -49,12 +49,28 @@ function AuxDroneSelector( props ) {
         setEnhancedarr(enhancedDroneStatsHandler(props.enhancedStats, damagestats))
     }, [props.enhancedStats, damagestats])
 
+    const handleReset = () => {
+        setDronelist([])
+        setDrone(Items[8].Item_Factions[5].Items[0].Items[0])
+        setDronetype('0')
+        setDroneid('0')
+        setDronerarity('Common')
+        setDronequality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        let droneInit = Items[8].Item_Factions[5].Items[0].Items[0]
+        setMultipliedstats(droneInit.Stats)
+        setDamagestats(Object.keys(droneInit).map(key => {return [key, droneInit[key]]}))
+        setEnhancedarr([0, 0, 0, 0, 0, 0, 0, 0, 0])
+    }
+
     return (
         <>
         <div className="Drone_Selector">
             <div className="ItemRows">
                 <div className="TopRow">
-                    <h2>Drone</h2>
+                    <h2>Drone<button onClick={() => handleReset()}>X</button></h2>
                     <select id="SelectFaction" onChange={(e) => {
                         setDronelist(Items[8].Item_Factions[e.target.value].Items[dronetype].Items)
                         setDrone(Items[8].Item_Factions[e.target.value].Items[dronetype].Items[droneid])

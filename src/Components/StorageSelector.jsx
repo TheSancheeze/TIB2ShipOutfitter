@@ -26,12 +26,25 @@ function StorageSelector ( props ) {
         props.changeStorageStats(multipliedstats)
     }, [multipliedstats])
 
+    const handleReset = () => {
+        setStoragelist([])
+        setStorage(Items[2].Item_Factions[5].Items[0])
+        setStorageid('0')
+        setStoragerank('I')
+        setStoragerarity('Common')
+        setStoragequality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        setMultipliedstats(storage.Stats)
+    }
+
     return (
         <>
             <div className="Storage_Selector">
                 <div className="ItemRows">
                     <div className="TopRow">
-                        <h2>Storage</h2>
+                        <h2>Storage<button onClick={() => handleReset()}>X</button></h2>
                         <select id="SelectFaction" onChange={(e) => {
                             setStoragelist(Items[2].Item_Factions[e.target.value].Items)
                             setStorage(Items[2].Item_Factions[e.target.value].Items[storageid])

@@ -48,12 +48,24 @@ function CPUSelector(props) {
         props.changeCpuStats(multipliedstats)
     }, [multipliedstats])
 
+    const handleReset = () => {
+        setCpulist([])
+        setCpu(Items[3].Item_Factions[8].Items[0])
+        setCpuid('0')
+        setCpurarity('Common')
+        setCpuquality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        setMultipliedstats(cpu.Stats)
+    }
+
     return (
         <>
             <div className="CPU_Selector">
                 <div className="ItemRows">
                     <div className="TopRow">
-                        <h2>CPU</h2>
+                        <h2>CPU<button onClick={() => handleReset()}>X</button></h2>
                         <select id="SelectFaction" onChange={(e) => {
                             setCpulist(Items[3].Item_Factions[e.target.value].Items)
                             setCpu(Items[3].Item_Factions[e.target.value].Items[cpuid])

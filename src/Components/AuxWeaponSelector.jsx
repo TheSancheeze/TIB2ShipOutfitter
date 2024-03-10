@@ -50,12 +50,28 @@ function AuxWeaponSelector( props ) {
         setEnhancedarr(enhancedStatsHandler(props.enhancedStats, damagestats))
     }, [props.enhancedStats, damagestats])
 
+    const handleReset = () => {
+        setWeaponlist([])
+        setWeapon(Items[7].Item_Factions[4].Items[0])
+        setWeaponid('0')
+        setWeaponrank('I')
+        setWeaponrarity('Common')
+        setWeaponquality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        setMultipliedstats(weapon.Stats)
+        setDamagestats(Object.keys(weapon).map(key => {return [key, weapon[key]]}))
+        setWeaponperk([''])
+        setEnhancedarr([0, 0, 0, 0, 0, 0, 0, 0, 0])
+    }
+
     return (
         <>
         <div className="Weapon_Selector">
             <div className="ItemRows">
                 <div className="TopRow">
-                    <h2>Weapon</h2>
+                    <h2>Weapon<button onClick={() => handleReset()}>X</button></h2>
                     <select id="SelectFaction" onChange={(e) => {
                         setWeaponlist(Items[7].Item_Factions[e.target.value].Items)
                         setWeapon(Items[7].Item_Factions[e.target.value].Items[weaponid])

@@ -26,12 +26,24 @@ function MainBatterySelector( props ) {
         props.changeBatteryStats(multipliedstats)
     }, [multipliedstats])
 
+    const handleReset = () => {
+        setBatterylist([])
+        setBattery(Items[6].Item_Factions[5].Items[0])
+        setBatteryid('0')
+        setBatteryrarity('Common')
+        setBatteryquality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        setMultipliedstats(battery.Stats)
+    }
+
     return (
         <>
         <div className="Battery_Selector">
             <div className="ItemRows">
                 <div className="TopRow">
-                    <h2>Battery</h2>
+                    <h2>Battery<button onClick={() => handleReset()}>X</button></h2>
                     <select id="SelectFaction" onChange={(e) => {
                         setBatterylist(Items[6].Item_Factions[e.target.value].Items)
                         setBattery(Items[6].Item_Factions[e.target.value].Items[batteryid])

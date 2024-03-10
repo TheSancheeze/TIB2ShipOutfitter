@@ -34,12 +34,23 @@ function SpecialSelector( props ) {
         props.changeSpecialStats(multipliedstats)
     }, [multipliedstats])
 
+    const handleReset = () => {
+        setSpecial(Items[0].Item_Factions[5].Items[0])
+        setSpecialrarity('Common')
+        setSpecialperks([''])
+        setSpecialquality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        setMultipliedstats(special.Stats)
+    }
+
     return (
         <>
             <div className="Special_Selector">
                 <div className="ItemRows">
                     <div className="TopRow">
-                        <h2>Special</h2>
+                        <h2>Special<button onClick={() => handleReset()}>X</button></h2>
                         <select id="SelectType" onChange={(e) => {
                             setSpecial(Items[5].Items[e.target.value])
                             handleSpecialPerk(Items[5].Items[e.target.value], specialrarity)

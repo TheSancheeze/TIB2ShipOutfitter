@@ -26,12 +26,25 @@ function ShieldSelector( props ) {
         props.changeShieldStats(multipliedstats)
     }, [multipliedstats])
 
+    const handleReset = () => {
+        setShieldlist([])
+        setShield(Items[0].Item_Factions[5].Items[0])
+        setShieldid('0')
+        setShieldrank('I')
+        setShieldrarity('Common')
+        setShieldquality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        setMultipliedstats(shield.Stats)
+    }
+
     return (
         <>
             <div className="Shield_Selector">
                 <div className="ItemRows">
                     <div className="TopRow">
-                        <h2>Shield</h2>
+                        <h2>Shield <button onClick={() => handleReset()}>X</button></h2>
                         <select id="SelectFaction" onChange={(e) => {
                             setShieldlist(Items[0].Item_Factions[e.target.value].Items)
                             setShield(Items[0].Item_Factions[e.target.value].Items[shieldid])

@@ -42,12 +42,23 @@ function EngineSelector( props ) {
         props.changeEngineStats(multipliedstats)
     }, [multipliedstats])
 
+    const handleReset = () => {
+        setEngine(Items[4].Items[8])
+        setEngineperks([''])
+        setEnginerarity('Common')
+        setEnginequality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        setMultipliedstats(engine.Stats)
+    }
+
     return (
         <>
             <div className="Engine_Selector">
                 <div className="ItemRows">
                     <div className="TopRow">
-                        <h2>Engine</h2>
+                        <h2>Engine<button onClick={() => handleReset()}>X</button></h2>
                         <select id="SelectType" onChange={(e) => {
                             setEngine(Items[4].Items[e.target.value])
                             handleEnginePerk(Items[4].Items[e.target.value], enginerarity)

@@ -26,12 +26,25 @@ function ArmorSelector(props) {
         props.changeArmorStats(multipliedstats)
     }, [multipliedstats])
 
+    const handleReset = () => {
+        setArmorlist([])
+        setArmor(Items[1].Item_Factions[5].Items[0])
+        setArmorid('0')
+        setArmorrank('I')
+        setArmorrarity('Common')
+        setArmorquality(129)
+        setTrigger(false)
+        setMutate(['', 0])
+        setVoidBuff(['', 0])
+        setMultipliedstats(armor.Stats)
+    }
+
     return (
         <>
             <div className="Armor_Selector">
                 <div className="ItemRows">
                     <div className="TopRow">
-                        <h2>Armor</h2>
+                        <h2>Armor<button onClick={() => handleReset()}>X</button></h2>
                         <select id="SelectFaction" onChange={(e) => {
                             setArmorlist(Items[1].Item_Factions[e.target.value].Items)
                             setArmor(Items[1].Item_Factions[e.target.value].Items[armorid])
