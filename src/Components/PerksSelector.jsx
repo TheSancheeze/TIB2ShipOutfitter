@@ -12,9 +12,17 @@ function PerkSelector( props ){
         props.changePerks(perksarr)
     }, [perksarr])
 
+    const handleSave = () => {
+        localStorage.setItem("Perks", JSON.stringify(perksarr))
+    }
+
+    const handleLoad = () => {
+        setPerksarr(JSON.parse(localStorage.getItem("Perks")))
+    }
+
     return (
         <>
-        <h3>Choose Extra Perks</h3>
+        <h3><button onClick={() => handleSave()}>Save</button> Choose Extra Perks <button onClick={() => handleLoad()}>Load</button></h3>
         <select id="SelectPerk" 
             onChange={(e) => setPerksarr([
                 ...perksarr,

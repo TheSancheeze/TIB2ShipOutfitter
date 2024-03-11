@@ -66,9 +66,15 @@
 
 .extraBonus h3 {
     text-align: center;
+    margin-bottom: 5px;
 }
 
-.extraBonus button {
+.extraBonus h3 button {
+    font-weight: 400;
+    font-size: small;
+}
+
+.extraBonus .xtraprks button {
     line-height: 5px;
 }
 
