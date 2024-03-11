@@ -7,7 +7,7 @@
     "%_XP_Gains": 0.25,
     "%_Hull_Repairs": 0.25,
     "%_Targeting_Speed": -1.5,
-    "Move_Speed": -1.25,
+    "%_Move_Cooldown": -1.25,
     "%_Hull_Damage": 0.25,
     "%_Shield_Damage": 0.25, 
     "%_Shield_Pierce": 0.25,
