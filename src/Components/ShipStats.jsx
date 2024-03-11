@@ -107,7 +107,7 @@ function ShipStats(props) {
                     <h3>{Math.round(powerRecharge * 10) / 10} Power Recharge</h3>
                     <h3>{Math.round(resourceStorage * 10) / 10} Resource Storage</h3>
                     <h3>{Math.round(xpGains * 10) / 10}% XP Gains</h3>
-                    <h3>{Math.round(hullRepairs * 10) / 10}% Hull Repairs ({Math.round((4 * hullRepairs/1) * 10) / 10})</h3>
+                    <h3>{Math.round(hullRepairs * 10) / 10}% Hull Repairs ({Math.round((4 * hullRepairs))})({Math.round((4 * hullRepairs * (critDmg/100)))})</h3>
                     <h3>{Math.round(targetingSpeed * 10) / 10}% Targeting Speed</h3>
                     <h3>{Math.round(moveSpeed * 10) / 10} Move Speed + {preMoveSpeed} Pre-Jump</h3>
                     <h3>(-65% Max, {Math.round(FinalStats[8][1] * 10) / 10}% Total)</h3>
