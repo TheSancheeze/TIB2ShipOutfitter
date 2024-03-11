@@ -27,16 +27,12 @@ function StorageSelector ( props ) {
     }, [multipliedstats])
 
     const handleReset = () => {
-        setStoragelist([])
-        setStorage(Items[2].Item_Factions[5].Items[0])
-        setStorageid('0')
-        setStoragerank('I')
-        setStoragerarity('Common')
-        setStoragequality(129)
-        setTrigger(false)
-        setMutate(['', 0])
-        setVoidBuff(['', 0])
-        setMultipliedstats(storage.Stats)
+        let formArr = []
+        for( let i=0; i<24; i++ ){
+            formArr[i] = props.x[i]
+        }
+        formArr[props.index]++
+        props.changeFormKeys(formArr)
     }
 
     return (

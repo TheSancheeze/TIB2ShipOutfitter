@@ -50,19 +50,12 @@ function MainDroneSelector( props ) {
     }, [props.enhancedStats, damagestats])
 
     const handleReset = () => {
-        setDronelist([])
-        setDrone(Items[8].Item_Factions[5].Items[0].Items[0])
-        setDronetype('0')
-        setDroneid('0')
-        setDronerarity('Common')
-        setDronequality(129)
-        setTrigger(false)
-        setMutate(['', 0])
-        setVoidBuff(['', 0])
-        let droneInit = Items[8].Item_Factions[5].Items[0].Items[0]
-        setMultipliedstats(droneInit.Stats)
-        setDamagestats(Object.keys(droneInit).map(key => {return [key, droneInit[key]]}))
-        setEnhancedarr([0, 0, 0, 0, 0, 0, 0, 0, 0])
+        let formArr = []
+        for( let i=0; i<24; i++ ){
+            formArr[i] = props.x[i]
+        }
+        formArr[props.index]++
+        props.changeFormKeys(formArr)
     }
 
     return (

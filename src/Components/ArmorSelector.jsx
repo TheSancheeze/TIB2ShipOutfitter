@@ -27,16 +27,12 @@ function ArmorSelector(props) {
     }, [multipliedstats])
 
     const handleReset = () => {
-        setArmorlist([])
-        setArmor(Items[1].Item_Factions[5].Items[0])
-        setArmorid('0')
-        setArmorrank('I')
-        setArmorrarity('Common')
-        setArmorquality(129)
-        setTrigger(false)
-        setMutate(['', 0])
-        setVoidBuff(['', 0])
-        setMultipliedstats(armor.Stats)
+        let formArr = []
+        for( let i=0; i<24; i++ ){
+            formArr[i] = props.x[i]
+        }
+        formArr[props.index]++
+        props.changeFormKeys(formArr)
     }
 
     return (

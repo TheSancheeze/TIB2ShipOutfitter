@@ -43,14 +43,12 @@ function EngineSelector( props ) {
     }, [multipliedstats])
 
     const handleReset = () => {
-        setEngine(Items[4].Items[8])
-        setEngineperks([''])
-        setEnginerarity('Common')
-        setEnginequality(129)
-        setTrigger(false)
-        setMutate(['', 0])
-        setVoidBuff(['', 0])
-        setMultipliedstats(engine.Stats)
+        let formArr = []
+        for( let i=0; i<24; i++ ){
+            formArr[i] = props.x[i]
+        }
+        formArr[props.index]++
+        props.changeFormKeys(formArr)
     }
 
     return (

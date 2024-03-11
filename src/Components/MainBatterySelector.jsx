@@ -27,15 +27,12 @@ function MainBatterySelector( props ) {
     }, [multipliedstats])
 
     const handleReset = () => {
-        setBatterylist([])
-        setBattery(Items[6].Item_Factions[5].Items[0])
-        setBatteryid('0')
-        setBatteryrarity('Common')
-        setBatteryquality(129)
-        setTrigger(false)
-        setMutate(['', 0])
-        setVoidBuff(['', 0])
-        setMultipliedstats(battery.Stats)
+        let formArr = []
+        for( let i=0; i<24; i++ ){
+            formArr[i] = props.x[i]
+        }
+        formArr[props.index]++
+        props.changeFormKeys(formArr)
     }
 
     return (

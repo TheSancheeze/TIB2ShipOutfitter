@@ -27,16 +27,12 @@ function ShieldSelector( props ) {
     }, [multipliedstats])
 
     const handleReset = () => {
-        setShieldlist([])
-        setShield(Items[0].Item_Factions[5].Items[0])
-        setShieldid('0')
-        setShieldrank('I')
-        setShieldrarity('Common')
-        setShieldquality(129)
-        setTrigger(false)
-        setMutate(['', 0])
-        setVoidBuff(['', 0])
-        setMultipliedstats(shield.Stats)
+        let formArr = []
+        for( let i=0; i<24; i++ ){
+            formArr[i] = props.x[i]
+        }
+        formArr[props.index]++
+        props.changeFormKeys(formArr)
     }
 
     return (

@@ -52,20 +52,12 @@ function MainWeaponSelector( props ) {
     }, [props.enhancedStats, damagestats])
 
     const handleReset = () => {
-        setWeaponlist([])
-        setWeapon(Items[7].Item_Factions[4].Items[0])
-        setWeaponid('0')
-        setWeaponrank('I')
-        setWeaponrarity('Common')
-        setWeaponquality(129)
-        setTrigger(false)
-        setMutate(['', 0])
-        setVoidBuff(['', 0])
-        setMultipliedstats(weapon.Stats)
-        setDamagestats(Object.keys(weapon).map(key => {return [key, weapon[key]]}))
-        console.log(Object.keys(weapon).map(key => {return [key, weapon[key]]}))
-        setWeaponperk([''])
-        setEnhancedarr([0, 0, 0, 0, 0, 0, 0, 0, 0])
+        let formArr = []
+        for( let i=0; i<24; i++ ){
+            formArr[i] = props.x[i]
+        }
+        formArr[props.index]++
+        props.changeFormKeys(formArr)
     }
 
     return (

@@ -49,15 +49,12 @@ function CPUSelector(props) {
     }, [multipliedstats])
 
     const handleReset = () => {
-        setCpulist([])
-        setCpu(Items[3].Item_Factions[8].Items[0])
-        setCpuid('0')
-        setCpurarity('Common')
-        setCpuquality(129)
-        setTrigger(false)
-        setMutate(['', 0])
-        setVoidBuff(['', 0])
-        setMultipliedstats(cpu.Stats)
+        let formArr = []
+        for( let i=0; i<24; i++ ){
+            formArr[i] = props.x[i]
+        }
+        formArr[props.index]++
+        props.changeFormKeys(formArr)
     }
 
     return (
