@@ -3,7 +3,8 @@
         "Name": "Advanced Alloys",
         "Bonus": "+2% Max Hull",
         "%_Hull_Max": 2
-    },"Advanced_Alloys_II": {
+    },
+    "Advanced_Alloys_II": {
         "Name": "Advanced Alloys II",
         "Bonus": "+4% Max Hull",
         "%_Hull_Max": 4

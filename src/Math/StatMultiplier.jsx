@@ -876,14 +876,26 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
     }
 
     if (mutate[0] === "Add_EP" || voidbuff[0] === "Add_EP"){
-        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]] }
+        if (mutate[1] != 0 && containsMutate == false ){
+            if ( mutate[0] === "Add_EP" ){
+                newItem[newItem.length] = [mutate[0], mutate[1]]
+            } else {
+                newItem[newItem.length] = [mutate[0], mutate[1]*0.1]
+            }
+        }
+        
         if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
-        if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat)]
-        } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
+            if (voidbuff[0] === mutate[0] && mutate[1] != 0){
+                newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat)]
+            } else if ( voidbuff[0] === "Add_EP" ){ 
+                newItem[newItem.length] = [voidbuff[0], voidstat] 
+            } else {
+                newItem[newItem.length] = [voidbuff[0], voidstat * 0.1]
+            }
         }
     }else {
         if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
+
         if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
             if (voidbuff[0] === mutate[0] && mutate[1] != 0){
                 newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
@@ -1087,14 +1099,26 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, v
     }
 
     if (mutate[0] === "Add_EP" || voidbuff[0] === "Add_EP"){
-        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]] }
+        if (mutate[1] != 0 && containsMutate == false ){
+            if ( mutate[0] === "Add_EP" ){
+                newItem[newItem.length] = [mutate[0], mutate[1]]
+            } else {
+                newItem[newItem.length] = [mutate[0], mutate[1]*0.1]
+            }
+        }
+        
         if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
-        if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat)]
-        } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
+            if (voidbuff[0] === mutate[0] && mutate[1] != 0){
+                newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat)]
+            } else if ( voidbuff[0] === "Add_EP" ){ 
+                newItem[newItem.length] = [voidbuff[0], voidstat] 
+            } else {
+                newItem[newItem.length] = [voidbuff[0], voidstat * 0.1]
+            }
         }
     }else {
         if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
+
         if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
             if (voidbuff[0] === mutate[0] && mutate[1] != 0){
                 newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
