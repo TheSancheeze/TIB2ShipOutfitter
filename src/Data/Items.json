@@ -3900,7 +3900,7 @@
                 "Max_Dmg": 37.8,
                 "Ultimate_Bonus": "Hack_Speed",
                 "Stats": {
-                    "hit": 2,
+                    "Hit_Chance": 2,
                     "Critical_Chance": 1,
                     "Splash_Chance": 6,
                     "%_Hull_Damage": 1.36,
