@@ -80,7 +80,6 @@ export function shieldStatMultiplier(item, rank, rarity, quality, trigger, mutat
     if(trigger == true){ 
         qual = ( (quality - 29) / 1000 ) + 1
         voidstat = voidstat * rarityNum * qual
-        mutatestat = mutate[1] * mRarity * qual
     }
 
     if (voidbuff[0] === "Add 1 EP"){
@@ -168,7 +167,6 @@ export function armorStatMultiplier(item, rank, rarity, quality, trigger, mutate
     if(trigger == true){ 
         qual = ( (quality - 29) / 1000 ) + 1
         voidstat = voidstat * rarityNum * qual
-        mutatestat = mutate[1] * mRarity * qual
     }
 
     if (voidbuff[0] === "Add 1 EP"){
@@ -286,7 +284,6 @@ export function storageStatMultiplier(item, rank, rarity, quality, trigger, muta
         rssQual = ( (quality - 29) * 0.0009 ) + 1
         qual = ( (quality - 29) * 0.001 ) + 1
         voidstat = voidstat * rarityNum * qual
-        mutatestat = mutate[1] * mRarity * qual
     }
 
     if (voidbuff[0] === "Add 1 EP"){
@@ -377,7 +374,6 @@ export function cpuStatMultiplier(item, rarity, quality, trigger, mutate, mutate
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -526,7 +522,6 @@ export function engineStatMultiplier(item, rarity, quality, trigger, mutate, mut
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 ) 
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -614,7 +609,6 @@ export function specialStatMultiplier(item, rarity, quality, trigger, mutate, mu
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -723,7 +717,6 @@ export function batteryStatMultiplier(item, rarity, quality, trigger, mutate, mu
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -815,7 +808,6 @@ export function auxBatteryStatMultiplier(item, rarity, quality, trigger, mutate,
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
 
     if (voidbuff[0] === "Add 1 EP"){
@@ -916,7 +908,6 @@ export function weaponStatMultiplier(item, rank, rarity, quality, trigger, mutat
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -1014,7 +1005,6 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
 
     if (voidbuff[0] === "Add 1 EP"){
@@ -1116,7 +1106,6 @@ export function droneStatMultiplier(item, rarity, quality, trigger, mutate, muta
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
 
     if (voidbuff[0] === "Add 1 EP"){
@@ -1236,7 +1225,6 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, m
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
-        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
 
     if (voidbuff[0] === "Add 1 EP"){
