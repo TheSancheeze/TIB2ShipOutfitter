@@ -8,9 +8,17 @@
 
 .shipLevel {
     grid-area: 1 / 1 / 2 / 19;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    /* display: flex; */
     border: solid;
     border-radius: 25px;
 }
+
+/* .shipLevel div {
+    border: solid;
+} */
 
 .shipLevel h2 {
     padding-top: 0.25cm;
@@ -56,6 +64,12 @@
 
 .shipLevel input {
     margin-bottom: 0.5cm;
+    width: 100px;
+}
+
+.shipLevel select {
+    height: 1.3rem;
+    width: 150px;
 }
 
 .extraBonus {

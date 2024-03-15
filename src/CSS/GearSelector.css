@@ -30,25 +30,30 @@
 
 .BottomRow {
     display: grid;
-    grid-template-rows: 35px 175px;
+    grid-template-rows: 40px 175px 20px 20px;
     /* border: solid; */
     /* outline: solid; */
 }
 
 .BottomRow h4 {
-    /* border: dotted; */
     margin-top: auto;
     margin-bottom: auto;
 }
 
 .BottomRow h5 {
-    /* border: dotted; */
     margin-top: 0;
     margin-bottom: auto;
     font-size: 0.75rem;
-    /* text-align: left;
-    text-indent: 20px; */
+    /* text-align: center; */
+    /* text-indent: 20px; */
 }
+
+/* .BottomRow small:first-child {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    outline: solid;
+} */
 
 .BottomRow small input {
     /* width: 40px; */
@@ -56,7 +61,10 @@
 }
 
 .BottomRow small select {
-    width: 120px;
+    /* width: 120px; */
+    width: 45%;
+    /* max-width: 100px;
+    width: 1fr; */
     font-size: 0.7rem;
 }
 
@@ -102,6 +110,7 @@ small input::-webkit-inner-spin-button {
 .Weapon_Selector h5 small {
     font-size: 0.9em;
     font-weight: 900;
+    /* outline: solid; */
 }
 
 .Aux_Weapons {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Items from '../Data/Items.json'
-import Mutate from '../Data/NewStats.json'
+import Mutate from '../Data/BaseMutateStats.json'
 import voidItems from '../Data/BaseVoidStats.json'
 import { cpuStatMultiplier, rarityToInt } from '../Math/StatMultiplier'
 
@@ -12,6 +12,7 @@ function CPUSelector(props) {
     const [cpuquality, setCpuquality] = useState(129)
     const [trigger, setTrigger] = useState(false)
     const [mutate, setMutate] = useState(['', 0])
+    const [mutaterarity, setMutaterarity] = useState('Common')
     const [voidBuff, setVoidBuff] = useState(['', 0])
     const [multipliedstats, setMultipliedstats] = useState(cpu.Stats)
     const [cpuperk, setCpuperk] = useState([''])
@@ -33,7 +34,6 @@ function CPUSelector(props) {
             bonus = item.Ultimate_Bonus
         }
         setCpuperk([bonus])
-        props.changeCpuPerk([bonus])
     }
 
     // useEffect(() => {
@@ -41,12 +41,13 @@ function CPUSelector(props) {
     // }, [cpuquality])
     const handleCpuQuality = (qual) => {
         setCpuquality(qual)
-        setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, qual, trigger, mutate, voidBuff))
+        setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, qual, trigger, mutate, mutaterarity, voidBuff))
     }
 
     useEffect(()=> {
         props.changeCpuStats(multipliedstats)
-    }, [multipliedstats])
+        props.changeCpuPerk(cpuperk)
+    }, [multipliedstats, cpuperk])
 
     const handleReset = () => {
         let formArr = []
@@ -67,7 +68,7 @@ function CPUSelector(props) {
                             setCpulist(Items[3].Item_Factions[e.target.value].Items)
                             setCpu(Items[3].Item_Factions[e.target.value].Items[cpuid])
                             handleCpuPerk(Items[3].Item_Factions[e.target.value], cpurarity)
-                            setMultipliedstats(cpuStatMultiplier(Items[3].Item_Factions[e.target.value].Items[cpuid].Stats, cpurarity, cpuquality, trigger, mutate, voidBuff))
+                            setMultipliedstats(cpuStatMultiplier(Items[3].Item_Factions[e.target.value].Items[cpuid].Stats, cpurarity, cpuquality, trigger, mutate, mutaterarity, voidBuff))
                         }}>
                             <option value="8">--Select Faction--</option>
                             {
@@ -79,7 +80,7 @@ function CPUSelector(props) {
                         <select id="SelectType" onChange={(e) => {
                             setCpu(cpulist[e.target.value])
                             setCpuid(e.target.value)
-                            setMultipliedstats(cpuStatMultiplier(cpulist[e.target.value].Stats, cpurarity, cpuquality, trigger, mutate, voidBuff))
+                            setMultipliedstats(cpuStatMultiplier(cpulist[e.target.value].Stats, cpurarity, cpuquality, trigger, mutate, mutaterarity, voidBuff))
                             }}>
                             <option value="0">--Select CPU Type--</option>
                             {
@@ -92,7 +93,7 @@ function CPUSelector(props) {
                             <select name="Rarity" onChange={(e) => {
                                 setCpurarity(e.target.value)
                                 handleCpuPerk(Items[3].Item_Factions[cpu.Faction_ID], e.target.value)
-                                setMultipliedstats(cpuStatMultiplier(cpu.Stats, e.target.value, cpuquality, trigger, mutate, voidBuff))
+                                setMultipliedstats(cpuStatMultiplier(cpu.Stats, e.target.value, cpuquality, trigger, mutate, mutaterarity, voidBuff))
                                 }}>
                                 <option value='0'>--Select Rarity--</option>
                                 <option value='Common'>Common</option>
@@ -108,7 +109,7 @@ function CPUSelector(props) {
                             Q: <input type="number" id='itemQuality' placeholder="129" min='1' max='256' step='1' onChange={e => handleCpuQuality(e.target.value)}/>
                             <button onClick={() => {
                             setTrigger(!trigger)
-                            setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, cpuquality, !trigger, mutate, voidBuff))
+                            setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, cpuquality, !trigger, mutate, mutaterarity, voidBuff))
                             }}>VOID</button>
                         </small>
                     </div>
@@ -123,17 +124,26 @@ function CPUSelector(props) {
                             ))}
                         </h5>
                         <small>
-                            M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => {
-                                setMutate([mutate[0], Number(e.target.value)])
-                                setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, cpuquality, trigger, [mutate[0], Number(e.target.value)], voidBuff))
-                                }}/>
+                            <select name="Rarity" onChange={(e) => {
+                                setMutaterarity(e.target.value)
+                                setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, cpuquality, trigger, mutate, e.target.value, voidBuff))
+                                }}>
+                                <option value='0'>--Select Rarity--</option>
+                                <option value='Common'>Common</option>
+                                <option value='Uncommon'>Uncommon</option>
+                                <option value='Rare'>Rare</option>
+                                <option value='Ultra-Rare'>Ultra-Rare</option>
+                                <option value='Elite'>Elite</option>
+                                <option value='Legendary'>Legendary</option>
+                                <option value='Ultimate'>Ultimate</option>
+                            </select>                            
                             <select id="SelectMutate" onChange={(e) => {
-                                setMutate([e.target.value, mutate[1]])
-                                setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, cpuquality, trigger, [e.target.value, mutate[1]], voidBuff))
+                                    setMutate(e.target.value.split(","))
+                                    setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, cpuquality, trigger, e.target.value.split(","), mutaterarity, voidBuff))
                                 }}>
                                 <option value="0">--Select Stat--</option>
                                 {Object.entries(Mutate).map( ([key, value]) => (
-                                    <option value={key} key={key}>{key}</option>
+                                    <option value={[key, value]} key={key}>{key}</option>
                                 ))}
                             </select>
                         </small>
@@ -141,7 +151,7 @@ function CPUSelector(props) {
                             Void Buff: 
                             <select id="SelectVoidBuff" onChange={(e) => {
                                 setVoidBuff([e.target.value, voidItems[e.target.value]])
-                                setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, cpuquality, trigger, mutate, [e.target.value, voidItems[e.target.value]]))
+                                setMultipliedstats(cpuStatMultiplier(cpu.Stats, cpurarity, cpuquality, trigger, mutate, mutaterarity, [e.target.value, voidItems[e.target.value]]))
                                 }}>
                                 <option value="0">--Select Stat--</option>
                                 {Object.entries(voidItems).map( ([key, value]) => (

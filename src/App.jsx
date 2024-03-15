@@ -26,13 +26,20 @@ function App() {
   const [ modperks, setModperks ] = useState([[''], ['']])
   const [ activeperks, setActiveperks] = useState([newItem1[6], newItem1[9]])
   const [ extraperks, setExtraperks ] = useState([[''], ['']])
+  const [ bonusEP, setBonusEP ] = useState(0)
   const [ extraitemstats, setExtraitemstats ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [ corpskills, setCorpskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [ playerskills, setPlayerskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [ shipskills, setShipskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
+  let ultMod = [0, 0, 0, 0]
+  let gunboatElite = 1
+
+  if(shipmod === "ULT"){ultMod = [4, 1, 1, 1]}
+  if(shipinfo.Ship_Class === "Gunboat"){gunboatElite = 3}
+
   // console.log(activeperks)
-  // console.log(shipinfo)
+  console.log(shipinfo)
   // console.log(shipperks)
   // console.log("Test Main")
   // console.log(extraperks)
@@ -50,8 +57,8 @@ function App() {
           <div className='Ship_Title'>
               <h1>{shipinfo.Ship_Name} {elitelvl} {shipmod}</h1>
               <h2>A {shipinfo.Ship_Class}-Class {Ships1[shipinfo.Faction_ID].Faction_Name} ship.</h2>
-              <h2> {newstats[27][1]} OF {shipinfo.EP + newstats[28][1] + romanToInt(elitelvl)} EquipPoints Used </h2>
-              <h3>Batteries: {shipinfo.Batteries + newstats[39][1]} | Weapons: {shipinfo.Weapons + newstats[40][1]} | Drones: {shipinfo.Drones + newstats[41][1]}</h3>
+              <h2> {newstats[27][1]} OF {shipinfo.EP + newstats[28][1] + (romanToInt(elitelvl) * gunboatElite) + ultMod[0] + bonusEP} EquipPoints Used </h2>
+              <h3>Batteries: {shipinfo.Batteries + newstats[39][1] + ultMod[1]} | Weapons: {shipinfo.Weapons + newstats[40][1] + ultMod[2]} | Drones: {shipinfo.Drones + newstats[41][1] + ultMod[3]}</h3>
           </div>
           <div className='Gear_Selector'>
               <GearSelector 
@@ -70,6 +77,7 @@ function App() {
                 sSkills={shipskills}
                 changeExtraPerks={extraperks => setExtraperks(extraperks)}
                 changeExtraItemStats={extraitemstats => setExtraitemstats(extraitemstats)}
+                changeBonusEP={bonusEP => setBonusEP(bonusEP)}
               />
           </div>
           <div className='Perks_List'>

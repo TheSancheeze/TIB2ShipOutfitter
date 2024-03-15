@@ -11,6 +11,9 @@ function Perks(props) {
 
     useEffect(() => {
         let perkArr = []
+        let containsEnemyInter = false
+        let containsSpaceLane = false
+        let spaceIndex = 0
     
         for (let i=0; i<newItem1.length; i++){
             for(let j=0; j<props.ship.length; j++){
@@ -23,6 +26,12 @@ function Perks(props) {
                 for(let k=0; k<props.gear[j].length; k++){
                     if( newItem1[i][0] === props.gear[j][k] ){
                         perkArr[i] = newItem1[i]
+                        if( newItem1[i][0] === "Space_Lane_Effect" || 
+                            newItem1[i][0] === "Space_Lane_Effect_II" || 
+                            newItem1[i][0] === "Space_Lane_Effect_III" ){
+                                containsSpaceLane = true
+                                spaceIndex = i
+                        }
                     }
                 }
             }
@@ -36,8 +45,46 @@ function Perks(props) {
             for(let j=0; j<props.extra.length; j++){
                 if( newItem1[i][0] === props.extra[j] ){
                     perkArr[i] = newItem1[i]
+                    if( newItem1[i][0] === "Enemy_Interdictor" || 
+                        newItem1[i][0] === "Enemy_Interdictor_II" || 
+                        newItem1[i][0] === "Enemy_Interdictor_III" ){
+                            containsEnemyInter = true
+                    }
+                    if( newItem1[i][0] === "Space_Lane_Effect" || 
+                        newItem1[i][0] === "Space_Lane_Effect_II" || 
+                        newItem1[i][0] === "Space_Lane_Effect_III" ){
+                            containsSpaceLane = true
+                            spaceIndex = i
+                    }
                 }
             }
+        }
+
+        let spliceIndex = []
+        let counter = 0
+        
+        for(let i=0; i<perkArr.length; i++){
+            if(perkArr[i] != undefined ){
+                for(let j=0; j<perkArr.length; j++){
+                    if(perkArr[j] != undefined &&
+                        perkArr[i] != perkArr[j] &&
+                        perkArr[i][0].substring(0,perkArr[i][0].length-1) === perkArr[j][0].substring(0,perkArr[j][0].length-1)
+                        ){
+                            if(perkArr[j][0][perkArr[j][0].length-1] < perkArr[i][0][perkArr[i][0].length-1]){
+                                spliceIndex[counter] = j
+                                counter++
+                            }
+                    }
+                }
+            }
+        }
+
+        for(let i=0; i<spliceIndex.length; i++){
+            perkArr.splice(spliceIndex[i], 1)
+        }
+
+        if( containsEnemyInter == true && containsSpaceLane == true){
+            perkArr.splice(spaceIndex, 1)
         }
 
         setActiveperks(perkArr)

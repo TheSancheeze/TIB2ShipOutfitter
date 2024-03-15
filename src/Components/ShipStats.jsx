@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Base from '../Data/BaseShipStats.json'
+import bonusStat from '../Data/BaseBonusStat.json'
 import { finalizeStats } from '../Math/AddBonusStats'
 import { GetTibDR } from '../Math/StatMultiplier'
 import PerkSelector from './PerksSelector'
@@ -8,8 +9,13 @@ import '../CSS/ShipStats.css'
 function ShipStats(props) {
     const [extraperks, setExtraperks] = useState([[''], ['']])
     const [shiplevel, setShiplevel] = useState(50)
-    let FinalStats = finalizeStats(props.NewShipStats, props.Active_Perks)
+    const [bonusShipStat, setBonusShipStat] = useState(['', 0])
+    let FinalStats = finalizeStats(props.NewShipStats, props.Active_Perks, bonusShipStat)
     let speedPercent = (100 + FinalStats[8][1]) * 0.01
+
+    if(bonusShipStat[0] === "Add_EP"){
+        props.changeBonusEP(bonusShipStat[1])
+    }
 
     useEffect(() => {
         props.changeExtraPerks(extraperks)
@@ -96,8 +102,20 @@ function ShipStats(props) {
         <> 
         <div className='stats'>
             <div className='shipLevel'>
-                <h2>Select Ship Level</h2>
-                <input type="number" id='level' placeholder='50.00' min='0' step='0.01' onChange={e => setShiplevel(e.target.value)} />
+                <div>
+                    <h2>Enter Ship Level</h2>
+                    <input type="number" id='level' placeholder='50.00' min='0' step='0.01' onChange={e => setShiplevel(e.target.value)} />
+                </div>
+                <div>
+                    <h2>Ship Bonus Stat</h2>
+                    <input type="number" id="bonusValue" placeholder="0" onChange={(e) => setBonusShipStat([bonusShipStat[0], Number(e.target.value)])}/>
+                    <select id="SelectBonusStat" onChange={(e) => setBonusShipStat([e.target.value, bonusShipStat[1]])}>
+                        <option value="0">--Select Stat--</option>
+                        {Object.entries(bonusStat).map( ([key, value]) => (
+                            <option value={key} key={key}>{key}</option>
+                        ))}
+                    </select>
+                </div>
             </div>
             <div className='statColumns'>
                 <div className='column firstColumn'>

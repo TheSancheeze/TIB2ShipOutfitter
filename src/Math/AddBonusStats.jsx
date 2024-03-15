@@ -1,6 +1,6 @@
 import Base from '../Data/NewStats.json'
 
-export function finalizeStats(ShipValue, PerkValue) {
+export function finalizeStats(ShipValue, PerkValue, BonusValue) {
     // console.log("Test Perk Addition")
     let BaseStats = Object.keys(Base).map(key => {
         return [key, Base[key]]
@@ -19,6 +19,9 @@ export function finalizeStats(ShipValue, PerkValue) {
                     }
                 }
             }
+        }
+        if(BonusValue[0] === ShipValue[i][0]){
+            numToAdd = numToAdd + BonusValue[1]
         }
         BaseStats[i][1] = numToAdd
     }

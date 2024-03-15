@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Items from '../Data/Items.json'
-import Mutate from '../Data/NewStats.json'
+import Mutate from '../Data/BaseMutateStats.json'
 import voidItems from '../Data/BaseVoidStats.json'
 import Popup from "./Popup"
 import DronePopup from "./DronePopup"
@@ -22,6 +22,7 @@ function AuxDroneSelector( props ) {
     const [harvButtonPopup, setHarvButtonPopup] = useState(false)
     const [enhancedarr, setEnhancedarr] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
     const [mutate, setMutate] = useState(['', 0])
+    const [mutaterarity, setMutaterarity] = useState('Common')
     const [voidBuff, setVoidBuff] = useState(['', 0])
     // console.log("Test Drone Selector")
 
@@ -38,8 +39,8 @@ function AuxDroneSelector( props ) {
     }
 
     useEffect(() => {
-        setMultipliedstats(auxDroneStatMultiplier(drone.Stats, dronerarity, dronequality, trigger, mutate, voidBuff))
-    }, [dronerarity, dronequality, trigger, mutate, voidBuff])
+        setMultipliedstats(auxDroneStatMultiplier(drone.Stats, dronerarity, dronequality, trigger, mutate, mutaterarity, voidBuff))
+    }, [dronerarity, dronequality, trigger, mutate, mutaterarity, voidBuff])
 
     useEffect(()=> {
         props.changeDroneStats(multipliedstats)
@@ -67,7 +68,7 @@ function AuxDroneSelector( props ) {
                     <select id="SelectFaction" onChange={(e) => {
                         setDronelist(Items[8].Item_Factions[e.target.value].Items[dronetype].Items)
                         setDrone(Items[8].Item_Factions[e.target.value].Items[dronetype].Items[droneid])
-                        setMultipliedstats(auxDroneStatMultiplier(Items[8].Item_Factions[e.target.value].Items[dronetype].Items[droneid].Stats, dronerarity, dronequality, trigger, mutate, voidBuff))
+                        setMultipliedstats(auxDroneStatMultiplier(Items[8].Item_Factions[e.target.value].Items[dronetype].Items[droneid].Stats, dronerarity, dronequality, trigger, mutate, mutaterarity, voidBuff))
                         setDamagestats(droneDamageMultiplier(Items[8].Item_Factions[e.target.value].Items[dronetype].Items[droneid], dronerarity, dronequality, trigger))
                     }}>
                         <option value="5">--Select Faction--</option>
@@ -81,7 +82,7 @@ function AuxDroneSelector( props ) {
                         setDronetype(e.target.value)
                         setDronelist(Items[8].Item_Factions[drone.Faction_ID].Items[e.target.value].Items)
                         setDrone(Items[8].Item_Factions[drone.Faction_ID].Items[e.target.value].Items[droneid])
-                        setMultipliedstats(auxDroneStatMultiplier(Items[8].Item_Factions[drone.Faction_ID].Items[e.target.value].Items[droneid].Stats, dronerarity, dronequality, trigger, mutate, voidBuff))
+                        setMultipliedstats(auxDroneStatMultiplier(Items[8].Item_Factions[drone.Faction_ID].Items[e.target.value].Items[droneid].Stats, dronerarity, dronequality, trigger, mutate, mutaterarity, voidBuff))
                         setDamagestats(droneDamageMultiplier(Items[8].Item_Factions[drone.Faction_ID].Items[e.target.value].Items[droneid], dronerarity, dronequality, trigger))
                         }}>
                         <option value='0'>--Select Type--</option>
@@ -92,7 +93,7 @@ function AuxDroneSelector( props ) {
                     <select id="SelectType" onChange={(e) => {
                         setDrone(dronelist[e.target.value])
                         setDroneid(e.target.value)
-                        setMultipliedstats(auxDroneStatMultiplier(dronelist[e.target.value].Stats, dronerarity, dronequality, trigger, mutate, voidBuff))
+                        setMultipliedstats(auxDroneStatMultiplier(dronelist[e.target.value].Stats, dronerarity, dronequality, trigger, mutate, mutaterarity, voidBuff))
                         setDamagestats(droneDamageMultiplier(dronelist[e.target.value], dronerarity, dronequality, trigger))
                         }}>
                         <option value="0">--Select Drone--</option>
@@ -105,7 +106,7 @@ function AuxDroneSelector( props ) {
                     <div className="Rarity_Selector">
                         <select name="Rarity" onChange={(e) => {
                             setDronerarity(e.target.value)
-                            setMultipliedstats(auxDroneStatMultiplier(drone.Stats, e.target.value, dronequality, trigger, mutate, voidBuff))
+                            setMultipliedstats(auxDroneStatMultiplier(drone.Stats, e.target.value, dronequality, trigger, mutate, mutaterarity, voidBuff))
                             setDamagestats(droneDamageMultiplier(drone, e.target.value, dronequality, trigger))
                             }}>
                             <option value='0'>--Select Rarity--</option>
@@ -139,11 +140,20 @@ function AuxDroneSelector( props ) {
                         ))}
                     </h5>
                     <small>
-                        M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => setMutate([mutate[0], Number(e.target.value)])}/>
-                        <select id="SelectMutate" onChange={(e) => setMutate([e.target.value, mutate[1]])}>
+                        <select name="Rarity" onChange={(e) => setMutaterarity(e.target.value)}>
+                            <option value='0'>--Select Rarity--</option>
+                            <option value='Common'>Common</option>
+                            <option value='Uncommon'>Uncommon</option>
+                            <option value='Rare'>Rare</option>
+                            <option value='Ultra-Rare'>Ultra-Rare</option>
+                            <option value='Elite'>Elite</option>
+                            <option value='Legendary'>Legendary</option>
+                            <option value='Ultimate'>Ultimate</option>
+                        </select>
+                        <select id="SelectMutate" onChange={(e) => setMutate(e.target.value.split(","))}>
                             <option value="0">--Select Stat--</option>
                             {Object.entries(Mutate).map( ([key, value]) => (
-                                <option value={key} key={key}>{key}</option>
+                                <option value={[key, value]} key={key}>{key}</option>
                             ))}
                         </select>
                     </small>

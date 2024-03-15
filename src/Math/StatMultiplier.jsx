@@ -63,20 +63,26 @@ export function rarityToInt(rarity) {
     return rarityNum
 }
 
-export function shieldStatMultiplier(item, rank, rarity, quality, trigger, mutate, voidbuff) {
+export function shieldStatMultiplier(item, rank, rarity, quality, trigger, mutate, mutaterarity, voidbuff) {
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rankNum = romanToInt(rank)
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) / 1000 ) + 1
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * qual
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) / 1000 ) + 1
         voidstat = voidstat * rarityNum * qual
+        mutatestat = mutate[1] * mRarity * qual
     }
+
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
         voidstat = 1
@@ -88,6 +94,19 @@ export function shieldStatMultiplier(item, rank, rarity, quality, trigger, mutat
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -113,7 +132,7 @@ export function shieldStatMultiplier(item, rank, rarity, quality, trigger, mutat
         }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -122,30 +141,36 @@ export function shieldStatMultiplier(item, rank, rarity, quality, trigger, mutat
         }
     }
     
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], mutate[1] + voidstat]
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat]
         } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
     }
 
     return newItem
 }
 
-export function armorStatMultiplier(item, rank, rarity, quality, trigger, mutate, voidbuff) {
+export function armorStatMultiplier(item, rank, rarity, quality, trigger, mutate, mutaterarity, voidbuff) {
     let newItem1 = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rankNum = romanToInt(rank)
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) / 1000 ) + 1
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * qual
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) / 1000 ) + 1
         voidstat = voidstat * rarityNum * qual
+        mutatestat = mutate[1] * mRarity * qual
     }
+
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
         voidstat = 1
@@ -157,6 +182,19 @@ export function armorStatMultiplier(item, rank, rarity, quality, trigger, mutate
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let newItem = newItem1
@@ -209,7 +247,7 @@ export function armorStatMultiplier(item, rank, rarity, quality, trigger, mutate
         }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -218,10 +256,10 @@ export function armorStatMultiplier(item, rank, rarity, quality, trigger, mutate
         }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], mutate[1] + voidstat]
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat]
         } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
     }
     // console.log("final newItem")
@@ -229,22 +267,28 @@ export function armorStatMultiplier(item, rank, rarity, quality, trigger, mutate
     return newItem
 }
 
-export function storageStatMultiplier(item, rank, rarity, quality, trigger, mutate, voidbuff){
+export function storageStatMultiplier(item, rank, rarity, quality, trigger, mutate, mutaterarity, voidbuff){
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rankNum = romanToInt(rank)
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let rssQual = ( (quality - 129) * 0.0009 ) + 1
     let qual = ( (quality - 129) * 0.001 ) + 1
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * qual
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         rssQual = ( (quality - 29) * 0.0009 ) + 1
         qual = ( (quality - 29) * 0.001 ) + 1
         voidstat = voidstat * rarityNum * qual
+        mutatestat = mutate[1] * mRarity * qual
     }
+
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
         voidstat = 1
@@ -256,6 +300,19 @@ export function storageStatMultiplier(item, rank, rarity, quality, trigger, muta
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -283,7 +340,7 @@ export function storageStatMultiplier(item, rank, rarity, quality, trigger, muta
 
         for(let i=0; i<newItem.length; i++){
             if (newItem[i][0] === mutate[0]){ 
-                newItem[i][1] = newItem[i][1] + mutate[1]
+                newItem[i][1] = newItem[i][1] + mutatestat
                 containsMutate = true
             }
             if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -293,29 +350,34 @@ export function storageStatMultiplier(item, rank, rarity, quality, trigger, muta
         }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], mutate[1] + voidstat]
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat]
         } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
     }
     
     return newItem
 }
 
-export function cpuStatMultiplier(item, rarity, quality, trigger, mutate, voidbuff){
+export function cpuStatMultiplier(item, rarity, quality, trigger, mutate, mutaterarity, voidbuff){
     let stats = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
 
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -328,6 +390,19 @@ export function cpuStatMultiplier(item, rarity, quality, trigger, mutate, voidbu
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -415,7 +490,7 @@ export function cpuStatMultiplier(item, rarity, quality, trigger, mutate, voidbu
         }
 
         if (stats[i][0] === mutate[0]){ 
-            stats[i][1] = stats[i][1] + mutate[1]
+            stats[i][1] = stats[i][1] + mutatestat
             containsMutate = true
         }
         if (stats[i][0] === voidbuff[0] && trigger == true){ 
@@ -424,29 +499,34 @@ export function cpuStatMultiplier(item, rarity, quality, trigger, mutate, voidbu
         }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ stats[stats.length] = mutate }
+    if (mutate[1] != 0 && containsMutate == false){ stats[stats.length] = [mutate[0], mutatestat] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            stats[stats.length-1] = [mutate[0], mutate[1] + voidstat]
+            stats[stats.length-1] = [mutate[0], mutatestat + voidstat]
         } else { stats[stats.length] = [voidbuff[0], voidstat] }
     }
     
     return stats
 }
 
-export function engineStatMultiplier(item, rarity, quality, trigger, mutate, voidbuff) {
+export function engineStatMultiplier(item, rarity, quality, trigger, mutate, mutaterarity, voidbuff) {
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
 
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 ) 
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -461,12 +541,24 @@ export function engineStatMultiplier(item, rarity, quality, trigger, mutate, voi
         voidstat = voidbuff[1]
     }
 
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
+    }
+
     let containsVoid = false
     let containsMutate = false
 
     if ( newItem.length == 2 ) {
         newItem[0][1] = ( newItem[0][1] * rarityNum ) * (1 + qual)
-        if (trigger == true){ newItem[0][1] = newItem[0][1] * 1.1 }
         if ( rarityNum == 7 ) { newItem[1][1]++ }
     }else {
         for (let i = 0; i < newItem.length; i++) {
@@ -486,7 +578,7 @@ export function engineStatMultiplier(item, rarity, quality, trigger, mutate, voi
 
     for(let i=0; i<newItem.length; i++){
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -495,29 +587,34 @@ export function engineStatMultiplier(item, rarity, quality, trigger, mutate, voi
         }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], mutate[1] + voidstat]
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat]
         } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
     }
 
     return newItem
 }
 
-export function specialStatMultiplier(item, rarity, quality, trigger, mutate, voidbuff) {
+export function specialStatMultiplier(item, rarity, quality, trigger, mutate, mutaterarity, voidbuff) {
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
 
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -530,6 +627,19 @@ export function specialStatMultiplier(item, rarity, quality, trigger, mutate, vo
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -577,7 +687,7 @@ export function specialStatMultiplier(item, rarity, quality, trigger, mutate, vo
         }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -586,29 +696,34 @@ export function specialStatMultiplier(item, rarity, quality, trigger, mutate, vo
         }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], mutate[1] + voidstat]
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat]
         } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
     }
     
     return newItem
 }
 
-export function batteryStatMultiplier(item, rarity, quality, trigger, mutate, voidbuff){
+export function batteryStatMultiplier(item, rarity, quality, trigger, mutate, mutaterarity, voidbuff){
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
 
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -621,6 +736,19 @@ export function batteryStatMultiplier(item, rarity, quality, trigger, mutate, vo
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -649,7 +777,7 @@ export function batteryStatMultiplier(item, rarity, quality, trigger, mutate, vo
         else{ newItem[i][1] = ( newItem[i][1] + ( (newItem[i][1]/2) * (rarityNum-1)) ) * ( 1+qual )  }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -658,25 +786,38 @@ export function batteryStatMultiplier(item, rarity, quality, trigger, mutate, vo
         }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
-    if (voidbuff[1] != 0 && containsVoid == false && trigger == true){ newItem[newItem.length] = [voidbuff[0], voidstat] }
+    // if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
+    // if (voidbuff[1] != 0 && containsVoid == false && trigger == true){ newItem[newItem.length] = [voidbuff[0], voidstat] }
+
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat] }
+    if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
+        if (voidbuff[0] === mutate[0] && mutate[1] != 0){
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat]
+        } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
+    }
 
     return newItem
 }
 
-export function auxBatteryStatMultiplier(item, rarity, quality, trigger, mutate, voidbuff){
+export function auxBatteryStatMultiplier(item, rarity, quality, trigger, mutate, mutaterarity, voidbuff){
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
+
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
         voidstat = 1
@@ -688,6 +829,19 @@ export function auxBatteryStatMultiplier(item, rarity, quality, trigger, mutate,
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -716,7 +870,7 @@ export function auxBatteryStatMultiplier(item, rarity, quality, trigger, mutate,
         else{ newItem[i][1] = ( newItem[i][1] + ( (newItem[i][1]/2) * (rarityNum-1)) ) * ( 1+qual )  }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -732,30 +886,37 @@ export function auxBatteryStatMultiplier(item, rarity, quality, trigger, mutate,
             newItem[i][0] !== "Precursor_Battery" ){ newItem[i][1] = newItem[i][1] * 0.1 }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
+
+    
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat*0.1] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
-        } else { newItem[newItem.length] = [voidbuff[0], voidstat * 0.1] }
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat*0.1]
+        } else { newItem[newItem.length] = [voidbuff[0], voidstat*0.1] }
     }
 
     return newItem
 }
 
-export function weaponStatMultiplier(item, rank, rarity, quality, trigger, mutate, voidbuff){
+export function weaponStatMultiplier(item, rank, rarity, quality, trigger, mutate, mutaterarity, voidbuff){
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
     let rankNum = romanToInt(rank)
 
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
@@ -768,6 +929,19 @@ export function weaponStatMultiplier(item, rank, rarity, quality, trigger, mutat
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -783,7 +957,7 @@ export function weaponStatMultiplier(item, rank, rarity, quality, trigger, mutat
         else if ( (newItem[i][0] !== "Add_EP" ) ){ newItem[i][1] = ( newItem[i][1] * rarityNum ) * ( 1+qual ) }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -792,10 +966,10 @@ export function weaponStatMultiplier(item, rank, rarity, quality, trigger, mutat
         }
     }
 
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], mutate[1] + voidstat]
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat]
         } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
     }
 
@@ -822,21 +996,27 @@ export function weaponDamageMultiplier(item, rank, rarity, quality, trigger){
     return newItem
 }
 
-export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mutate, voidbuff){
+export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mutate, mutaterarity, voidbuff){
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
     let rankNum = romanToInt(rank)
 
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
+
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
         voidstat = 1
@@ -848,6 +1028,19 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -864,7 +1057,7 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
         }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -878,15 +1071,15 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
     if (mutate[0] === "Add_EP" || voidbuff[0] === "Add_EP"){
         if (mutate[1] != 0 && containsMutate == false ){
             if ( mutate[0] === "Add_EP" ){
-                newItem[newItem.length] = [mutate[0], mutate[1]]
+                newItem[newItem.length] = [mutate[0], mutatestat]
             } else {
-                newItem[newItem.length] = [mutate[0], mutate[1]*0.1]
+                newItem[newItem.length] = [mutate[0], mutatestat*0.1]
             }
         }
         
         if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
             if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-                newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat)]
+                newItem[newItem.length-1] = [mutate[0], (mutatestat + voidstat)]
             } else if ( voidbuff[0] === "Add_EP" ){ 
                 newItem[newItem.length] = [voidbuff[0], voidstat] 
             } else {
@@ -894,11 +1087,11 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
             }
         }
     }else {
-        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
+        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutatestat*0.1] }
 
         if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
             if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-                newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
+                newItem[newItem.length-1] = [mutate[0], (mutatestat + voidstat) * 0.1]
             } else { newItem[newItem.length] = [voidbuff[0], voidstat * 0.1] }
         }
     }
@@ -906,20 +1099,26 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
     return newItem
 }
 
-export function droneStatMultiplier(item, rarity, quality, trigger, mutate, voidbuff){
+export function droneStatMultiplier(item, rarity, quality, trigger, mutate, mutaterarity, voidbuff){
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
 
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
+
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
         voidstat = 1
@@ -931,6 +1130,19 @@ export function droneStatMultiplier(item, rarity, quality, trigger, mutate, void
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -988,7 +1200,7 @@ export function droneStatMultiplier(item, rarity, quality, trigger, mutate, void
         }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -996,31 +1208,37 @@ export function droneStatMultiplier(item, rarity, quality, trigger, mutate, void
             containsVoid = true
         }
     }
-
-    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = mutate }
+    
+    if (mutate[1] != 0 && containsMutate == false){ newItem[newItem.length] = [mutate[0], mutatestat] }
     if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
         if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-            newItem[newItem.length-1] = [mutate[0], mutate[1] + voidstat]
+            newItem[newItem.length-1] = [mutate[0], mutatestat + voidstat]
         } else { newItem[newItem.length] = [voidbuff[0], voidstat] }
     }
 
     return newItem
 }
 
-export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, voidbuff){
+export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, mutaterarity, voidbuff){
     let newItem = Object.keys(item).map(key => {
         return [key, item[key]]
     })
     let rarityNum = rarityToInt(rarity)
+    let mRarity = rarityToInt(mutaterarity)
 
     if (quality < 1){quality = 1}
     if (quality > 256){quality = 256}
     let qual = ( (quality - 129) * 0.001 )
     let voidstat = voidbuff[1]
+    let mutatestat = mutate[1] * mRarity * (qual + 1)
+    mutate[1] = Number(mutate[1])
+
     if(trigger == true){ 
         qual = ( (quality - 29) * 0.001 )
         voidstat = voidstat * rarityNum * (qual + 1)
+        mutatestat = mutate[1] * mRarity * (qual + 1)
     }
+
     if (voidbuff[0] === "Add 1 EP"){
         voidbuff[0] = "Add_EP"
         voidstat = 1
@@ -1032,6 +1250,19 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, v
         voidstat = 3
     } else if (voidbuff[0] === "Add_EP"){
         voidstat = voidbuff[1]
+    }
+
+    if (mutate[0] === "Add 1 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 1
+    } else if (mutate[0] === "Add 2 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 2
+    } else if (mutate[0] === "Add 3 EP"){
+        mutate[0] = "Add_EP"
+        mutatestat = 3
+    } else if (mutate[0] === "Add_EP"){
+        mutatestat = mutate[1]
     }
 
     let containsVoid = false
@@ -1087,7 +1318,7 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, v
         }
 
         if (newItem[i][0] === mutate[0]){ 
-            newItem[i][1] = newItem[i][1] + mutate[1]
+            newItem[i][1] = newItem[i][1] + mutatestat
             containsMutate = true
         }
         if (newItem[i][0] === voidbuff[0] && trigger == true){ 
@@ -1101,15 +1332,15 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, v
     if (mutate[0] === "Add_EP" || voidbuff[0] === "Add_EP"){
         if (mutate[1] != 0 && containsMutate == false ){
             if ( mutate[0] === "Add_EP" ){
-                newItem[newItem.length] = [mutate[0], mutate[1]]
+                newItem[newItem.length] = [mutate[0], mutatestat]
             } else {
-                newItem[newItem.length] = [mutate[0], mutate[1]*0.1]
+                newItem[newItem.length] = [mutate[0], mutatestat*0.1]
             }
         }
         
         if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
             if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-                newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat)]
+                newItem[newItem.length-1] = [mutate[0], (mutatestat + voidstat)]
             } else if ( voidbuff[0] === "Add_EP" ){ 
                 newItem[newItem.length] = [voidbuff[0], voidstat] 
             } else {
@@ -1117,11 +1348,11 @@ export function auxDroneStatMultiplier(item, rarity, quality, trigger, mutate, v
             }
         }
     }else {
-        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutate[1]*0.1] }
+        if (mutate[1] != 0 && containsMutate == false ){ newItem[newItem.length] = [mutate[0], mutatestat*0.1] }
 
         if (voidbuff[1] != 0 && containsVoid == false && trigger == true){
             if (voidbuff[0] === mutate[0] && mutate[1] != 0){
-                newItem[newItem.length-1] = [mutate[0], (mutate[1] + voidstat) * 0.1]
+                newItem[newItem.length-1] = [mutate[0], (mutatestat + voidstat) * 0.1]
             } else { newItem[newItem.length] = [voidbuff[0], voidstat * 0.1] }
         }
     }

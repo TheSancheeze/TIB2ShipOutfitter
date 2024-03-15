@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Items from '../Data/Items.json'
 import Perks from "./Perks"
-import Mutate from '../Data/NewStats.json'
+import Mutate from '../Data/BaseMutateStats.json'
 import voidItems from '../Data/BaseVoidStats.json'
 import SpecialHandler from "../Math/SpecialHandler"
 import { specialStatMultiplier, rarityToInt } from "../Math/StatMultiplier"
@@ -13,6 +13,7 @@ function SpecialSelector( props ) {
     const [specialquality, setSpecialquality] = useState(129)
     const [trigger, setTrigger] = useState(false)
     const [mutate, setMutate] = useState(['', 0])
+    const [mutaterarity, setMutaterarity] = useState('Common')
     const [voidBuff, setVoidBuff] = useState(['', 0])
     const [multipliedstats, setMultipliedstats] = useState(special.Stats)
     // console.log("Test Special Selector")
@@ -22,17 +23,17 @@ function SpecialSelector( props ) {
         let bonus = SpecialHandler(item, rarityNum)
 
         setSpecialperks(bonus)
-        props.changeSpecialPerks(bonus)
     }
 
     const handleSpecialQuality = (qual) => {
         setSpecialquality(qual)
-        setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, qual, trigger, mutate, voidBuff))
+        setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, qual, trigger, mutate, mutaterarity, voidBuff))
     }
 
     useEffect(()=> {
         props.changeSpecialStats(multipliedstats)
-    }, [multipliedstats])
+        props.changeSpecialPerks(specialperks)
+    }, [multipliedstats, specialperks])
 
     const handleReset = () => {
         let formArr = []
@@ -52,7 +53,7 @@ function SpecialSelector( props ) {
                         <select id="SelectType" onChange={(e) => {
                             setSpecial(Items[5].Items[e.target.value])
                             handleSpecialPerk(Items[5].Items[e.target.value], specialrarity)
-                            setMultipliedstats(specialStatMultiplier(Items[5].Items[e.target.value].Stats, specialrarity, specialquality, trigger, mutate, voidBuff))
+                            setMultipliedstats(specialStatMultiplier(Items[5].Items[e.target.value].Stats, specialrarity, specialquality, trigger, mutate, mutaterarity, voidBuff))
                             }}>
                             <option value="20">--Select Special--</option>
                             {
@@ -65,7 +66,7 @@ function SpecialSelector( props ) {
                             <select name="Rarity" onChange={(e) => {
                                 setSpecialrarity(e.target.value)
                                 handleSpecialPerk(special, e.target.value)
-                                setMultipliedstats(specialStatMultiplier(special.Stats, e.target.value, specialquality, trigger, mutate, voidBuff))
+                                setMultipliedstats(specialStatMultiplier(special.Stats, e.target.value, specialquality, trigger, mutate, mutaterarity, voidBuff))
                                 }}>
                                 <option value='0'>--Select Rarity--</option>
                                 <option value='Common'>Common</option>
@@ -81,7 +82,7 @@ function SpecialSelector( props ) {
                             Q: <input type="number" id='itemQuality' placeholder="129" min='1' max='256' step='1' onChange={e => handleSpecialQuality(e.target.value)}/>
                             <button onClick={() => {
                             setTrigger(!trigger)
-                            setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, specialquality, !trigger, mutate, voidBuff))
+                            setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, specialquality, !trigger, mutate, mutaterarity, voidBuff))
                             }}>VOID</button>
                         </small>
                     </div>
@@ -100,17 +101,26 @@ function SpecialSelector( props ) {
                             ))}
                         </h5>
                         <small>
-                            M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => {
-                                setMutate([mutate[0], Number(e.target.value)])
-                                setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, specialquality, trigger, [mutate[0], Number(e.target.value)], voidBuff))
-                                }}/>
+                            <select name="Rarity" onChange={(e) => {
+                                setMutaterarity(e.target.value)
+                                setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, specialquality, trigger, mutate, e.target.value, voidBuff))
+                                }}>
+                                <option value='0'>--Select Rarity--</option>
+                                <option value='Common'>Common</option>
+                                <option value='Uncommon'>Uncommon</option>
+                                <option value='Rare'>Rare</option>
+                                <option value='Ultra-Rare'>Ultra-Rare</option>
+                                <option value='Elite'>Elite</option>
+                                <option value='Legendary'>Legendary</option>
+                                <option value='Ultimate'>Ultimate</option>
+                            </select>                            
                             <select id="SelectMutate" onChange={(e) => {
-                                setMutate([e.target.value, mutate[1]])
-                                setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, specialquality, trigger, [e.target.value, mutate[1]], voidBuff))
+                                    setMutate(e.target.value.split(","))
+                                    setMultipliedstats(specialStatMultiplier(cpu.Stats, specialrarity, specialquality, trigger, e.target.value.split(","), mutaterarity, voidBuff))
                                 }}>
                                 <option value="0">--Select Stat--</option>
                                 {Object.entries(Mutate).map( ([key, value]) => (
-                                    <option value={key} key={key}>{key}</option>
+                                    <option value={[key, value]} key={key}>{key}</option>
                                 ))}
                             </select>
                         </small>
@@ -118,7 +128,7 @@ function SpecialSelector( props ) {
                             Void Buff: 
                             <select id="SelectVoidBuff" onChange={(e) => {
                                 setVoidBuff([e.target.value, voidItems[e.target.value]])
-                                setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, specialquality, trigger, mutate, [e.target.value, voidItems[e.target.value]]))
+                                setMultipliedstats(specialStatMultiplier(special.Stats, specialrarity, specialquality, trigger, mutate, mutaterarity, [e.target.value, voidItems[e.target.value]]))
                                 }}>
                                 <option value="0">--Select Stat--</option>
                                 {Object.entries(voidItems).map( ([key, value]) => (

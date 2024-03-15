@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Items from '../Data/Items.json'
 import RankSelector from './RankSelector'
-import Mutate from '../Data/NewStats.json'
+import Mutate from '../Data/BaseMutateStats.json'
 import voidItems from '../Data/BaseVoidStats.json'
 import { storageStatMultiplier } from '../Math/StatMultiplier'
 
@@ -14,13 +14,14 @@ function StorageSelector ( props ) {
     const [storagequality, setStoragequality] = useState(129)
     const [trigger, setTrigger] = useState(false)
     const [mutate, setMutate] = useState(['', 0])
+    const [mutaterarity, setMutaterarity] = useState('Common')
     const [voidBuff, setVoidBuff] = useState(['', 0])
     const [multipliedstats, setMultipliedstats] = useState(storage.Stats)
     // console.log("Test Armor Selector")
 
     useEffect(() => {
-        setMultipliedstats(storageStatMultiplier(storage.Stats, storagerank, storagerarity, storagequality, trigger, mutate, voidBuff))
-    }, [storagerank, storagerarity, storagequality, trigger, mutate, voidBuff])
+        setMultipliedstats(storageStatMultiplier(storage.Stats, storagerank, storagerarity, storagequality, trigger, mutate, mutaterarity, voidBuff))
+    }, [storagerank, storagerarity, storagequality, trigger, mutate, mutaterarity, voidBuff])
 
     useEffect(()=> {
         props.changeStorageStats(multipliedstats)
@@ -44,7 +45,7 @@ function StorageSelector ( props ) {
                         <select id="SelectFaction" onChange={(e) => {
                             setStoragelist(Items[2].Item_Factions[e.target.value].Items)
                             setStorage(Items[2].Item_Factions[e.target.value].Items[storageid])
-                            setMultipliedstats(storageStatMultiplier(Items[2].Item_Factions[e.target.value].Items[storageid].Stats, storagerank, storagerarity, storagequality, trigger, mutate, voidBuff))
+                            setMultipliedstats(storageStatMultiplier(Items[2].Item_Factions[e.target.value].Items[storageid].Stats, storagerank, storagerarity, storagequality, trigger, mutate, mutaterarity, voidBuff))
                         }}>
                             <option value="5">--Select Faction--</option>
                             {
@@ -56,7 +57,7 @@ function StorageSelector ( props ) {
                         <select id="SelectType" onChange={(e) => {
                             setStorage(storagelist[e.target.value])
                             setStorageid(e.target.value)
-                            setMultipliedstats(storageStatMultiplier(storagelist[e.target.value].Stats, storagerank, storagerarity, storagequality, trigger, mutate, voidBuff))
+                            setMultipliedstats(storageStatMultiplier(storagelist[e.target.value].Stats, storagerank, storagerarity, storagequality, trigger, mutate, mutaterarity, voidBuff))
                             }}>
                             <option value="0">--Select Storage--</option>
                             {
@@ -84,11 +85,20 @@ function StorageSelector ( props ) {
                             ))}
                         </h5>
                         <small>
-                            M: <input type="number" id="mutateValue" placeholder="0" onChange={(e) => setMutate([mutate[0], Number(e.target.value)])}/>
-                            <select id="SelectMutate" onChange={(e) => setMutate([e.target.value, mutate[1]])}>
+                            <select name="Rarity" onChange={(e) => setMutaterarity(e.target.value)}>
+                                <option value='0'>--Select Rarity--</option>
+                                <option value='Common'>Common</option>
+                                <option value='Uncommon'>Uncommon</option>
+                                <option value='Rare'>Rare</option>
+                                <option value='Ultra-Rare'>Ultra-Rare</option>
+                                <option value='Elite'>Elite</option>
+                                <option value='Legendary'>Legendary</option>
+                                <option value='Ultimate'>Ultimate</option>
+                            </select>
+                            <select id="SelectMutate" onChange={(e) => setMutate(e.target.value.split(","))}>
                                 <option value="0">--Select Stat--</option>
                                 {Object.entries(Mutate).map( ([key, value]) => (
-                                    <option value={key} key={key}>{key}</option>
+                                    <option value={[key, value]} key={key}>{key}</option>
                                 ))}
                             </select>
                         </small>
