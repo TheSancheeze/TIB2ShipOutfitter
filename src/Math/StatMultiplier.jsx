@@ -1037,8 +1037,8 @@ export function auxWeaponStatMultiplier(item, rank, rarity, quality, trigger, mu
     let containsMutate = false
 
     for (let i = 0; i < newItem.length; i++) {
-        if ( newItem[i][0] === "%_Outgoing_Damage" && newItem[i][1] == 0 && rarityNum >= 4 ){ newItem[i][1] = (( 2 * (rarityNum-3) ) * ( 1+qual )) * 0.1 }
-        else if ( newItem[i][0] === "Max_Hull" && newItem[i][1] == 0 && rarityNum >= 3 ){ newItem[i][1] = (( 100 * (rarityNum-2) ) * ( 1+qual )) * 0.1 }
+        if ( newItem[i][0] === "%_Outgoing_Damage" && newItem[i][1] == 0 && rarityNum >= 4 ){ newItem[i][1] = (( 2 * (rarityNum-3) ) * ( 1+qual )) }
+        else if ( newItem[i][0] === "Max_Hull" && newItem[i][1] == 0 && rarityNum >= 3 ){ newItem[i][1] = (( 100 * (rarityNum-2) ) * ( 1+qual )) }
         else if ( newItem[i][0] === "EP" ){ 
             newItem[i][1] = newItem[i][1] + rankNum - rarityNum
             if ( newItem[i][1] < 0 ) { newItem[i][1] = 0 } 
