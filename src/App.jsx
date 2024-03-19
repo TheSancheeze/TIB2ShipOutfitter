@@ -34,9 +34,32 @@ function App() {
 
   let ultMod = [0, 0, 0, 0]
   let gunboatElite = 1
+  let gunboatExtra = [0, 0, 0]
 
   if(shipmod === "ULT"){ultMod = [4, 1, 1, 1]}
   if(shipinfo.Ship_Class === "Gunboat"){gunboatElite = 3}
+  switch (elitelvl) {
+    case 'I':
+      gunboatExtra = [1, 0, 0]
+      break;
+    case 'II':
+      gunboatExtra = [2, 1, 0]
+      break;
+    case 'III':
+      gunboatExtra = [2, 1, 1]
+      break;
+    case 'IV':
+      gunboatExtra = [3, 2, 1]
+      break;
+    case 'V':
+      gunboatExtra = [3, 2, 2]
+      break;
+  }
+
+  let totalEP = shipinfo.EP + newstats[28][1] + (romanToInt(elitelvl) * gunboatElite) + ultMod[0] + bonusEP
+  let totalBatts = shipinfo.Batteries + newstats[39][1] + ultMod[1] + gunboatExtra[0]
+  let totalWeapons = shipinfo.Weapons + newstats[40][1] + ultMod[2] + gunboatExtra[1]
+  let totalDrones = shipinfo.Drones + newstats[41][1] + ultMod[3] + gunboatExtra[2]
 
   // console.log(activeperks)
   console.log(shipinfo)
@@ -57,8 +80,8 @@ function App() {
           <div className='Ship_Title'>
               <h1>{shipinfo.Ship_Name} {elitelvl} {shipmod}</h1>
               <h2>A {shipinfo.Ship_Class}-Class {Ships1[shipinfo.Faction_ID].Faction_Name} ship.</h2>
-              <h2> {newstats[27][1]} OF {shipinfo.EP + newstats[28][1] + (romanToInt(elitelvl) * gunboatElite) + ultMod[0] + bonusEP} EquipPoints Used </h2>
-              <h3>Batteries: {shipinfo.Batteries + newstats[39][1] + ultMod[1]} | Weapons: {shipinfo.Weapons + newstats[40][1] + ultMod[2]} | Drones: {shipinfo.Drones + newstats[41][1] + ultMod[3]}</h3>
+              <h2> {newstats[27][1]} OF {totalEP} EquipPoints Used </h2>
+              <h3>Batteries: {totalBatts} | Weapons: {totalWeapons} | Drones: {totalDrones}</h3>
           </div>
           <div className='Gear_Selector'>
               <GearSelector 

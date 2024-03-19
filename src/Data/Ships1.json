@@ -185,7 +185,7 @@
         "Ship_Name": "Striker Gunboat",
         "EP": 8,
         "Size": "Small",
-        "Weapons": 2,
+        "Weapons": 3,
         "Batteries": 1,
         "Drones": 2,
         "Faction_ID": "0",
