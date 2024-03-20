@@ -12,6 +12,7 @@ import NewStats from './Data/NewStats.json'
 import perksList from './Data/Perks.json'
 import { romanToInt } from './Math/StatMultiplier'
 import { finalizeStats } from './Math/AddBonusStats'
+import AttackTimer from './Components/AttackTimer'
 
 function App() {
   let newItem1 = Object.keys(perksList).map(key => {
@@ -31,6 +32,10 @@ function App() {
   const [ corpskills, setCorpskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [ playerskills, setPlayerskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [ shipskills, setShipskills ] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+  // console.log("******** NEW *********")
+  // console.log(AttackTimer(5, 1, -0.45, false) / 1000)
+  // console.log("******** NEW *********")
 
   let ultMod = [0, 0, 0, 0]
   let gunboatElite = 1
@@ -62,7 +67,7 @@ function App() {
   let totalDrones = shipinfo.Drones + newstats[41][1] + ultMod[3] + gunboatExtra[2]
 
   // console.log(activeperks)
-  console.log(shipinfo)
+  // console.log(shipinfo)
   // console.log(shipperks)
   // console.log("Test Main")
   // console.log(extraperks)

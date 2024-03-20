@@ -6,6 +6,7 @@ import Popup from "./Popup"
 import DronePopup from "./DronePopup"
 import HarvestorPopup from "./HarvestorButtonPopup"
 import { auxDroneStatMultiplier, droneDamageMultiplier, enhancedDroneStatsHandler } from '../Math/StatMultiplier'
+import AttackTimer from "./AttackTimer"
 
 function AuxDroneSelector( props ) {
     const [dronelist, setDronelist] = useState([])
@@ -24,6 +25,7 @@ function AuxDroneSelector( props ) {
     const [mutate, setMutate] = useState(['', 0])
     const [mutaterarity, setMutaterarity] = useState('Common')
     const [voidBuff, setVoidBuff] = useState(['', 0])
+    const [enemyShipClass, setEnemyShipClass] = useState('')
     // console.log("Test Drone Selector")
 
     const handleQual = (qual) => {
@@ -35,7 +37,7 @@ function AuxDroneSelector( props ) {
         if (dronetype === '0'){ setButtonPopup(true) }
         else if (dronetype === '1'){ setDroneButtonPopup(true) }
         else (setHarvButtonPopup(true))
-        console.log(enhancedarr)
+        // console.log(enhancedarr)
     }
 
     useEffect(() => {
@@ -175,6 +177,23 @@ function AuxDroneSelector( props ) {
                 <h3>Player Damage</h3>
                 <h4>Hull: {enhancedarr[8]} - {enhancedarr[10]} {"—>"} {enhancedarr[12]} - {enhancedarr[14]}</h4>
                 <h4>Shield: {enhancedarr[9]} - {enhancedarr[11]} {"—>"} {enhancedarr[13]} - {enhancedarr[15]}</h4>
+                <h3>Target Lock Timer: { ( AttackTimer(props.enhancedStats[10], enemyShipClass, props.enhancedStats[9], true) + (5000 * props.auxSlotTimer) ) / 1000 } Seconds (0.8s min)</h3>
+                <h4> Select Enemy Ship Class: {" "}
+                    <select name="EnemyShipClass" onChange={(e) => setEnemyShipClass(e.target.value)}>
+                        <option value='0'>--Select Ship Class--</option>
+                        <option value='Gunboat'>Gunboat</option>
+                        <option value='Shuttle'>Shuttle</option>
+                        <option value='Frigate'>Frigate</option>
+                        <option value='Assassin'>Assassin</option>
+                        <option value='Cruiser'>Cruiser</option>
+                        <option value='Destroyer'>Destroyer</option>
+                        <option value='Battleship'>Battleship</option>
+                        <option value='Flagship'>Flagship</option>
+                        <option value='Carrier'>Carrier</option>
+                        <option value='Hades'>Hades</option>
+                        <option value='Emporer'>Emporer</option>
+                    </select>
+                </h4>
             </Popup>
             <DronePopup trigger={droneButtonPopup} setTrigger={setDroneButtonPopup}>
                 <h3>Medic Drone</h3>

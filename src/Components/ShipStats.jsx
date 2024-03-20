@@ -98,9 +98,11 @@ function ShipStats(props) {
             playerBonusDMG,
             attackDroneDMG,
             droneRepairs,
-            bonusHarvesting
+            bonusHarvesting,
+            targetingSpeed / 100,
+            props.speed.Ship_Class
         ])
-    }, [hullDamage, shieldDamage, outgoingDmg, critDmg, alienBonusDMG, playerBonusDMG, attackDroneDMG, droneRepairs, bonusHarvesting])
+    }, [hullDamage, shieldDamage, outgoingDmg, critDmg, alienBonusDMG, playerBonusDMG, attackDroneDMG, droneRepairs, bonusHarvesting, targetingSpeed, props.speed.Ship_Class])
 
     // console.log("Test Ship Stats")
     return (

@@ -199,6 +199,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={13}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={1}
                     />
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats2 => setAuxweaponstats2(auxweaponstats2)}
@@ -208,6 +209,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={14}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={2}
                     />
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats3 => setAuxweaponstats3(auxweaponstats3)}
@@ -217,6 +219,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={15}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={3}
                     />
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats4 => setAuxweaponstats4(auxweaponstats4)}
@@ -226,6 +229,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={16}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={4}
                     />
                     <AuxWeaponSelector 
                         changeWeaponStats={auxweaponstats5 => setAuxweaponstats5(auxweaponstats5)}
@@ -235,6 +239,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={17}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={5}
                     />
                 </div>
             </div>
@@ -255,6 +260,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={19}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={1}
                     />
                     <AuxDroneSelector 
                         changeDroneStats={auxdronestats2 => setAuxdronestats2(auxdronestats2)} enhancedStats={props.enhancedStats}
@@ -262,6 +268,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={20}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={2}
                     />
                     <AuxDroneSelector 
                         changeDroneStats={auxdronestats3 => setAuxdronestats3(auxdronestats3)} enhancedStats={props.enhancedStats}
@@ -269,6 +276,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={21}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={3}
                     />
                     <AuxDroneSelector 
                         changeDroneStats={auxdronestats4 => setAuxdronestats4(auxdronestats4)} enhancedStats={props.enhancedStats}
@@ -276,6 +284,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={22}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={4}
                     />
                     <AuxDroneSelector 
                         changeDroneStats={auxdronestats5 => setAuxdronestats5(auxdronestats5)} enhancedStats={props.enhancedStats}
@@ -283,6 +292,7 @@ function GearSelector( props ) {
                         x={formKeys}
                         index={23}
                         changeFormKeys={formKeys => setFormKeys(formKeys)}
+                        auxSlotTimer={5}
                     />
                 </div>
             </div>

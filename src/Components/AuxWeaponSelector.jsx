@@ -5,6 +5,7 @@ import Popup from "./Popup"
 import Mutate from '../Data/BaseMutateStats.json'
 import voidItems from '../Data/BaseVoidStats.json'
 import { auxWeaponStatMultiplier, weaponDamageMultiplier, rarityToInt, enhancedStatsHandler } from '../Math/StatMultiplier'
+import AttackTimer from "./AttackTimer"
 
 function AuxWeaponSelector( props ) {
     const [weaponlist, setWeaponlist] = useState([])
@@ -22,6 +23,7 @@ function AuxWeaponSelector( props ) {
     const [mutate, setMutate] = useState(['', 0])
     const [mutaterarity, setMutaterarity] = useState('Common')
     const [voidBuff, setVoidBuff] = useState(['', 0])
+    const [enemyShipClass, setEnemyShipClass] = useState('')
     // console.log("Test Weapon Selector")
 
     const handleWeaponPerk = (item, rarity) => {
@@ -154,6 +156,23 @@ function AuxWeaponSelector( props ) {
                 <h3>Player Damage</h3>
                 <h4>Hull: {enhancedarr[8]} - {enhancedarr[10]} {"—>"} {enhancedarr[12]} - {enhancedarr[14]}</h4>
                 <h4>Shield: {enhancedarr[9]} - {enhancedarr[11]} {"—>"} {enhancedarr[13]} - {enhancedarr[15]}</h4>
+                <h3>Target Lock Timer: { ( AttackTimer(props.enhancedStats[10], enemyShipClass, props.enhancedStats[9], false) + (5000 * props.auxSlotTimer) ) / 1000  } Seconds (0.8s min)</h3>
+                <h4> Select Enemy Ship Class: {" "}
+                    <select name="EnemyShipClass" onChange={(e) => setEnemyShipClass(e.target.value)}>
+                        <option value='0'>--Select Ship Class--</option>
+                        <option value='Gunboat'>Gunboat</option>
+                        <option value='Shuttle'>Shuttle</option>
+                        <option value='Frigate'>Frigate</option>
+                        <option value='Assassin'>Assassin</option>
+                        <option value='Cruiser'>Cruiser</option>
+                        <option value='Destroyer'>Destroyer</option>
+                        <option value='Battleship'>Battleship</option>
+                        <option value='Flagship'>Flagship</option>
+                        <option value='Carrier'>Carrier</option>
+                        <option value='Hades'>Hades</option>
+                        <option value='Emporer'>Emporer</option>
+                    </select>
+                </h4>
             </Popup>
         </div>
         </>
