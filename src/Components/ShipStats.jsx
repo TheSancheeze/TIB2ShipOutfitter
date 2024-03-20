@@ -12,9 +12,14 @@ function ShipStats(props) {
     const [bonusShipStat, setBonusShipStat] = useState(['', 0])
     let FinalStats = finalizeStats(props.NewShipStats, props.Active_Perks, bonusShipStat)
     let speedPercent = (100 + FinalStats[8][1]) * 0.01
+    let assassinCooldownHalf = 1
 
     if(bonusShipStat[0] === "Add_EP"){
         props.changeBonusEP(bonusShipStat[1])
+    }
+
+    if(props.speed.Ship_Class === "Assassin"){
+        assassinCooldownHalf = 0.5
     }
 
     useEffect(() => {
@@ -158,7 +163,7 @@ function ShipStats(props) {
                 <div>
                 <h2>Extra Stats</h2>
                 <h3>{Math.round(cloakDuration * 10) / 10} Seconds Cloak Duration</h3>
-                <h3>{Math.round(cloakCooldown * 10) / 10} Seconds Cloak Cooldown</h3>
+                <h3>{(Math.round(cloakCooldown * 10) / 10) * assassinCooldownHalf} Seconds Cloak Cooldown</h3>
                 <h3>{Math.round(grappleDuration * 10) / 10} Seconds Grapple Duration</h3>
                 <h3>{Math.round(grappleCooldown * 10) / 10} Seconds Grapple Cooldown</h3>
                 <h3>{Math.round(repairCooldown * 10) / 10} Seconds Repair Cooldown</h3>

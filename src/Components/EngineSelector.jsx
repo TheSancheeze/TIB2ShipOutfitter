@@ -28,7 +28,7 @@ function EngineSelector( props ) {
         } else if(item.Engine_Name === "Stealth Drive") {
             if (rarityNum == 5) {bonus = ["Cloak_Speed", "Basic_Stealth"]}
             if (rarityNum == 6) {bonus = ["Cloak_Speed_II", "Basic_Stealth"]}
-            if (rarityNum == 7) {bonus = ["Clock_Speed_III", "Advanced_Stealth"]}
+            if (rarityNum == 7) {bonus = ["Cloak_Speed_III", "Advanced_Stealth"]}
         }
         setEngineperks(bonus)
     }
