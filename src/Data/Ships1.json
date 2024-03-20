@@ -1,0 +1,936 @@
+[
+    {
+        "Faction_ID": "0", "Faction_Name": "Human", "Ships": [{
+        "Ship_Class": "Shuttle",
+        "Ship_Name": "Human Shuttle",
+        "EP": 6,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 1,
+        "Drones": 2,
+        "Faction_ID": "0",
+        "Ship_ID": "0",
+        "Perks": [
+            ["Intuition", "Mechanic"],
+            ["Intuition_II", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Intuition_III", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Intuition_III", "Mechanic_II", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Mechanic_III", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Mechanic_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Frigate",
+        "Ship_Name": "Human Frigate",
+        "EP": 8,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 1,
+        "Drones": 1,
+        "Faction_ID": "0",
+        "Ship_ID": "1",
+        "Perks": [
+            ["Intuition", "Long_Range_Vision", "Scanning_Rank_1"],
+            ["Intuition_II", "Long_Range_Vision", "Scanning_Rank_2", "Evasive_Maneuvers"],
+            ["Intuition_III", "Long_Range_Vision", "Scanning_Rank_3", "Evasive_Maneuvers"],
+            ["Intuition_III", "Long_Range_Vision", "Scanning_Rank_4", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Long_Range_Vision", "Scanning_Rank_5", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Long_Range_Vision", "Scanning_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Assassin",
+        "Ship_Name": "Human Assassin",
+        "EP": 9,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "0",
+        "Ship_ID": "2",
+        "Perks": [
+            ["Intuition", "Cloak_Duration", "Cloaking_Rank_1"],
+            ["Intuition", "Cloak_Duration_II", "Cloaking_Rank_2", "Evasive_Maneuvers"],
+            ["Intuition_II", "Cloak_Duration_II", "Cloaking_Rank_3", "Evasive_Maneuvers"],
+            ["Intuition_II", "Cloak_Duration_II", "Cloaking_Rank_4", "Evasive_Maneuvers_II"],
+            ["Intuition_II", "Cloak_Duration_III", "Cloaking_Rank_5", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Cloak_Duration_III", "Cloaking_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Cruiser",
+        "Ship_Name": "Human Cruiser",
+        "EP": 11,
+        "Size": "Medium",
+        "Weapons": 3,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "0",
+        "Ship_ID": "3",
+        "Perks": [
+            ["Intuition", "Advanced_Grappling"],
+            ["Intuition", "Advanced_Grappling", "Evasive_Maneuvers"],
+            ["Intuition_II", "Advanced_Grappling_II", "Evasive_Maneuvers"],
+            ["Intuition_II", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Advanced_Grappling_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Destroyer",
+        "Ship_Name": "Human Destroyer",
+        "EP": 13,
+        "Size": "Medium",
+        "Weapons": 3,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "0",
+        "Ship_ID": "4",
+        "Perks": [
+            ["Intuition", "Advanced_Hacking"],
+            ["Intuition", "Advanced_Hacking", "Evasive_Maneuvers"],
+            ["Intuition_II", "Advanced_Hacking_II", "Evasive_Maneuvers"],
+            ["Intuition_II", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Advanced_Hacking_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Battleship",
+        "Ship_Name": "Human Battleship",
+        "EP": 16,
+        "Size": "Large",
+        "Weapons": 4,
+        "Batteries": 3,
+        "Drones": 3,
+        "Faction_ID": "0",
+        "Ship_ID": "5",
+        "Perks": [
+            ["Intuition"],
+            ["Intuition", "Intimidation"],
+            ["Intuition_II", "Intimidation"],
+            ["Intuition_II", "Intimidation_II"],
+            ["Intuition_III", "Intimidation_II"],
+            ["Intuition_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Flagship",
+        "Ship_Name": "Human Flagship",
+        "EP": 19,
+        "Size": "Large",
+        "Weapons": 4,
+        "Batteries": 3,
+        "Drones": 3,
+        "Faction_ID": "0",
+        "Ship_ID": "6",
+        "Perks": [
+            ["Intuition", "Hack_Ram_Rank_1"],
+            ["Intuition", "Hack_Ram_Rank_2", "Intimidation"],
+            ["Intuition_II", "Hack_Ram_Rank_3", "Intimidation"],
+            ["Intuition_II", "Hack_Ram_Rank_4", "Intimidation_II"],
+            ["Intuition_III", "Hack_Ram_Rank_5", "Intimidation_II"],
+            ["Intuition_III", "Hack_Ram_Rank_6", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Carrier",
+        "Ship_Name": "Human Carrier",
+        "EP": 20,
+        "Size": "Huge",
+        "Weapons": 2,
+        "Batteries": 4,
+        "Drones": 5,
+        "Faction_ID": "0",
+        "Ship_ID": "7",
+        "Perks": [
+            ["Intuition", "Leadership"],
+            ["Intuition", "Leadership_II", "Intimidation"],
+            ["Intuition_II", "Leadership_II", "Intimidation"],
+            ["Intuition_II", "Leadership_III", "Intimidation_II"],
+            ["Intuition_II", "Leadership_III", "Intimidation_II"],
+            ["Intuition_III", "Leadership_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Hades",
+        "Ship_Name": "Human Hades",
+        "EP": 22,
+        "Size": "Huge",
+        "Weapons": 5,
+        "Batteries": 4,
+        "Drones": 3,
+        "Faction_ID": "0",
+        "Ship_ID": "8",
+        "Perks": [
+            ["Intuition"],
+            ["Intuition", "Intimidation"],
+            ["Intuition_II", "Intimidation"],
+            ["Intuition_II", "Intimidation_II"],
+            ["Intuition_III", "Intimidation_II"],
+            ["Intuition_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Emporer",
+        "Ship_Name": "Human Emporer",
+        "EP": 26,
+        "Size": "Massive",
+        "Weapons": 5,
+        "Batteries": 5,
+        "Drones": 5,
+        "Faction_ID": "0",
+        "Ship_ID": "9",
+        "Perks": [
+            ["Intuition"],
+            ["Intuition", "Intimidation"],
+            ["Intuition_II", "Intimidation"],
+            ["Intuition_II", "Intimidation_II"],
+            ["Intuition_III", "Intimidation_II"],
+            ["Intuition_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Gunboat",
+        "Ship_Name": "Striker Gunboat",
+        "EP": 8,
+        "Size": "Small",
+        "Weapons": 3,
+        "Batteries": 1,
+        "Drones": 2,
+        "Faction_ID": "0",
+        "Ship_ID": "10",
+        "Perks": [
+            ["Intuition", "Repair_Speed_III"],
+            ["Intuition_II", "Repair_Speed_III", "Evasive_Maneuvers"],
+            ["Intuition_III", "Repair_Speed_III", "Evasive_Maneuvers"],
+            ["Intuition_III", "Repair_Speed_III", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Repair_Speed_III", "Reverse_Hacking", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Repair_Speed_III", "Reverse_Hacking", "Reverse_Grappling"]
+        ]
+    }]
+    },
+    {
+        "Faction_ID": "1", "Faction_Name": "Pirate", "Ships": [{
+        "Ship_Class": "Shuttle",
+        "Ship_Name": "Pirate Shuttle",
+        "EP": 6,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 1,
+        "Drones": 2,
+        "Faction_ID": "1",
+        "Ship_ID": "0",
+        "Perks": [
+            ["Junker", "Mechanic"],
+            ["Junker_II", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Junker_III", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Junker_III", "Mechanic_II", "Evasive_Maneuvers_II"],
+            ["Junker_III", "Mechanic_III", "Evasive_Maneuvers_II"],
+            ["Junker_III", "Mechanic_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Frigate",
+        "Ship_Name": "Pirate Frigate",
+        "EP": 9,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 1,
+        "Drones": 1,
+        "Faction_ID": "1",
+        "Ship_ID": "1",
+        "Perks": [
+            ["Junker", "Long_Range_Vision", "Scanning_Rank_1"],
+            ["Junker", "Long_Range_Vision", "Scanning_Rank_2", "Evasive_Maneuvers"],
+            ["Junker_II", "Long_Range_Vision", "Scanning_Rank_3", "Evasive_Maneuvers"],
+            ["Junker_II", "Long_Range_Vision", "Scanning_Rank_4", "Evasive_Maneuvers_II"],
+            ["Junker_II", "Long_Range_Vision", "Scanning_Rank_5", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Long_Range_Vision", "Scanning_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Assassin",
+        "Ship_Name": "Pirate Assassin",
+        "EP": 10,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "1",
+        "Ship_ID": "2",
+        "Perks": [
+            ["Junker", "Cloak_Duration", "Cloaking_Rank_1"],
+            ["Junker", "Cloak_Duration_II", "Cloaking_Rank_2", "Evasive_Maneuvers"],
+            ["Junker_II", "Cloak_Duration_II", "Cloaking_Rank_3", "Evasive_Maneuvers"],
+            ["Junker_II", "Cloak_Duration_II", "Cloaking_Rank_4", "Evasive_Maneuvers_II"],
+            ["Junker_II", "Cloak_Duration_III", "Cloaking_Rank_5", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Cloak_Duration_III", "Cloaking_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Cruiser",
+        "Ship_Name": "Pirate Cruiser",
+        "EP": 12,
+        "Size": "Medium",
+        "Weapons": 3,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "1",
+        "Ship_ID": "3",
+        "Perks": [
+            ["Junker", "Grapple_Speed", "Advanced_Grappling"],
+            ["Junker", "Grapple_Speed", "Advanced_Grappling", "Evasive_Maneuvers"],
+            ["Junker_II", "Grapple_Speed_II", "Advanced_Grappling_II", "Evasive_Maneuvers"],
+            ["Intuition_II", "Grapple_Speed_II", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Grapple_Speed_III", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Intuition_III", "Grapple_Speed_III", "Advanced_Grappling_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Destroyer",
+        "Ship_Name": "Pirate Destroyer",
+        "EP": 14,
+        "Size": "Medium",
+        "Weapons": 3,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "1",
+        "Ship_ID": "4",
+        "Perks": [
+            ["Junker", "Grapple_Speed", "Advanced_Hacking"],
+            ["Junker", "Grapple_Speed", "Advanced_Hacking", "Evasive_Maneuvers"],
+            ["Junker_II", "Grapple_Speed_II", "Advanced_Hacking_II", "Evasive_Maneuvers"],
+            ["Junker_II", "Grapple_Speed_II", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Junker_III", "Grapple_Speed_III", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Junker_III", "Grapple_Speed_III", "Advanced_Hacking_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Battleship",
+        "Ship_Name": "Pirate Battleship",
+        "EP": 17,
+        "Size": "Large",
+        "Weapons": 4,
+        "Batteries": 3,
+        "Drones": 3,
+        "Faction_ID": "1",
+        "Ship_ID": "5",
+        "Perks": [
+            ["Junker", "Grapple_Speed"],
+            ["Junker", "Grapple_Speed", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Flagship",
+        "Ship_Name": "Pirate Flagship",
+        "EP": 20,
+        "Size": "Large",
+        "Weapons": 4,
+        "Batteries": 3,
+        "Drones": 3,
+        "Faction_ID": "1",
+        "Ship_ID": "6",
+        "Perks": [
+            ["Junker", "Grapple_Speed", "Hack_Ram_Rank_2"],
+            ["Junker", "Grapple_Speed", "Hack_Ram_Rank_3", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Hack_Ram_Rank_4", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Hack_Ram_Rank_5", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Hack_Ram_Rank_6", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Hack_Ram_Rank_7", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Carrier",
+        "Ship_Name": "Pirate Carrier",
+        "EP": 21,
+        "Size": "Huge",
+        "Weapons": 2,
+        "Batteries": 4,
+        "Drones": 5,
+        "Faction_ID": "1",
+        "Ship_ID": "7",
+        "Perks": [
+            ["Junker", "Grapple_Speed", "Leadership"],
+            ["Junker", "Grapple_Speed", "Leadership_II", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Leadership_II", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Leadership_III", "Intimidation_II"],
+            ["Junker_II", "Grapple_Speed_III", "Leadership_III", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Leadership_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Hades",
+        "Ship_Name": "Pirate Hades",
+        "EP": 23,
+        "Size": "Huge",
+        "Weapons": 5,
+        "Batteries": 4,
+        "Drones": 4,
+        "Faction_ID": "1",
+        "Ship_ID": "8",
+        "Perks": [
+            ["Junker", "Grapple_Speed"],
+            ["Junker", "Grapple_Speed", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Emporer",
+        "Ship_Name": "Pirate Emporer",
+        "EP": 27,
+        "Size": "Massive",
+        "Weapons": 6,
+        "Batteries": 6,
+        "Drones": 6,
+        "Faction_ID": "1",
+        "Ship_ID": "9",
+        "Perks": [
+            ["Junker", "Grapple_Speed"],
+            ["Junker", "Grapple_Speed", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Intimidation"],
+            ["Junker_II", "Grapple_Speed_II", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Intimidation_II"],
+            ["Junker_III", "Grapple_Speed_III", "Intimidation_III"]
+        ]
+    }]
+    },
+    {
+        "Faction_ID": "2", "Faction_Name": "Het", "Ships": [{
+        "Ship_Class": "Shuttle",
+        "Ship_Name": "Het Larva",
+        "EP": 8,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 1,
+        "Drones": 2,
+        "Faction_ID": "2",
+        "Ship_ID": "0",
+        "Perks": [
+            ["Shield_Bypass", "Mechanic"],
+            ["Shield_Bypass_II", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Shield_Bypass_III", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Shield_Bypass_III", "Mechanic_II", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_III", "Mechanic_III", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_III", "Mechanic_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Frigate",
+        "Ship_Name": "Het Stinger",
+        "EP": 9,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 1,
+        "Drones": 2,
+        "Faction_ID": "2",
+        "Ship_ID": "1",
+        "Perks": [
+            ["Shield_Bypass", "Long_Range_Vision", "Scanning_Rank_2"],
+            ["Shield_Bypass", "Long_Range_Vision", "Scanning_Rank_3", "Evasive_Maneuvers"],
+            ["Shield_Bypass_II", "Long_Range_Vision", "Scanning_Rank_4", "Evasive_Maneuvers"],
+            ["Shield_Bypass_II", "Long_Range_Vision", "Scanning_Rank_5", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_II", "Long_Range_Vision", "Scanning_Rank_6", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_III", "Long_Range_Vision", "Scanning_Rank_7", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Assassin",
+        "Ship_Name": "Het Hornet",
+        "EP": 10,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 2,
+        "Drones": 3,
+        "Faction_ID": "2",
+        "Ship_ID": "2",
+        "Perks": [
+            ["Shield_Bypass", "Cloak_Duration", "Cloaking_Rank_1"],
+            ["Shield_Bypass", "Cloak_Duration_II", "Cloaking_Rank_2", "Evasive_Maneuvers"],
+            ["Shield_Bypass_II", "Cloak_Duration_II", "Cloaking_Rank_3", "Evasive_Maneuvers"],
+            ["Shield_Bypass_II", "Cloak_Duration_II", "Cloaking_Rank_4", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_II", "Cloak_Duration_III", "Cloaking_Rank_5", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_III", "Cloak_Duration_III", "Cloaking_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Cruiser",
+        "Ship_Name": "Het Defender",
+        "EP": 12,
+        "Size": "Medium",
+        "Weapons": 3,
+        "Batteries": 2,
+        "Drones": 3,
+        "Faction_ID": "2",
+        "Ship_ID": "3",
+        "Perks": [
+            ["Shield_Bypass", "Drain_Battery_Speed", "Advanced_Grappling"],
+            ["Shield_Bypass", "Drain_Battery_Speed", "Advanced_Grappling", "Evasive_Maneuvers"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Advanced_Grappling_II", "Evasive_Maneuvers"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Advanced_Grappling_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Destroyer",
+        "Ship_Name": "Het Warrior",
+        "EP": 14,
+        "Size": "Medium",
+        "Weapons": 3,
+        "Batteries": 2,
+        "Drones": 3,
+        "Faction_ID": "2",
+        "Ship_ID": "4",
+        "Perks": [
+            ["Shield_Bypass", "Drain_Battery_Speed", "Advanced_Hacking"],
+            ["Shield_Bypass", "Drain_Battery_Speed", "Advanced_Hacking", "Evasive_Maneuvers"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Advanced_Hacking_II", "Evasive_Maneuvers"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Advanced_Hacking_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Battleship",
+        "Ship_Name": "Het Predator",
+        "EP": 17,
+        "Size": "Large",
+        "Weapons": 4,
+        "Batteries": 3,
+        "Drones": 4,
+        "Faction_ID": "2",
+        "Ship_ID": "5",
+        "Perks": [
+            ["Shield_Bypass", "Drain_Battery_Speed"],
+            ["Shield_Bypass", "Drain_Battery_Speed", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Flagship",
+        "Ship_Name": "Het Hunter",
+        "EP": 20,
+        "Size": "Large",
+        "Weapons": 4,
+        "Batteries": 3,
+        "Drones": 4,
+        "Faction_ID": "2",
+        "Ship_ID": "6",
+        "Perks": [
+            ["Shield_Bypass", "Drain_Battery_Speed", "Hack_Ram_Rank_1"],
+            ["Shield_Bypass", "Drain_Battery_Speed", "Hack_Ram_Rank_2", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Hack_Ram_Rank_3", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Hack_Ram_Rank_4", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Hack_Ram_Rank_5", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Hack_Ram_Rank_6", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Carrier",
+        "Ship_Name": "Het Queen",
+        "EP": 21,
+        "Size": "Huge",
+        "Weapons": 2,
+        "Batteries": 4,
+        "Drones": 6,
+        "Faction_ID": "2",
+        "Ship_ID": "7",
+        "Perks": [
+            ["Shield_Bypass", "Drain_Battery_Speed", "Leadership"],
+            ["Shield_Bypass", "Drain_Battery_Speed", "Leadership_II", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Leadership_II", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Leadership_III", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speedon_III", "Leadership_III", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Leadership_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Hades",
+        "Ship_Name": "Het King",
+        "EP": 23,
+        "Size": "Huge",
+        "Weapons": 5,
+        "Batteries": 4,
+        "Drones": 5,
+        "Faction_ID": "2",
+        "Ship_ID": "8",
+        "Perks": [
+            ["Shield_Bypass", "Drain_Battery_Speed"],
+            ["Shield_Bypass", "Drain_Battery_Speed", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Emporer",
+        "Ship_Name": "Het Godhead",
+        "EP": 27,
+        "Size": "Massive",
+        "Weapons": 6,
+        "Batteries": 6,
+        "Drones": 6,
+        "Faction_ID": "2",
+        "Ship_ID": "9",
+        "Perks": [
+            ["Shield_Bypass", "Drain_Battery_Speed"],
+            ["Shield_Bypass", "Drain_Battery_Speed", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Intimidation"],
+            ["Shield_Bypass_II", "Drain_Battery_Speed_II", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Intimidation_II"],
+            ["Shield_Bypass_III", "Drain_Battery_Speed_III", "Intimidation_III"]
+        ]
+    }]
+    },
+    {
+        "Faction_ID": "3", "Faction_Name": "Wyrd", "Ships": [{
+        "Ship_Class": "Shuttle",
+        "Ship_Name": "Wyrd Spitfire",
+        "EP": 8,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "3",
+        "Ship_ID": "0",
+        "Perks": [
+            ["Shield_Capacitors", "Mechanic"],
+            ["Shield_Capacitors_II", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_III", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_III", "Mechanic_II", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_III", "Mechanic_III", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_III", "Mechanic_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Frigate",
+        "Ship_Name": "Wyrd Scout",
+        "EP": 9,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 2,
+        "Drones": 1,
+        "Faction_ID": "3",
+        "Ship_ID": "1",
+        "Perks": [
+            ["Shield_Capacitors", "Long_Range_Vision", "Scanning_Rank_1"],
+            ["Shield_Capacitors", "Long_Range_Vision", "Scanning_Rank_2", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_II", "Long_Range_Vision", "Scanning_Rank_3", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_II", "Long_Range_Vision", "Scanning_Rank_4", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_II", "Long_Range_Vision", "Scanning_Rank_5", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_III", "Long_Range_Vision", "Scanning_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Assassin",
+        "Ship_Name": "Wyrd Assassin",
+        "EP": 10,
+        "Size": "Small",
+        "Weapons": 2,
+        "Batteries": 3,
+        "Drones": 2,
+        "Faction_ID": "3",
+        "Ship_ID": "2",
+        "Perks": [
+            ["Shield_Capacitors", "Cloak_Duration", "Cloaking_Rank_1"],
+            ["Shield_Capacitors", "Cloak_Duration_II", "Cloaking_Rank_2", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_II", "Cloak_Duration_II", "Cloaking_Rank_3", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_II", "Cloak_Duration_II", "Cloaking_Rank_4", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_II", "Cloak_Duration_III", "Cloaking_Rank_5", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_III", "Cloak_Duration_III", "Cloaking_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Cruiser",
+        "Ship_Name": "Wyrd Flayer",
+        "EP": 12,
+        "Size": "Medium",
+        "Weapons": 3,
+        "Batteries": 3,
+        "Drones": 2,
+        "Faction_ID": "3",
+        "Ship_ID": "3",
+        "Perks": [
+            ["Shield_Capacitors", "Advanced_Grappling"],
+            ["Shield_Capacitors", "Advanced_Grappling", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_II", "Advanced_Grappling_II", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_II", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_III", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_III", "Advanced_Grappling_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Destroyer",
+        "Ship_Name": "Wyrd Devastator",
+        "EP": 14,
+        "Size": "Medium",
+        "Weapons": 3,
+        "Batteries": 3,
+        "Drones": 2,
+        "Faction_ID": "3",
+        "Ship_ID": "4",
+        "Perks": [
+            ["Shield_Capacitors", "Hack_Speed", "Advanced_Hacking"],
+            ["Shield_Capacitors", "Hack_Speed", "Advanced_Hacking", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Advanced_Hacking_II", "Evasive_Maneuvers"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Advanced_Hacking_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Battleship",
+        "Ship_Name": "Wyrd Invader",
+        "EP": 17,
+        "Size": "Large",
+        "Weapons": 4,
+        "Batteries": 4,
+        "Drones": 3,
+        "Faction_ID": "3",
+        "Ship_ID": "5",
+        "Perks": [
+            ["Shield_Capacitors", "Hack_Speed"],
+            ["Shield_Capacitors", "Hack_Speed", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Flagship",
+        "Ship_Name": "Wyrd Executioner",
+        "EP": 20,
+        "Size": "Large",
+        "Weapons": 4,
+        "Batteries": 4,
+        "Drones": 3,
+        "Faction_ID": "3",
+        "Ship_ID": "6",
+        "Perks": [
+            ["Shield_Capacitors", "Hack_Speed", "Hack_Ram_Rank_1"],
+            ["Shield_Capacitors", "Hack_Speed", "Hack_Ram_Rank_2", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Hack_Ram_Rank_3", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Hack_Ram_Rank_4", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Hack_Ram_Rank_5", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Hack_Ram_Rank_6", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Carrier",
+        "Ship_Name": "Wyrd Carrier",
+        "EP": 21,
+        "Size": "Huge",
+        "Weapons": 2,
+        "Batteries": 5,
+        "Drones": 5,
+        "Faction_ID": "3",
+        "Ship_ID": "7",
+        "Perks": [
+            ["Shield_Capacitors", "Hack_Speed", "Leadership"],
+            ["Shield_Capacitors", "Hack_Speed", "Leadership_II", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Leadership_II", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Leadership_III", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Leadership_III", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Leadership_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Hades",
+        "Ship_Name": "Wyrd Reaper",
+        "EP": 23,
+        "Size": "Huge",
+        "Weapons": 5,
+        "Batteries": 5,
+        "Drones": 4,
+        "Faction_ID": "3",
+        "Ship_ID": "8",
+        "Perks": [
+            ["Shield_Capacitors", "Hack_Speed"],
+            ["Shield_Capacitors", "Hack_Speed", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Emporer",
+        "Ship_Name": "Wyrd Emporer",
+        "EP": 27,
+        "Size": "Massive",
+        "Weapons": 6,
+        "Batteries": 6,
+        "Drones": 6,
+        "Faction_ID": "3",
+        "Ship_ID": "9",
+        "Perks": [
+            ["Shield_Capacitors", "Hack_Speed"],
+            ["Shield_Capacitors", "Hack_Speed", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Intimidation"],
+            ["Shield_Capacitors_II", "Hack_Speed_II", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Intimidation_II"],
+            ["Shield_Capacitors_III", "Hack_Speed_III", "Intimidation_III"]
+        ]
+    }]
+    },
+    {
+        "Faction_ID": "4", "Faction_Name": "Precursor", "Ships": [{
+        "Ship_Class": "Shuttle",
+        "Ship_Name": "Precursor Shuttle",
+        "EP": 9,
+        "Size": "Small",
+        "Weapons": 3,
+        "Batteries": 1,
+        "Drones": 2,
+        "Faction_ID": "4",
+        "Ship_ID": "0",
+        "Perks": [
+            ["Shield_Amplifier", "Mechanic"],
+            ["Shield_Amplifier_II", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_III", "Mechanic_II", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_III", "Mechanic_II", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_III", "Mechanic_III", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_III", "Mechanic_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Frigate",
+        "Ship_Name": "Precursor Frigate",
+        "EP": 10,
+        "Size": "Small",
+        "Weapons": 3,
+        "Batteries": 1,
+        "Drones": 1,
+        "Faction_ID": "4",
+        "Ship_ID": "1",
+        "Perks": [
+            ["Shield_Amplifier", "Long_Range_Vision", "Scanning_Rank_1"],
+            ["Shield_Amplifier", "Long_Range_Vision", "Scanning_Rank_2", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_II", "Long_Range_Vision", "Scanning_Rank_3", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_II", "Long_Range_Vision", "Scanning_Rank_4", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_II", "Long_Range_Vision", "Scanning_Rank_5", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_III", "Long_Range_Vision", "Scanning_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Assassin",
+        "Ship_Name": "Precursor Assassin",
+        "EP": 11,
+        "Size": "Small",
+        "Weapons": 3,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "4",
+        "Ship_ID": "2",
+        "Perks": [
+            ["Shield_Amplifier", "Cloak_Duration", "Cloaking_Rank_1"],
+            ["Shield_Amplifier", "Cloak_Duration_II", "Cloaking_Rank_2", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_II", "Cloak_Duration_II", "Cloaking_Rank_3", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_II", "Cloak_Duration_II", "Cloaking_Rank_4", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_II", "Cloak_Duration_III", "Cloaking_Rank_5", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_III", "Cloak_Duration_III", "Cloaking_Rank_6", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Cruiser",
+        "Ship_Name": "Precursor Cruiser",
+        "EP": 13,
+        "Size": "Medium",
+        "Weapons": 4,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "4",
+        "Ship_ID": "3",
+        "Perks": [
+            ["Shield_Amplifier", "Targeting", "Advanced_Grappling"],
+            ["Shield_Amplifier", "Targeting", "Advanced_Grappling", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_II", "Targeting_II", "Advanced_Grappling_II", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_II", "Targeting_II", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Advanced_Grappling_III", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Advanced_Grappling_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Destroyer",
+        "Ship_Name": "Precursor Despoiler",
+        "EP": 15,
+        "Size": "Medium",
+        "Weapons": 4,
+        "Batteries": 2,
+        "Drones": 2,
+        "Faction_ID": "4",
+        "Ship_ID": "4",
+        "Perks": [
+            ["Shield_Amplifier", "Targeting", "Advanced_Hacking"],
+            ["Shield_Amplifier", "Targeting", "Advanced_Hacking", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_II", "Targeting_II", "Advanced_Hacking_II", "Evasive_Maneuvers"],
+            ["Shield_Amplifier_II", "Targeting_II", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Advanced_Hacking_III", "Evasive_Maneuvers_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Advanced_Hacking_III", "Evasive_Maneuvers_III"]
+        ]
+    },{
+        "Ship_Class": "Battleship",
+        "Ship_Name": "Precursor Titan",
+        "EP": 18,
+        "Size": "Large",
+        "Weapons": 5,
+        "Batteries": 3,
+        "Drones": 3,
+        "Faction_ID": "4",
+        "Ship_ID": "5",
+        "Perks": [
+            ["Shield_Amplifier", "Targeting"],
+            ["Shield_Amplifier", "Targeting", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Flagship",
+        "Ship_Name": "Precursor Dreadnought",
+        "EP": 21,
+        "Size": "Large",
+        "Weapons": 5,
+        "Batteries": 3,
+        "Drones": 3,
+        "Faction_ID": "4",
+        "Ship_ID": "6",
+        "Perks": [
+            ["Shield_Amplifier", "Targeting", "Hack_Ram_Rank_1"],
+            ["Shield_Amplifier", "Targeting", "Hack_Ram_Rank_2", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Hack_Ram_Rank_3", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Hack_Ram_Rank_4", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Hack_Ram_Rank_5", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Hack_Ram_Rank_6", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Carrier",
+        "Ship_Name": "Precursor Carrier",
+        "EP": 22,
+        "Size": "Huge",
+        "Weapons": 3,
+        "Batteries": 4,
+        "Drones": 5,
+        "Faction_ID": "4",
+        "Ship_ID": "7",
+        "Perks": [
+            ["Shield_Amplifier", "Targeting", "Leadership"],
+            ["Shield_Amplifier", "Targeting", "Leadership_II", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Leadership_II", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Leadership_III", "Intimidation_II"],
+            ["Shield_Amplifier_II", "Targeting_III", "Leadership_III", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Leadership_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Hades",
+        "Ship_Name": "Precursor Terminus",
+        "EP": 24,
+        "Size": "Huge",
+        "Weapons": 6,
+        "Batteries": 4,
+        "Drones": 4,
+        "Faction_ID": "4",
+        "Ship_ID": "8",
+        "Perks": [
+            ["Shield_Amplifier", "Targeting"],
+            ["Shield_Amplifier", "Targeting", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Intimidation_III"]
+        ]
+    },{
+        "Ship_Class": "Emporer",
+        "Ship_Name": "Precursor Emporer",
+        "EP": 28,
+        "Size": "Massive",
+        "Weapons": 6,
+        "Batteries": 6,
+        "Drones": 6,
+        "Faction_ID": "4",
+        "Ship_ID": "9",
+        "Perks": [
+            ["Shield_Amplifier", "Targeting"],
+            ["Shield_Amplifier", "Targeting", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Intimidation"],
+            ["Shield_Amplifier_II", "Targeting_II", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Intimidation_II"],
+            ["Shield_Amplifier_III", "Targeting_III", "Intimidation_III"]
+        ]
+    }]
+    }
+
+]
