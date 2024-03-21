@@ -42,23 +42,25 @@ function App() {
   let gunboatExtra = [0, 0, 0]
 
   if(shipmod === "ULT"){ultMod = [4, 1, 1, 1]}
-  if(shipinfo.Ship_Class === "Gunboat"){gunboatElite = 3}
-  switch (elitelvl) {
-    case 'I':
-      gunboatExtra = [1, 0, 0]
-      break;
-    case 'II':
-      gunboatExtra = [2, 1, 0]
-      break;
-    case 'III':
-      gunboatExtra = [2, 1, 1]
-      break;
-    case 'IV':
-      gunboatExtra = [3, 2, 1]
-      break;
-    case 'V':
-      gunboatExtra = [3, 2, 2]
-      break;
+  if(shipinfo.Ship_Class === "Gunboat"){
+    gunboatElite = 3
+    switch (elitelvl) {
+      case 'I':
+        gunboatExtra = [1, 0, 0]
+        break;
+      case 'II':
+        gunboatExtra = [2, 1, 0]
+        break;
+      case 'III':
+        gunboatExtra = [2, 1, 1]
+        break;
+      case 'IV':
+        gunboatExtra = [3, 2, 1]
+        break;
+      case 'V':
+        gunboatExtra = [3, 2, 2]
+        break;
+    }
   }
 
   let totalEP = shipinfo.EP + newstats[28][1] + (romanToInt(elitelvl) * gunboatElite) + ultMod[0] + bonusEP
