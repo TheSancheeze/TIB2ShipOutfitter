@@ -645,6 +645,8 @@ export function specialStatMultiplier(item, rarity, quality, trigger, mutate, mu
         if( newItem[i][0] === "Add_EP" ) {
             if ( newItem[0][0] == "% Stun or Throw Chance on Ram" ){
                 if (rarityNum >= 5) {newItem[i][1] = rarityNum-4}
+            } else if ( newItem[0][0] === "Seconds Taunt" ){
+                if (rarityNum == 7) {newItem[i][1] = 1}
             } else if ( newItem[i][1] == 2 || newItem.length == 1 || newItem[0][0] === "%_Hull_Damage" || newItem[2][1] == 5.11 || newItem[0][0] === "Hack_Resist") {
                 if (rarityNum >= 6) {newItem[i][1] = newItem[i][1] + (rarityNum-5) }
             } else if ( newItem[0][0] === "%_Move_Cooldown" || newItem.length == 8 ){
@@ -656,6 +658,11 @@ export function specialStatMultiplier(item, rarity, quality, trigger, mutate, mu
                 if (rarityNum == 5 || rarityNum == 6) {newItem[i][1]++}
                 if (rarityNum == 7) {newItem[i][1] = 2}
             } 
+        } else if ( newItem[i][0] === "Seconds Taunt" ){
+            if (rarityNum < 4) {newItem[i][1] = 0}
+            else {newItem[i][1] = (newItem[i][1] + (rarityNum-4)) * (1 + qual)}
+        } else if ( newItem[0][0] === "Seconds Taunt" && newItem[i][0] === "Grapple_Attack_Power" ){
+            newItem[i][1] = ( newItem[i][1] + (1.5 * (rarityNum - 1)) ) * (1 + qual)
         } else if (newItem[i][0] === "% Repair & Harvest Drone Speed"){
             newItem[i][1] = droneArr[rarityNum-1] * ( 1 + qual )
         } else if (newItem[i][1] == 5){

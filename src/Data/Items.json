@@ -959,7 +959,7 @@
                     "Pirate_Hull": 12.5,
                     "Max_Hull": 125,
                     "%_Move_Cooldown": 0.83333,
-                    "%_Targeting_Speed": 2,
+                    "%_Targeting_Speed": -2,
                     "%_Hull_Damage": 0.8,
                     "EP": 1
                 },
@@ -2367,6 +2367,7 @@
             "Ultimate_Bonus_1": "Improved_Hulls_Rank_",
             "Ultimate_Bonus_2": "Advanced_Alloys",
             "Stats": {
+                "Seconds Taunt": 5.0,
                 "%_Outgoing_Damage": -80,
                 "Grapple_Attack_Power": 2.5,
                 "Grapple_Resist": 0,
