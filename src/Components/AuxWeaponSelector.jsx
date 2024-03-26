@@ -156,7 +156,7 @@ function AuxWeaponSelector( props ) {
                 <h3>Player Damage</h3>
                 <h4>Hull: {enhancedarr[8]} - {enhancedarr[10]} {"—>"} {enhancedarr[12]} - {enhancedarr[14]} | DPS: {Math.round((enhancedarr[8] + enhancedarr[10])/(2*weapon.Shot_Timer)*10)/10} {"—>"} {Math.round((enhancedarr[12] + enhancedarr[14])/(2*weapon.Shot_Timer)*10)/10}</h4>
                 <h4>Shield: {enhancedarr[9]} - {enhancedarr[11]} {"—>"} {enhancedarr[13]} - {enhancedarr[15]} | DPS: {Math.round((enhancedarr[9] + enhancedarr[11])/(2*weapon.Shot_Timer)*10)/10} {"—>"} {Math.round((enhancedarr[13] + enhancedarr[15])/(2*weapon.Shot_Timer)*10)/10}</h4>
-                <h3>Target Lock Timer: { ( AttackTimer(props.enhancedStats[10], enemyShipClass, props.enhancedStats[9], false) + (5000 * props.auxSlotTimer) ) / 1000  } Seconds (0.8s min)</h3>
+                <h3>Target Lock Timer: { ( AttackTimer(props.enhancedStats[10], enemyShipClass, props.enhancedStats[9], false) + (3500 * props.auxSlotTimer) ) / 1000  } Seconds (0.8s min)</h3>
                 <h4> Select Enemy Ship Class: {" "}
                     <select name="EnemyShipClass" onChange={(e) => setEnemyShipClass(e.target.value)}>
                         <option value='0'>--Select Ship Class--</option>
