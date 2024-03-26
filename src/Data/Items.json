@@ -3918,8 +3918,9 @@
                 "Stats": {
                     "%_Outgoing_Damage": 0,
                     "Critical_Chance": 1,
-                    "%_Critical_Damage": 1,
-                    "Splash_Chance": 4,
+                    "%_Critical_Damage": 0.5,
+                    "%_Shield_Damage": 2,
+                    "Splash_Chance": 2.5,
                     "%_Hull_Damage": 1.31,
                     "EP": 1
                 },
