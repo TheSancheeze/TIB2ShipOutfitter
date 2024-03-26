@@ -2304,7 +2304,7 @@
             "Ultimate_Bonus_2": "Repair_Drones",
             "Stats": {
                 "% Repair & Harvest Drone Speed": -8.33,
-                "%_Targeting_Speed": 2,
+                "%_Targeting_Speed": -2,
                 "Add_Drone_Slot": 0
             }
         },{
@@ -2681,7 +2681,7 @@
                 "Max_Dmg": 39,
                 "Ultimate_Bonus": "Grapple_Speed",
                 "Stats": {
-                    "%_Targeting_Speed": 2.5,
+                    "%_Targeting_Speed": -2.5,
                     "Hit_Chance": 1,
                     "Critical_Chance": 1,
                     "Evasion_Chance": 2,
